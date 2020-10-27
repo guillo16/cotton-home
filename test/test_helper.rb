@@ -5,6 +5,8 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
+  include Warden::Test::Helpers
+  Warden.test_mode!
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
