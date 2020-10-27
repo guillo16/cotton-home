@@ -1,0 +1,3 @@
+pillow:
+  name: "pillow"
+  category: categories(:covers)

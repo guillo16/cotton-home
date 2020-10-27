@@ -1,3 +1,7 @@
 sheets:
   name: "Colchas"
   photo: "url"
+
+covers:
+  name: "Cubrecamas"
+  photo: "url-2"
