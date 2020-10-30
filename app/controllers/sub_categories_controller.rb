@@ -9,7 +9,7 @@ class SubCategoriesController < ApplicationController
   def show; end
 
   def new
-    if current_user.permission_level == "super_admin"
+    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
       @sub_category = SubCategory.new
     else
       redirect_to root_path
@@ -19,7 +19,7 @@ class SubCategoriesController < ApplicationController
   def create
     @sub_category = SubCategory.new(sub_category_params)
     if @sub_category.save
-      redirect_to sub_category_path(@sub_category)
+      redirect_to sub_categories_path
     else
       render :new
     end
@@ -36,17 +36,19 @@ class SubCategoriesController < ApplicationController
   end
 
   def destroy
+    return unless current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+
     @sub_category.destroy
-    redirect_to root_paths
+    redirect_to root_path
   end
 
   private
 
   def set_sub_category
-    @sub_category = SubCategory.find(params[:id])
+    @sub_category = SubCategory.friendly.find(params[:id])
   end
 
   def sub_category_params
-    params.require(:category).permit(:title, :category_id)
+    params.require(:sub_category).permit(:name, :category_id)
   end
 end
