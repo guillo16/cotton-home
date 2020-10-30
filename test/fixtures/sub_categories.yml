@@ -1,0 +1,6 @@
+pillow:
+  name: "pillow"
+  category: categories(:covers)
+towel:
+  name: "toallas"
+  category: categories(:sheets)

@@ -1,0 +1,11 @@
+buyer:
+  email: "buyer@mail.com"
+  permission_level: "buyer"
+
+admin:
+  email: "admin@mail.com"
+  permission_level: "admin"
+
+super_admin:
+  email: "super_admin@mail.com"
+  permission_level: "super_admin"
