@@ -9,7 +9,11 @@ class SubCategoriesController < ApplicationController
   def show; end
 
   def new
-    @sub_category = SubCategory.new
+    if current_user.permission_level == "super_admin"
+      @sub_category = SubCategory.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create

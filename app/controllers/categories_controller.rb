@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to category_path(@category)
+      redirect_to categories_path
     else
       render :new
     end
@@ -36,8 +36,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    return unless current_user.permission_level == "super_admin"
+
     @category.destroy
-    redirect_to root_paths
+    redirect_to root_path
   end
 
   private
