@@ -1,0 +1,5 @@
+<%= simple_form_for @sub_category do |f| %>
+<%= f.input :name %>
+<%= f.association :category %>
+<%= f.submit class: "btn btn-primary btn-block mt-5"%>
+<% end %>
