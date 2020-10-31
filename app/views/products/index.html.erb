@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table table-striped">
+    <% @products.each do |product| %>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= product.name %></th>
+        <td class="text-right">
+          <%= link_to 'ver', product_path(product), class: "pr-2" %>
+          <%= link_to 'editar', edit_product_path(product), class: "pr-2" %>
+          <%= link_to 'eliminar', product_path(product),  method: :delete,  data: { confirm: 'Are you sure?' }, class: "text-danger"  %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
