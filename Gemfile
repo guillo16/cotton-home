@@ -11,6 +11,7 @@ gem "devise", "~> 4.7", ">= 4.7.2"
 gem "friendly_id", "~> 5.4.0"
 gem "font-awesome-sass"
 gem "jbuilder", "~> 2.7"
+gem 'money-rails', '~>1.12'
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "redis", "~> 4.0"

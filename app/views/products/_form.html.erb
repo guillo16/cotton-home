@@ -1,0 +1,6 @@
+<%= simple_form_for @product do |f| %>
+<%= f.input :name %>
+<%= f.input :photo %>
+<%= f.association :sub_category %>
+<%= f.submit %>
+<% end %>
