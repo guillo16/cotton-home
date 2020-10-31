@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :sub_categories
-  resources :products
+  resources :products do
+    resources :variants, only: [:new, :create]
+  end
+
+  resources :variants, only: [:show, :edit, :update, :destroy]
 end
