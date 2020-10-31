@@ -6,4 +6,10 @@ class Product < ApplicationRecord
 
   validates :name, presence: true
   validates :photo, presence: true
+
+  private
+
+  def should_generate_new_friendly_id?
+    slug.blank? || self.name_changed?
+  end
 end

@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 
   def edit
     if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     else
       redirect_to root_path
     end
