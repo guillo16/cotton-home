@@ -11,7 +11,7 @@ class SubCategoriesControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test "user should see show page" do
+  test "buyer should see show page" do
     login_as users(:buyer)
 
     get sub_category_path(@sub_category)
