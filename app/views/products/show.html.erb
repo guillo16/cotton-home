@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <div class="bg-white p-5">
+    <h2 class="text-center pb-4">Completar <%= @product.name %></h2>
+    <%= render "variants/new" %>
+  </div>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Talle</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @product.variants.each do |variant| %>
+      <tr>
+        <th><%= variant.size %></th>
+        <td><%= variant.stock %></td>
+        <td><%= variant.price_cents %></td>
+        <td class="text-right">
+          <%= link_to 'ver', variant_path(variant), class: "pr-2"  %>
+          <%= link_to 'editar', edit_variant_path(variant), class: "pr-2"  %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>

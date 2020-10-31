@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Talle</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= @variant.size %></th>
+        <td><%= @variant.stock %></td>
+        <td><%= @variant.price_cents %></td>
+        <td class="text-right">
+          <%= link_to 'editar', edit_variant_path(@variant), class: "pr-2"  %>
+          <%= link_to 'ir al producto', product_path(@variant.product.id) %>
+          <%= link_to 'eliminar', variant_path(@variant), method: :delete, data: { confirm: 'Estas seguro?' }, class: "text-danger"  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

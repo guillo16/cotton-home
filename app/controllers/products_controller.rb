@@ -10,7 +10,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @variant = Variant.new
+  end
 
   def new
     if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"

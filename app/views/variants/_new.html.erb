@@ -1,0 +1,6 @@
+<%= simple_form_for([@product, @variant ], remote: true)  do |f| %>
+<%= f.input :size %>
+<%= f.input :stock %>
+<%= f.input :price_cents %>
+<%= f.submit class: "btn btn-primary btn-block"%>
+<% end %>

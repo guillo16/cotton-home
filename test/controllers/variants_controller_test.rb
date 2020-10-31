@@ -26,4 +26,17 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
+  # test "update should be success" do
+  #   patch variant_path(@variant), params: {
+  #     variant: {
+  #       size: "Twin",
+  #       stock: 33232,
+  #       price_cents: 23,
+  #       product_id: @product.id
+  #     }
+  #   }
+  #   puts @variant.stock
+  #   assert_equal "Twin", Variant.find(@variant.id).size
+  # end
+
 end

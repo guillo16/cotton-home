@@ -4,7 +4,7 @@ class VariantsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:product_id])
+    @product = Product.friendly.find(params[:product_id])
     @variant = Variant.new(variant_params)
     @variant.product = @product
     if @variant.save
@@ -14,8 +14,7 @@ class VariantsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @variant.update(variant_params)
@@ -30,7 +29,11 @@ class VariantsController < ApplicationController
   private
 
   def set_variant
-    @variant = Variant.find(params[:id])
+    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+      @variant = Variant.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def variant_params
