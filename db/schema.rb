@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_195329) do
+ActiveRecord::Schema.define(version: 2020_11_03_195410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,6 +27,18 @@ ActiveRecord::Schema.define(version: 2020_10_31_195329) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "variant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+    t.index ["variant_id"], name: "index_line_items_on_variant_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -68,6 +85,9 @@ ActiveRecord::Schema.define(version: 2020_10_31_195329) do
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
+  add_foreign_key "line_items", "variants"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "sub_categories", "categories"
   add_foreign_key "variants", "products"
