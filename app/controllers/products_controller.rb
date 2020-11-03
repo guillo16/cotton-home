@@ -3,9 +3,10 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show update destroy]
 
   def index
-    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
-      @products = Product.order(name: :asc)
+    if user_has_permission_level?
+      @products = Product.includes(:sub_category).order(sub_category_id: :asc).order(name: :asc)
     else
+      flash[:notice] = "Accesso denegado!"
       redirect_to root_path
     end
   end
@@ -15,9 +16,10 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    if user_has_permission_level?
       @product = Product.new
     else
+      flash[:notice] = "Accesso denegado!"
       redirect_to root_path
     end
   end
@@ -32,9 +34,10 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    if user_has_permission_level?
       @product = Product.friendly.find(params[:id])
     else
+      flash[:notice] = "Accesso denegado!"
       redirect_to root_path
     end
   end
@@ -48,7 +51,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    return unless current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    return unless user_has_permission_level?
 
     @product.destroy
     redirect_to products_path

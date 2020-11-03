@@ -3,13 +3,15 @@
     <thead>
       <tr>
         <th>Categorias</th>
+        <th>Categoria principal</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @sub_categories.each do |sub_category| %>
       <tr>
-        <th><%= sub_category.name %></th>
+        <th class="font-weight-light"><%= sub_category.name %></th>
+        <th class="badge badge-pill badge-primary h6 text-center mt-2"><%= sub_category.category.name %></th>
         <td class="text-right">
           <%= link_to 'ver', sub_category_path(sub_category), class: "pr-2" %>
           <%= link_to 'editar', edit_sub_category_path(sub_category), class: "pr-2" %>

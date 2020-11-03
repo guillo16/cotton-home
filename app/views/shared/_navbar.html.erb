@@ -15,6 +15,7 @@
         <%= link_to "Messages", "#", class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
+      <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
       <% else %>
       <li class="nav-item">
         <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -44,6 +45,7 @@
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <% if user_signed_in? %>
+          <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
           <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

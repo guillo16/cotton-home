@@ -3,13 +3,15 @@
     <thead>
       <tr>
         <th>Producto</th>
-        <th></th>
+        <th>Categorias</th>
       </tr>
     </thead>
     <tbody>
       <% @products.each do |product| %>
       <tr>
         <th class="font-weight-light"><%= product.name %></th>
+        <th class="badge badge-pill badge-primary h6 text-center mt-2"><%= product.sub_category.category.name %> </th>
+        <th class="badge badge-pill badge-secondary h6 text-center ml-2 mt-2"><%= product.sub_category.name %></th>
         <td class="text-right">
           <%= link_to 'ver', product_path(product), class: "pr-2" %>
           <%= link_to 'editar', edit_product_path(product), class: "pr-2" %>
