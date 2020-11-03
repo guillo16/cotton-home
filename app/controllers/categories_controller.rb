@@ -3,7 +3,11 @@ class CategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @categories = Category.all
+    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+      @categories = Category.all
+    else
+      redirect_to root_path
+    end
   end
 
   def show; end
@@ -29,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to category_path(@category)
+      redirect_to categories_path
     else
       render :new
     end

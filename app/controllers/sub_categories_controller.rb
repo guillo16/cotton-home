@@ -3,7 +3,11 @@ class SubCategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @categories = SubCategory.all
+    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+      @sub_categories = SubCategory.all
+    else
+      redirect_to root_path
+    end
   end
 
   def show; end
@@ -29,7 +33,7 @@ class SubCategoriesController < ApplicationController
 
   def update
     if @sub_category.update(sub_category_params)
-      redirect_to sub_category_path(@sub_category)
+      redirect_to sub_categories_path
     else
       render :new
     end
