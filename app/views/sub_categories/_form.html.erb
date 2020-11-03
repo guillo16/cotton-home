@@ -1,5 +1,8 @@
 <%= simple_form_for @sub_category do |f| %>
 <%= f.input :name %>
 <%= f.association :category %>
-<%= f.submit class: "btn btn-primary btn-block mt-5"%>
+<div class="text-right">
+  <%= f.submit class: "btn btn-primary btn-block mt-4" %>
+  <%= link_to "volver", :back , class: "btn btn-secondary mt-4 text-right"%>
+</div>
 <% end %>

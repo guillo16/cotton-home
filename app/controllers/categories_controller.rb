@@ -10,7 +10,10 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    categories = @category.sub_categories
+    @products = Product.where(sub_category_id: categories)
+  end
 
   def new
     if current_user.permission_level == "admin"
