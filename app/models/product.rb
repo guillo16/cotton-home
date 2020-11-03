@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :sub_category
+  has_many :line_items, dependent: :destroy
   has_many :variants, dependent: :destroy
 
   validates :name, presence: true

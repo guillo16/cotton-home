@@ -1,0 +1,6 @@
+<% @carts.each do |cart| %>
+<%= cart.created_at %>
+<% cart.line_items.each do |line| %>
+<%= line.product.name %>
+<% end %>
+<% end %>

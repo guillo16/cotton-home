@@ -1,0 +1,27 @@
+<div class="keep-shopping">
+  <h2><i class="fas fa-shopping-bag"></i> Carrito de Compras</h2>
+  <p><%= link_to 'X', root_path %></p>
+</div>
+<div class="cart-container d-lg-flex justify-content-between">
+  <div class="cart-list-item">
+    <%= render(@cart.line_items) %>
+  </div>
+  <div class="check-out-wrapper">
+    <h2>Resumen de compra</h2>
+    <div class="check-out-container">
+      <div class="price">
+        <h3>SUBTOTAL</h3>
+        <p><span class="total-price"></span><%= number_to_currency(@cart.total_price) %></p>
+      </div>
+      <div class="price">
+        <h3>IMPUESTOS</h3>
+        <p>$0.00</p>
+      </div>
+      <div class="price-total">
+        <h4>TOTAL</h4>
+        <h2><span class="total-price"></span><%= number_to_currency(@cart.total_price) %></h2>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
