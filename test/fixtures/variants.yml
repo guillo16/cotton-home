@@ -1,0 +1,12 @@
+small:
+  size: s
+  stock: 20
+  price_cents: 303
+  product: products(:sheets)
+
+large:
+  size: L
+  stock: 20
+  price_cents: 30
+  product: products(:sheets)
+

@@ -1,17 +1,26 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   def index
-    @categories = Category.all
+    if user_has_permission_level?
+      @categories = Category.all
+    else
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
   end
 
-  def show; end
+  def show
+    categories = @category.sub_categories
+    @products = Product.where(sub_category_id: categories)
+  end
 
   def new
-    if current_user.permission_level == "admin"
+    if user_has_permission_level?
       @category = Category.new
     else
+      flash[:notice] = "Accesso denegado!"
       redirect_to root_path
     end
   end
@@ -25,11 +34,18 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if user_has_permission_level?
+      @category = Category.friendly.find(params[:id])
+    else
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
+  end
 
   def update
     if @category.update(category_params)
-      redirect_to category_path(@category)
+      redirect_to categories_path
     else
       render :new
     end

@@ -3,15 +3,23 @@ class SubCategoriesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @categories = SubCategory.all
+    if user_has_permission_level?
+      @sub_categories = SubCategory.includes(:category).order(category_id: :asc).order(name: :asc)
+    else
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
   end
 
-  def show; end
+  def show
+    @sub_categories = SubCategory.order(name: :asc)
+  end
 
   def new
-    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    if user_has_permission_level?
       @sub_category = SubCategory.new
     else
+      flash[:notice] = "Accesso denegado!"
       redirect_to root_path
     end
   end
@@ -29,14 +37,14 @@ class SubCategoriesController < ApplicationController
 
   def update
     if @sub_category.update(sub_category_params)
-      redirect_to sub_category_path(@sub_category)
+      redirect_to sub_categories_path
     else
       render :new
     end
   end
 
   def destroy
-    return unless current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    return unless user_has_permission_level?
 
     @sub_category.destroy
     redirect_to root_path

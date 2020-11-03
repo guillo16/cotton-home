@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_193653) do
+ActiveRecord::Schema.define(version: 2020_10_31_195329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 2020_10_31_193653) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "variants", force: :cascade do |t|
+    t.string "size"
+    t.integer "stock"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "price_cents", default: 0, null: false
+    t.index ["product_id"], name: "index_variants_on_product_id"
+  end
+
   add_foreign_key "products", "sub_categories"
   add_foreign_key "sub_categories", "categories"
+  add_foreign_key "variants", "products"
 end

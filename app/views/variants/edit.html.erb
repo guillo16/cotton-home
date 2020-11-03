@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="bg-white p-5">
+    <h2 class="text-center pb-4">Editar</h2>
+    <%= simple_form_for @variant do |f| %>
+    <%= f.input :size %>
+    <%= f.input :stock %>
+    <%= f.input :price_cents %>
+    <div class="text-right">
+      <%= f.submit class: "btn btn-primary btn-block mt-4" %>
+      <%= link_to "volver", :back , class: "btn btn-secondary mt-4"%>
+    </div>
+    <% end %>
+  </div>
+</div>
+

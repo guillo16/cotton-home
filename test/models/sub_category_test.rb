@@ -18,11 +18,11 @@ class SubCategoryTest < ActiveSupport::TestCase
     assert_not @sub_category.valid?
   end
 
-  test "should ve invalid if name already exists" do
-    @sub_category.name = "pillow"
+  # test "should ve invalid if name already exists" do
+  #   @sub_category.name = "pillow"
 
-    assert_not @sub_category.valid?
-  end
+  #   assert_not @sub_category.valid?
+  # end
 
   test "should ve invalid if category is not present" do
     @sub_category.category_id = nil

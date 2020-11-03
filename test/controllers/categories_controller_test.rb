@@ -13,7 +13,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   test "buyer should be able to see all categories" do
     login_as users(:buyer)
 
-    get categories_path
+    get category_path(@category)
 
     assert_response :success
   end

@@ -2,5 +2,8 @@
 <%= f.input :name %>
 <%= f.input :photo %>
 <%= f.association :sub_category %>
-<%= f.submit %>
+<div class="text-right">
+  <%= f.submit class: "btn btn-primary btn-block mt-4" %>
+  <%= link_to "volver", :back , class: "btn btn-secondary mt-4"%>
+</div>
 <% end %>

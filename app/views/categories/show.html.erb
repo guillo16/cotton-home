@@ -1,5 +1,14 @@
 <div class="container">
-  <% @category.sub_categories.each do |sub_category| %>
-  <%= link_to sub_category.name, sub_category_path(sub_category) %>
-  <% end %>
+  <div class="row">
+    <div class="col-3">
+      <% @category.sub_categories.each do |sub_category| %>
+      <h2><%= link_to sub_category.name, sub_category_path(sub_category) %></h2>
+      <% end %>
+    </div>
+    <div class="col-9">
+      <% @products.each do |product| %>
+      <%= product.name %>
+      <% end %>
+    </div>
+  </div>
 </div>
