@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :variants, only: [:show, :edit, :update, :destroy]
+
+  resources :line_items
+  resources :carts
 end

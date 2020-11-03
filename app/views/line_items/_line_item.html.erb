@@ -1,0 +1,17 @@
+<div class="line-wrapper">
+  <div class="line-image">
+  </div>
+  <div class="line-content">
+    <h2><%= line_item.product.name %></h2>
+    <h3><strong>TALLE:</strong></h3>
+    <div class="line-quantity">
+      <p><%= line_item.quantity %></p>
+    </div>
+    <div class="line-price">
+      <p><strong>PRECIO:</strong> <%= number_to_currency(line_item.total_price) %></p>
+    </div>
+    <div class="line-description">
+      <%= link_to 'Quitar Articulo', line_item, method: :delete, data: { confirm: "Are you sure? " }  %>
+    </div>
+  </div>
+</div>

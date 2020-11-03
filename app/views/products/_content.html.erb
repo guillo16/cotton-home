@@ -1,0 +1,12 @@
+ <%= form_tag line_items_path do %>
+ <%= hidden_field_tag 'product_id', @product.id %>
+ <div class="label-size d-flex">
+  <% @product.variants.each do |variant| %>
+  <label>
+    <input type="radio" name="variant_id" value="<%= variant.id %>" checked /><%= variant.size %>
+  </label>
+  <% end %>
+</div>
+<!-- cantidad the stock que hay -->
+<%= submit_tag 'COMPRAR', class: 'btn btn-dark btn-lg btn-block' %>
+<% end %>
