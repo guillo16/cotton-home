@@ -1,4 +1,4 @@
-<div class="text-center px-5" data-controller="radio-selector">
+<div class="text-center px-0 px-md-5" data-controller="radio-selector">
   <%= form_tag line_items_path do %>
   <%= hidden_field_tag 'product_id', @product.id %>
   <div class="label-size d-flex justify-content-center">
@@ -7,7 +7,7 @@
     <div class="form-check py-4">
       <input class="form-check-input d-none" type="radio" name="variant_id" id="<%= index + 1 %>" value="<%= variant.id %>" checked>
       <label data-target="radio-selector.option" data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-outline-success" for="<%= index + 1 %>" >
-        <%= variant.price %>
+        <%= humanized_money_with_symbol(variant.price) %>
         <%= variant.size %>
       </label>
     </div>
@@ -15,8 +15,7 @@
     <% end %>
   </div>
   <hr>
-  <!-- cantidad the stock que hay -->
-  <div class="d-flex justify-content-around px-5 py-3">
+  <div class="d-flex justify-content-around px-3 px-md-5 py-3">
     <div class="">
       <input data-target="radio-selector.input"  disabled id="price">
     </div>
@@ -30,21 +29,3 @@
   </div>
   <% end %>
 </div>
-
-
-
-<style>
-  #button-size {
-    background-color: transparent;
-    border: 2px solid lightgrey;
-    padding: ;
-  }
-  #price {
-    width: 100%;
-    background-color: white;
-    border: none;
-    font-size: 30px;
-    font-weight: bold;
-    margin: 0 auto;
-  }
-</style>
