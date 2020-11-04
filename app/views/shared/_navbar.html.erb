@@ -1,30 +1,29 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
   <%= link_to "#", class: "navbar-brand" do %>
   <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
 
   <div class="cart-icon">
-        <% if total_cart_items %>
-        <%= link_to cart_path(@cart) do %>
-        <span class="icon is-small">
-          <i class="fas fa-shopping-bag"></i>
-        </span>
-        <span><%= cart_count_over_one %></span>
-        <% end %>
-        <% end %>
-      </div>
+    <% if total_cart_items %>
+    <%= link_to cart_path(@cart) do %>
+    <span class="icon is-small">
+      <i class="fas fa-shopping-bag"></i>
+    </span>
+    <span><%= cart_count_over_one %></span>
+    <% end %>
+    <% end %>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navbar-modal">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Home", "#", class: "nav-link" %>
-      </li>
+      <% @categories.each do |category| %>
       <li class="nav-item">
-        <%= link_to "Messages", "#", class: "nav-link" %>
+        <%= link_to category.name, category_path(category), class: "nav-link" %>
       </li>
+      <% end %>
       <% if user_signed_in? %>
       <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
       <% else %>
@@ -48,26 +47,25 @@
         </button>
       </div>
       <div class="modal-body">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
-          <% if user_signed_in? %>
-          <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
-          <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+       <ul class="navbar-nav mr-auto">
+        <% @categories.each do |category| %>
+        <li class="nav-item">
+          <%= link_to category.name, category_path(category), class: "nav-link" %>
+        </li>
+        <% end %>
+        <% if user_signed_in? %>
+        <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
     </div>
   </div>
+</div>
 </div>
