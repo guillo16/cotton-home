@@ -4,7 +4,7 @@ class Variant < ApplicationRecord
 
   monetize :price_cents
 
-  validates :size, presence: true, uniqueness: true
+  validates :size, presence: true
   validates :stock, presence: true
   validates :price, presence: true
 end
