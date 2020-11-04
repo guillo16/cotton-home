@@ -10,7 +10,7 @@ class VariantsController < ApplicationController
     if @variant.save
       redirect_to product_path(@product)
     else
-      render 'products/show'
+      render "products/show"
     end
   end
 

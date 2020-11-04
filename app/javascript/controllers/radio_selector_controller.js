@@ -2,10 +2,14 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["option", "input"]
+  static targets = ["option", "input", "submit", "text", "guillo"]
 
   selectRadioOption() {
-    const f = this.optionTarget.value
-    this.inputTarget.innerHTML = f
+    this.optionTargets.forEach((el, i) => {
+      el.classList.toggle("active", event.target == el )
+    })
+
+    this.inputTarget.value = event.target.innerText
   }
 }
+

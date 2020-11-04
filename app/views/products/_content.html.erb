@@ -1,21 +1,50 @@
- <div data-controller="radio-selector">
-
-
-   <%= form_tag line_items_path do %>
-   <%= hidden_field_tag 'product_id', @product.id %>
-   <div class="label-size d-flex">
-    <% @product.variants.each do |variant| %>
-
-    <label>
-      <input data-target="radio-selector.option" data-action="click->radio-selector#selectRadioOption" type="radio" name="variant_id" value="<%= variant.id %>" checked /><%= variant.size %>
-    </label>
+<div class="text-center px-5" data-controller="radio-selector">
+  <%= form_tag line_items_path do %>
+  <%= hidden_field_tag 'product_id', @product.id %>
+  <div class="label-size d-flex justify-content-center">
+    <% @product.variants.each_with_index do |variant, index| %>
+    <% unless variant.stock <= 0 %>
+    <div class="form-check py-4">
+      <input class="form-check-input d-none" type="radio" name="variant_id" id="<%= index + 1 %>" value="<%= variant.id %>" checked>
+      <label data-target="radio-selector.option" data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-outline-success" for="<%= index + 1 %>" >
+        <%= variant.price %>
+        <%= variant.size %>
+      </label>
+    </div>
     <% end %>
-
-    <label data-target="radio-selector.input"></label>
-
+    <% end %>
   </div>
+  <hr>
   <!-- cantidad the stock que hay -->
-  <%= submit_tag 'COMPRAR', class: 'btn btn-dark btn-lg btn-block' %>
+  <div class="d-flex justify-content-around px-5 py-3">
+    <div class="">
+      <input data-target="radio-selector.input"  disabled id="price">
+    </div>
+    <div class="flex-grow-1">
+      <% if @product.variants(&:stock).count <= 0 %>
+      <button disabled class="btn btn-secondary btn-lg btn-block">Agotado</button>
+      <% else %>
+      <%= submit_tag 'COMPRAR', class: 'btn btn-dark btn-lg btn-block' %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
 </div>
 
+
+
+<style>
+  #button-size {
+    background-color: transparent;
+    border: 2px solid lightgrey;
+    padding: ;
+  }
+  #price {
+    width: 100%;
+    background-color: white;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+</style>
