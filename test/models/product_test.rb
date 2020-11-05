@@ -6,7 +6,7 @@ class ProductTest < ActiveSupport::TestCase
     @sub_category = sub_categories(:pillow)
     @product = Product.new(
       name: "Sabanas",
-      photo: "url",
+      photos: ["url", "url"],
       sub_category_id: @sub_category.id
       )
   end

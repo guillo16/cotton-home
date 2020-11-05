@@ -1,0 +1,14 @@
+<div class="card" style="width: 100%;">
+  <%= link_to product_path(product) do %>
+  <% product.photos.first(1).each do |photo| %>
+  <%= cl_image_tag photo.key , class: "w-100"%>
+  <% end %>
+  <div class="card-body text-center">
+    <h5 class="card-title"><%= product.name %></h5>
+    <% product.variants.last(1).each do |variant| %>
+    <p class="card-text pb-3"><%= humanized_money_with_symbol(variant.price) %> </p>
+    <% end %>
+    <hr>
+  </div>
+  <% end %>
+</div>
