@@ -1,39 +1,83 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
-  <%= link_to root_path, class: "navbar-brand" do %>
-  <h5 class="font-weight-bold mb-0">COTTON</h5>
-  <h5 class="font-weight-bold">HOME</h5>
-  <% end %>
-
+<nav class="navbar navbar-expand-lg navbar-light navbar-lewagon fixed-top">
   <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navbar-modal">
-    <span class="navbar-toggler-icon"></span>
+    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="30" height="2.57143" fill="black"/>
+      <rect y="7.71429" width="18.2609" height="2.57143" fill="black"/>
+      <rect y="15.4286" width="24.7826" height="2.57143" fill="black"/>
+    </svg>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% @categories.each do |category| %>
-      <li class="nav-item">
-        <%= link_to category.name, category_path(category), class: "nav-link" %>
-      </li>
-      <% end %>
-      <% if user_signed_in? %>
-      <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      </li>
-      <% end %>
-    </ul>
+  <div style="width: 120px; height: 62px;">
+    <%= link_to root_path, class: 'navbar-brand' do  %>
+    <p>cotton home</p>
+    <% end %>
   </div>
-  <div class="cart-icon">
-    <% if total_cart_items %>
-    <%= link_to cart_path(@cart) do %>
-    <span class="icon is-small">
-      <i class="fas fa-shopping-bag"></i>
-    </span>
-    <span><%= cart_count_over_one %></span>
-    <% end %>
-    <% end %>
+
+  <div class="d-lg-none magnify">
+   <div class="d-flex align-items-center justify-content-end">
+    <div class="cart-item">
+      <% if total_cart_items %>
+      <%= link_to cart_path(@cart) do %>
+      <span class="icon is-small">
+        <i class="fas fa-shopping-basket "></i>
+      </span>
+      <span><%= cart_count_over_one %></span>
+      <% end %>
+      <% end %>
+    </div>
+    <div class="cart-search">
+      <%= link_to "#" do  %>
+      <i class="fas fa-search"></i>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+  <% @categories.each do |category| %>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%= link_to category.name, category_path(category), class: "nav-link" %>
+    </li>
+    <% end %>
+    <li class="nav-item d-lg-none">
+      <% if user_signed_in? %>
+      <%= link_to "Perfil", "#", class: "nav-link" %>
+      <% else %>
+      <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+<div class="d-none d-lg-block">
+
+  <div class="d-flex align-items-center">
+    <div class="cart-item-lg">
+      <% if total_cart_items %>
+      <%= link_to cart_path(@cart) do %>
+      <span class="icon is-small">
+        <i class="fas fa-shopping-basket"></i>
+      </span>
+      <span><%= cart_count_over_one %></span>
+      <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "#" do  %>
+      <i class="fas fa-search" style="color: black; font-size: 24px;"></i>
+      <% end %>
+      <% if user_signed_in? %>
+      <%= link_to "#" do%>
+      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+      <% end %>
+      <% else %>
+      <%= link_to new_user_session_path do%>
+      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</nav>
 
 
 
@@ -71,3 +115,6 @@
   </div>
 </div>
 </div>
+
+
+
