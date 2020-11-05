@@ -1,0 +1,13 @@
+.card {
+  .card-title {
+    font-weight: bold;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  &:hover {
+    box-shadow: 1px 1px 10px lightgrey;
+  }
+}

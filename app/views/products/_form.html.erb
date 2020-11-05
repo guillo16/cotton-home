@@ -1,6 +1,6 @@
 <%= simple_form_for @product do |f| %>
 <%= f.input :name %>
-<%= f.input :photo %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <%= f.association :sub_category %>
 <div class="text-right">
   <%= f.submit class: "btn btn-primary btn-block mt-4" %>

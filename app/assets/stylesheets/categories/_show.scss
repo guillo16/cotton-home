@@ -1,0 +1,10 @@
+#category-container {
+  display: grid;
+  grid-template-columns: 1fr  1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+
+.sub-categories {
+  margin-top: 100px;
+}

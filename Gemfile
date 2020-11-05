@@ -7,11 +7,12 @@ gem "rails", "~> 6.0.3", ">= 6.0.3.4"
 
 gem "autoprefixer-rails", "~> 9.8", ">= 9.8.6.1"
 gem "bootsnap", ">= 1.4.2", require: false
+gem "cloudinary", "~> 1.16.0"
 gem "devise", "~> 4.7", ">= 4.7.2"
 gem "friendly_id", "~> 5.4.0"
 gem "font-awesome-sass"
 gem "jbuilder", "~> 2.7"
-gem 'money-rails', '~>1.12'
+gem "money-rails", "~>1.12"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 4.1"
 gem "redis", "~> 4.0"
