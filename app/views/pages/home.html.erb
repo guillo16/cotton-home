@@ -6,50 +6,7 @@
   </div>
 </div>
 <div class="home-cards">
-  <div class="column">
-    <% @categories.where(name: "Habitación").each do |category| %>
-    <%= link_to category_path(category) do  %>
-    <div class="card-category-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
-      <div class="text-center">
-        <h2><%= category.name.upcase %></h2>
-        <button class="home-button">VER MAS</button>
-      </div>
-    </div>
-    <% end %>
-    <% end %>
-    <% @categories.where(name: "Cocina").each do |category| %>
-    <%= link_to category_path(category) do  %>
-    <div class="card-category-2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
-      <div class="text-center">
-        <h2><%= category.name.upcase %></h2>
-        <button class="home-button">VER MAS</button>
-      </div>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
-  <div class="column">
-    <% @categories.where(name: "Living").each do |category| %>
-    <%= link_to category_path(category) do  %>
-    <div class="card-category-2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
-      <div class="text-center">
-        <h2><%= category.name.upcase %></h2>
-        <button class="home-button">VER MAS</button>
-      </div>
-    </div>
-    <% end %>
-    <% end %>
-    <% @categories.where(name: "Habitación").each do |category| %>
-    <%= link_to category_path(category) do  %>
-    <div class="card-category-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
-      <div class="text-center">
-        <h2><%= category.name.upcase %></h2>
-        <button class="home-button">VER MAS</button>
-      </div>
-    </div>
-    <% end %>
-    <% end %>
-  </div>
+  <%= render 'cards' %>
 </div>
 <div class="container">
   <div class="text-center">
