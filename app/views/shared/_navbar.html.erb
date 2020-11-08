@@ -84,12 +84,12 @@
 
 <!-- Modal -->
 <div class="modal fade" id="navbar-modal" tabindex="-1" role="dialog" aria-labelledby="navbar-modalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-scrollable w-100 m-0" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="navbar-modalTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="modal-close border-0" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
+          Cerrar
         </button>
       </div>
       <div class="modal-body">
@@ -108,9 +108,9 @@
         <% end %>
       </ul>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+    <div class="p-4 border-top border-secondary mt-5 text-center">
+      <p><%= link_to 'Ir a otro lado','#', class: "btn btn-primary btn-block" %></p>
+      <%= link_to 'Ir a algun lado','#', class: "btn btn-primary btn-block" %>
     </div>
   </div>
 </div>
