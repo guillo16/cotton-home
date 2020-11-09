@@ -1,0 +1,15 @@
+.modal-header {
+  button {
+    &:focus {
+        outline: none;
+    }
+  }
+}
+
+
+.modal-body {
+  a {
+    color: black;
+    font-size: 24px;
+  }
+}

@@ -1,52 +1,101 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
-  <%= link_to "#", class: "navbar-brand" do %>
-  <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-  <% end %>
-
-  <div class="cart-icon">
-    <% if total_cart_items %>
-    <%= link_to cart_path(@cart) do %>
-    <span class="icon is-small">
-      <i class="fas fa-shopping-bag"></i>
-    </span>
-    <span><%= cart_count_over_one %></span>
-    <% end %>
+<nav class="navbar navbar-expand-lg navbar-light navbar-lewagon fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navbar-modal">
+    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="30" height="2.57143" fill="black"/>
+      <rect y="7.71429" width="18.2609" height="2.57143" fill="black"/>
+      <rect y="15.4286" width="24.7826" height="2.57143" fill="black"/>
+    </svg>
+  </button>
+  <div style="width: 120px; height: 62px;">
+    <%= link_to root_path, class: 'navbar-brand' do  %>
+    <p>cotton home</p>
     <% end %>
   </div>
 
-  <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#navbar-modal">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% @categories.each do |category| %>
-      <li class="nav-item">
-        <%= link_to category.name, category_path(category), class: "nav-link" %>
-      </li>
+  <div class="d-lg-none magnify">
+   <div class="d-flex align-items-center justify-content-end">
+    <div class="cart-item">
+      <% if total_cart_items %>
+      <%= link_to cart_path(@cart) do %>
+      <span class="icon is-small">
+        <i class="fas fa-shopping-basket "></i>
+      </span>
+      <span><%= cart_count_over_one %></span>
       <% end %>
-      <% if user_signed_in? %>
-      <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
-      <% else %>
-      <li class="nav-item">
-        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-      </li>
       <% end %>
-    </ul>
+    </div>
+    <div class="cart-search">
+      <%= link_to "#" do  %>
+      <i class="fas fa-search"></i>
+      <% end %>
+    </div>
   </div>
 </div>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+  <% @categories.each do |category| %>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <%= link_to category.name, category_path(category), class: "nav-link" %>
+    </li>
+    <% end %>
+    <li class="nav-item d-lg-none">
+      <% if user_signed_in? %>
+      <%= link_to "Perfil", "#", class: "nav-link" %>
+      <% else %>
+      <%= link_to "Iniciar sesión", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+<div class="d-none d-lg-block">
+
+  <div class="d-flex align-items-center">
+    <div class="cart-item-lg">
+      <% if total_cart_items %>
+      <%= link_to cart_path(@cart) do %>
+      <span class="icon is-small">
+        <i class="fas fa-shopping-basket"></i>
+      </span>
+      <span><%= cart_count_over_one %></span>
+      <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= link_to "#" do  %>
+      <i class="fas fa-search" style="color: black; font-size: 24px;"></i>
+      <% end %>
+      <% if user_signed_in? %>
+      <%= link_to "#" do%>
+      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+      <% end %>
+      <% else %>
+      <%= link_to new_user_session_path do%>
+      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</nav>
+
+
 
 
 <!-- Modal -->
 <div class="modal fade" id="navbar-modal" tabindex="-1" role="dialog" aria-labelledby="navbar-modalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-scrollable w-100 m-0 h-75" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="navbar-modalTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+      <div class="modal-header border-0">
+        <button type="button" class="modal-close border-0 bg-white" data-dismiss="modal" aria-label="Close">
+          <svg width="30" height="20" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="37.0786" height="3" transform="matrix(0.691384 0.722487 -0.805471 0.592635 4.36426 0)" fill="black"/>
+            <rect width="37.0786" height="3" transform="matrix(0.691384 -0.722487 0.805471 0.592635 0 26.7888)" fill="black"/>
+          </svg>
+          <span style="font-size: 14px;">Cerrar</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body px-5">
        <ul class="navbar-nav mr-auto">
         <% @categories.each do |category| %>
         <li class="nav-item">
@@ -61,11 +110,19 @@
         </li>
         <% end %>
       </ul>
+      <div class="pt-5">
+        <h6 class="font-weight-bold mb-3">Conoce mas sobre Cotton</h6>
+        <p class="mb-2">Contacto</p>
+        <p class="mb-2">Quienes somos?</p>
+      </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+    <div class="px-4 pb-4 border-secondary mt-3 text-center">
+      <p><%= link_to 'Menu','#', class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
+      <%= link_to 'Carrito','#', class: "btn btn-dark btn-block rounded-pill py-2" %>
     </div>
   </div>
 </div>
 </div>
+
+
+
