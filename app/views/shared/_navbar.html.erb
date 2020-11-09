@@ -84,15 +84,18 @@
 
 <!-- Modal -->
 <div class="modal fade" id="navbar-modal" tabindex="-1" role="dialog" aria-labelledby="navbar-modalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable w-100 m-0" role="document">
+  <div class="modal-dialog modal-dialog-scrollable w-100 m-0 h-75" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="modal-close border-0" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          Cerrar
+      <div class="modal-header border-0">
+        <button type="button" class="modal-close border-0 bg-white" data-dismiss="modal" aria-label="Close">
+          <svg width="30" height="20" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="37.0786" height="3" transform="matrix(0.691384 0.722487 -0.805471 0.592635 4.36426 0)" fill="black"/>
+            <rect width="37.0786" height="3" transform="matrix(0.691384 -0.722487 0.805471 0.592635 0 26.7888)" fill="black"/>
+          </svg>
+          <span style="font-size: 14px;">Cerrar</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body px-5">
        <ul class="navbar-nav mr-auto">
         <% @categories.each do |category| %>
         <li class="nav-item">
@@ -107,10 +110,15 @@
         </li>
         <% end %>
       </ul>
+      <div class="pt-5">
+        <h6 class="font-weight-bold mb-3">Conoce mas sobre Cotton</h6>
+        <p class="mb-2">Contacto</p>
+        <p class="mb-2">Quienes somos?</p>
+      </div>
     </div>
-    <div class="p-4 border-top border-secondary mt-5 text-center">
-      <p><%= link_to 'Ir a otro lado','#', class: "btn btn-primary btn-block" %></p>
-      <%= link_to 'Ir a algun lado','#', class: "btn btn-primary btn-block" %>
+    <div class="px-4 pb-4 border-secondary mt-3 text-center">
+      <p><%= link_to 'Menu','#', class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
+      <%= link_to 'Carrito','#', class: "btn btn-dark btn-block rounded-pill py-2" %>
     </div>
   </div>
 </div>
