@@ -21,6 +21,8 @@ gem "simple_form", "~> 5.0", ">= 5.0.2"
 gem "turbolinks", "~> 5"
 gem "turbolinks_render"
 gem "webpacker", "~> 4.0"
+gem "will_paginate", "~> 3.1.0"
+gem "will_paginate-bootstrap4"
 
 group :development, :test do gem "pry-byebug"
   gem "pry-rails"
