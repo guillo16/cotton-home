@@ -1,0 +1,24 @@
+.about-container {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+}
+.nav-tab {
+ flex: 0 0 30%;
+ padding-right: 10px;
+}
+
+.nav {
+  position: sticky;
+  top: 90px;
+}
+
+.user-order-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 400px;
+}
+
+.nav-tab-content {
+  width: 100%;
+}
