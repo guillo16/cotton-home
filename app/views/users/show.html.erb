@@ -1,6 +1,6 @@
 <% if @user == current_user %>
 <% if current_user.admin? %>
-Sos crack
+<%= render 'admin_menu' %>
 <% else %>
 <% end %>
 <div class="container pt-5">
@@ -14,5 +14,5 @@ Sos crack
 
 
 <% else %>
-no podes entrar
+<%= render "shared/denied" %>
 <% end %>
