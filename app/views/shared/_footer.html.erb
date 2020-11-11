@@ -1,9 +1,17 @@
-<div class="container py-5 bg-success mt-5">
-  <% if user_signed_in? %>
-  <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete%>
-  <% else %>
-  <li class="nav-item">
-    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-  </li>
-  <% end %>
+<div class="bg-secondary" id="footer">
+  <div class="d-flex align-items-center justify-content-center py-4">
+    <%= link_to "#", target: "_blank" do  %>
+      <i class="fab fa-facebook-square h1 mr-3"></i>
+    <% end %>
+    <%= link_to "#", target: "_blank" do %>
+      <i class="fab fa-instagram-square h1 mr-3"></i>
+    <% end %>
+    <i class="fab fa-whatsapp-square h1"></i>
+  </div>
+  <div class="container border-top border-white py-3">
+    <div class="text-center text-md-left d-md-flex justify-content-between">
+      <p><i class="far fa-copyright h6"></i> 2020 - <strong>COTTON HOME</strong> Todos los derechos reservados</p>
+      <p class="pt-2 pt-md-0">Made by <strong> <%= link_to 'GV', 'http://www.guillermo-varela.com', target: "_blank"  %></strong></p>
+    </div>
+  </div>
 </div>
