@@ -1,6 +1,4 @@
 .about-container {
-  width: 90%;
-  margin: 10px auto;
   display: flex;
 }
 .nav-tab {
@@ -21,4 +19,31 @@
 
 .nav-tab-content {
   width: 100%;
+}
+
+.user-product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+}
+
+@media(max-width: 700px) {
+
+  .about-container {
+    display: block;
+  }
+
+  .nav-tab {
+    text-align: center;
+  }
+
+  .nav {
+    margin-bottom: 40px;
+  }
+
+  .product-user-title {
+    font-size: 17px;
+  }
+
 }
