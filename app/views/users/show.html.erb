@@ -1,0 +1,31 @@
+<% if @user == current_user %>
+<% if current_user.admin? %>
+<%= render 'admin_menu' %>
+<% else %>
+<% end %>
+<div class="container pt-5">
+  <div class="d-flex justify-content-between align-items-center my-5 py-3 border-bottom">
+    <h2 class="h5"><%= @user.email %></h2>
+    <h3> <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %></h3>
+  </div>
+  <div class="about-container">
+    <div class="nav-tab">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Mi cuenta</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Historial de Pedidos</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Datos Personales</a>
+      </div>
+    </div>
+    <div class="nav-tab-content">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><%= render 'products' %></div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><%= render 'orders' %></div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><%= render 'profile' %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% else %>
+<%= render "shared/denied" %>
+<% end %>

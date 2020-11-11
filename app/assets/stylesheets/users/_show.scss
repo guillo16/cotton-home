@@ -1,0 +1,49 @@
+.about-container {
+  display: flex;
+}
+.nav-tab {
+ flex: 0 0 30%;
+ padding-right: 10px;
+}
+
+.nav {
+  position: sticky;
+  top: 90px;
+}
+
+.user-order-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 400px;
+}
+
+.nav-tab-content {
+  width: 100%;
+}
+
+.user-product-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+
+}
+
+@media(max-width: 700px) {
+
+  .about-container {
+    display: block;
+  }
+
+  .nav-tab {
+    text-align: center;
+  }
+
+  .nav {
+    margin-bottom: 40px;
+  }
+
+  .product-user-title {
+    font-size: 17px;
+  }
+
+}

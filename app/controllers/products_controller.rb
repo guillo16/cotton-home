@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def index
     if user_has_permission_level?
-      @products = Product.includes(:sub_category).order(sub_category_id: :asc).order(name: :asc)
+      @products = Product.includes(:sub_category).order(sub_category_id: :asc).order(name: :asc).paginate(page: params[:page], per_page: 20)
     else
       flash[:notice] = "Accesso denegado!"
       redirect_to root_path
