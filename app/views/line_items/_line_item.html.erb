@@ -6,6 +6,14 @@
     <h3><strong>TALLE:</strong></h3>
     <div class="line-quantity">
       <p><%= line_item.quantity %></p>
+      <% if line_item.quantity > 1 && line_item.quantity <= 5 %>
+      <td><%= link_to "+", increase_line_item_path(line_item), class:"btn btn-danger" %></td>
+      <td><%= link_to "-", decrease_line_item_path(line_item), class:"btn btn-danger" %></td>
+      <% elsif line_item.quantity > 5 %>
+      <td><%= link_to "-", decrease_line_item_path(line_item), class:"btn btn-danger" %></td>
+      <% else %>
+      <td><%= link_to "+", increase_line_item_path(line_item), class:"btn btn-danger" %></td>
+      <% end %>
     </div>
     <div class="line-price">
       <p><strong>PRECIO:</strong> <%= number_to_currency(line_item.total_price) %></p>
@@ -15,3 +23,10 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
