@@ -39,6 +39,34 @@ class LineItemsController < ApplicationController
     end
   end
 
+  def decrease
+    @line_item = LineItem.find(params[:id])
+    @line_item.decrement!(:quantity)
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to @line_item.cart, notice: 'bajaste uno' }
+        format.js
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def increase
+    @line_item = LineItem.find(params[:id])
+    @line_item.increment!(:quantity)
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to @line_item.cart, notice: 'update' }
+        format.js
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @cart = Cart.find(session[:cart_id])
     @line_item.variant.increment!(:stock, @line_item.quantity)
