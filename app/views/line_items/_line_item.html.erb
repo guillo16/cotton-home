@@ -1,19 +1,25 @@
 <div class="line-wrapper">
   <div class="line-image">
+    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
   </div>
   <div class="line-content">
     <h2><%= line_item.product.name %></h2>
-    <h3><strong>TALLE:</strong></h3>
-    <div class="line-quantity">
-      <p><%= line_item.quantity %></p>
-      <% if line_item.quantity > 1 && line_item.quantity <= 5 %>
-      <td><%= link_to "+", increase_line_item_path(line_item), class:"btn btn-danger" %></td>
-      <td><%= link_to "-", decrease_line_item_path(line_item), class:"btn btn-danger" %></td>
-      <% elsif line_item.quantity > 5 %>
-      <td><%= link_to "-", decrease_line_item_path(line_item), class:"btn btn-danger" %></td>
-      <% else %>
-      <td><%= link_to "+", increase_line_item_path(line_item), class:"btn btn-danger" %></td>
-      <% end %>
+    <h3 class="mt-3"><strong>TALLE:</strong> <%= line_item.variant.size %></h3>
+    <div class="d-flex align-items-center py-2">
+      <div class="mr-3">
+        <span class="btn btn-outline-dark disabled py-2 px-4"><%= line_item.quantity %></span>
+      </div>
+      <div class="increase">
+        <% stock = line_item.variant.stock - 1 %>
+        <% if line_item.quantity > 1 && line_item.quantity <= stock %>
+        <td><%= link_to "+", increase_line_item_path(line_item), class:"badge badge-primary" %></td>
+        <td><%= link_to "-", decrease_line_item_path(line_item), class:"badge badge-primary" %></td>
+        <% elsif line_item.quantity > 5 %>
+        <td><%= link_to "-", decrease_line_item_path(line_item), class:"badge badge-primary" %></td>
+        <% else %>
+        <td><%= link_to "+", increase_line_item_path(line_item), class:"badge badge-primary" %></td>
+        <% end %>
+      </div>
     </div>
     <div class="line-price">
       <p><strong>PRECIO:</strong> <%= number_to_currency(line_item.total_price) %></p>
