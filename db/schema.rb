@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_11_16_204505) do
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.integer "amount_cents", default: 0, null: false
-    t.string "amount_currency", default: "ARS", null: false
     t.string "checkout_session_id"
     t.bigint "user_id", null: false
     t.bigint "cart_id", null: false

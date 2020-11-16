@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   end
   resources :carts
   resources :users, only: [:index, :show]
+  resources :orders, only: [:show, :create]
 end

@@ -22,6 +22,10 @@
         <h2><span class="total-price"></span><%= number_to_currency(@cart.total_price) %></h2>
       </div>
       <br>
+      <%= form_tag orders_path do %>
+      <%= hidden_field_tag 'cart_id', @cart.id %>
+      <%= submit_tag 'COMPRAR', class: 'btn btn-secondary btn-lg btn-block' %>
+      <% end %>
     </div>
   </div>
 </div>
