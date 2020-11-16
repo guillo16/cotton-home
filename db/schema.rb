@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_205133) do
+ActiveRecord::Schema.define(version: 2020_11_16_204505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,19 @@ ActiveRecord::Schema.define(version: 2020_11_05_205133) do
     t.index ["variant_id"], name: "index_line_items_on_variant_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "ARS", null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "cart_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "photo"
@@ -110,6 +123,8 @@ ActiveRecord::Schema.define(version: 2020_11_05_205133) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "line_items", "variants"
+  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "sub_categories", "categories"
   add_foreign_key "variants", "products"
