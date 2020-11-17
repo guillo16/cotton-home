@@ -18,7 +18,6 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     variant = Variant.find(params[:variant_id])
-    variant.decrement!(:stock)
     @line_item = @cart.add_car(product, variant)
     if @line_item.save
       redirect_to @line_item.cart, notice: 'Item added to cart.'
