@@ -1,33 +1,7 @@
 <div class="container my-5 pt-5">
-  <div class="bg-white p-5 mt-5">
-    <h2 class="text-center pb-4 pt-5 h4 font-weight-bold">Completar <%= @product.name %></h2>
-    <%= link_to 'Crear Talles', new_product_variant_path(@product), class: "btn btn-primary btn-block my-4" %>
-  </div>
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>Talle</th>
-        <th>Stock</th>
-        <th>Precio</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @product.variants.each do |variant| %>
-      <tr>
-        <th><%= variant.size %></th>
-        <td><%= variant.stock %></td>
-        <td><%= humanized_money_with_symbol(variant.price) %></td>
-        <td class="text-right">
-          <%= link_to 'ver', variant_path(variant), class: "pr-2"  %>
-          <%= link_to 'editar', edit_variant_path(variant), class: "pr-2"  %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<%= render 'admin_panel' %>
 </div>
-<div class="product-container">
+<div class="product-container mb-5">
   <div class="product-image">
     <%= render 'carousel' %>
   </div>
@@ -36,13 +10,29 @@
     <hr>
     <div class="product-image-container py-4">
       <h6 class="pb-4">COLOR</h6>
-      <img src="https://www.homecollection.com.ar/pub/media/catalog/product/cache/image/1200x1200/e9c3970ab036de70892d86c6d221abfe/1/1/111.411.13-25_2-min.jpg" alt="">
-      <img src="https://www.homecollection.com.ar/pub/media/catalog/product/cache/image/1200x1200/e9c3970ab036de70892d86c6d221abfe/1/1/111.411.13-25_2-min.jpg" alt="">
-      <img src="https://www.homecollection.com.ar/pub/media/catalog/product/cache/image/1200x1200/e9c3970ab036de70892d86c6d221abfe/1/1/111.411.13-25_2-min.jpg" alt="">
-      <img src="https://www.homecollection.com.ar/pub/media/catalog/product/cache/image/1200x1200/e9c3970ab036de70892d86c6d221abfe/1/1/111.411.13-25_2-min.jpg" alt="">
+      <% product_name =  @product.name %>
+      <% product_links = @products.filter { |product| product.name == product_name } %>
+      <% product_links.each do |p| %>
+
+      <%= link_to product_path(p) do %>
+      <% p.photos.first(1).each do |photo| %>
+      <%= cl_image_tag photo.key %>
+      <% end %>
+      <% end %>
+      <% end %>
     </div>
     <p class="px-2 px-md-5 pt-3">Sábana de 400 hilos, 100% algodón egipcio con bordado en forma de cadena. Vienen 3 o 4 piezas según el tamaño elegido: Sábana ajustable, Sábana plana y una o dos fundas de almohada.</p>
     <%= render 'content' %>
+  </div>
+</div>
+<div class="container py-5">
+  <div class="text-center">
+    <h2 class="py-5">Más Productos</h2>
+  </div>
+  <div class="products-home-cards">
+    <% @products.last(3).each do |product| %>
+      <%= render 'shared/product_card', product: product %>
+    <% end %>
   </div>
 </div>
 
