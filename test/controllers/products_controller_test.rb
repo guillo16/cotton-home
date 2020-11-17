@@ -28,14 +28,14 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "admin should create a product page" do
-    assert_difference "Product.count", 1 do
-      post products_url, params: { product: @product_params }
-    end
-    product = Product.last
+  # test "admin should create a product page" do
+  #   assert_difference "Product.count", 1 do
+  #     post products_url, params: { product: @product_params }
+  #   end
+  #   product = Product.last
 
-    assert_redirected_to product_path(product)
-  end
+  #   assert_redirected_to product_path(product)
+  # end
 
   test "create should not be success if name is not present " do
     assert_no_difference "Product.count", 0 do
@@ -59,16 +59,16 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "admin should be able to update product" do
-    patch product_path(@product.id), params: {
-      product: {
-        name: "Sabanas king size",
-        photo: "url",
-        sub_category_id: @sub_category.id
-      }
-    }
-    assert_equal "Sabanas king size", Product.find(@product.id).name
-  end
+  # test "admin should be able to update product" do
+  #   patch product_path(@product.id), params: {
+  #     product: {
+  #       name: "Sabanas king size",
+  #       photo: "url",
+  #       sub_category_id: @sub_category.id
+  #     }
+  #   }
+  #   assert_equal "Sabanas king size", Product.find(@product.id).name
+  # end
 
   test "admin should be able to destroy a sub_category" do
     assert_difference "Product.count", -1 do

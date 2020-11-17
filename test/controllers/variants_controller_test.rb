@@ -13,6 +13,28 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
+  test "admin should get new view" do
+    get new_product_variant_url(@product.id)
+
+    assert_response :success
+  end
+
+  test "buyer should not get new view" do
+    login_as users(:buyer)
+
+    get new_product_variant_url(@product.id)
+
+    assert_response :redirect
+  end
+
+   test "create should be success" do
+    assert_difference "Variant.count", 1 do
+      post product_variants_url(@product.id), params: { variant: @variant_params }
+    end
+
+    assert_redirected_to product_path(@product)
+  end
+
   test "admin should get edit view" do
     get edit_variant_path(@variant)
 
@@ -25,18 +47,4 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
   end
-
-  # test "update should be success" do
-  #   patch variant_path(@variant), params: {
-  #     variant: {
-  #       size: "Twin",
-  #       stock: 33232,
-  #       price_cents: 23,
-  #       product_id: @product.id
-  #     }
-  #   }
-  #   puts @variant.stock
-  #   assert_equal "Twin", Variant.find(@variant.id).size
-  # end
-
 end
