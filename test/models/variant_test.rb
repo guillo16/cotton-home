@@ -22,12 +22,6 @@ class VariantTest < ActiveSupport::TestCase
     assert_not @variant.valid?
   end
 
-  test "should be invalid if size is already taken" do
-    @variant.size = "L"
-
-    assert_not @variant.valid?
-  end
-
   test "should be invalid if stock is not present" do
     @variant.stock = nil
 

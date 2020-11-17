@@ -11,9 +11,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     if user_has_permission_level?

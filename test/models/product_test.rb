@@ -1,4 +1,5 @@
 require 'test_helper'
+require "open-uri"
 
 class ProductTest < ActiveSupport::TestCase
   setup do
@@ -6,9 +7,10 @@ class ProductTest < ActiveSupport::TestCase
     @sub_category = sub_categories(:pillow)
     @product = Product.new(
       name: "Sabanas",
-      photos: ["url", "url"],
       sub_category_id: @sub_category.id
       )
+  file = URI.open("http://res.cloudinary.com/demo/image/upload/sample.jpg")
+  @product.photos.attach(io: file, filename: 'image.jpg')
   end
 
   test "should be valid if all fields are set" do
@@ -22,7 +24,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "should be invalid if photo is not present" do
-    @product.photo = nil
+    @product.photos = nil
 
     assert_not @product.valid?
   end
