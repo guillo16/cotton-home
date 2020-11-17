@@ -1,11 +1,7 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_line_item, only: %i[show edit update destroy]
+  before_action :set_line_item, only: %i[show destroy]
   before_action :set_cart, only: :create
-
-  def index
-    @line_items = LineItem.all
-  end
 
   def show; end
 
@@ -13,65 +9,38 @@ class LineItemsController < ApplicationController
     @line_item = LineItem.new
   end
 
-  def edit; end
-
   def create
     product = Product.find(params[:product_id])
     variant = Variant.find(params[:variant_id])
     @line_item = @cart.add_car(product, variant)
     if @line_item.save
-      redirect_to @line_item.cart, notice: 'Item added to cart.'
+      redirect_to @line_item.cart, notice: "Agregaste #{@line_item.product.name} al carrito"
     else
       render 'product/show'
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
     end
   end
 
   def decrease
     @line_item = LineItem.find(params[:id])
     @line_item.decrement!(:quantity)
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'bajaste uno' }
-        format.js
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
+    return unless @line_item.save
+
+    redirect_to @line_item.cart, notice: "Eliminaste una unidad de #{@line_item.product.name}-#{@line_item.variant.size}"
   end
 
   def increase
     @line_item = LineItem.find(params[:id])
     @line_item.increment!(:quantity)
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'update' }
-        format.js
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
-    end
+    return unless @line_item.save
+
+    redirect_to @line_item.cart, notice: "Agregaste una unidad de #{@line_item.product.name}-#{@line_item.variant.size}"
   end
 
   def destroy
     @cart = Cart.find(session[:cart_id])
-    @line_item.variant.increment!(:stock, @line_item.quantity)
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to cart_path(@cart), notice: 'Item successfully removed.' }
+      format.html { redirect_to cart_path(@cart), notice: 'Articulo removido' }
       format.json { head :no_content }
     end
   end

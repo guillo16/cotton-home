@@ -4,7 +4,7 @@
 </div>
 <div class="cart-container d-lg-flex justify-content-between">
   <div class="cart-list-item">
-    <%= render(@cart.line_items) %>
+    <%= render(@cart.line_items.order(:created_at)) %>
   </div>
   <div class="check-out-wrapper">
     <h2>Resumen de compra</h2>
