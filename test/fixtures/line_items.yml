@@ -1,0 +1,5 @@
+first_line_item:
+  quantity: 1
+  product: products(:sheets).id
+  variant: variants(:large).id
+  cart: carts(:first_cart).id
