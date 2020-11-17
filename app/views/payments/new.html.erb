@@ -1,0 +1,17 @@
+<div class="pt-5">
+  <% if @order.amount == 0 %>
+  <div class="text-center mb-1 mt-5">
+    Tienes que tener un articulo para poder comprar
+  </div>
+  <%= link_to 'Ir al Carrito',cart_path(@cart), class: "btn btn-gradient btn-lg btn-block"  %>
+  <% else %>
+  <div class="payment-order mt-5">
+    <p><strong>TOTAL:</strong><%= humanized_money_with_symbol(@order.amount) %></p>
+    <form action="/procesar-pago" method="POST">
+      <%= hidden_field_tag :authenticity_token %>
+      <input type="hidden" name='order_id' value=<%= @order.id %>>
+      <button type="submit" class="btn btn-dark btn-lg btn-block" data-transaction-amount="<%= @order.amount %>">Comprar</button>
+    </form>
+    <% end %>
+  </div>
+</div>
