@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  post 'procesar-pago', to: "payments#create"
 
   resources :categories
   resources :sub_categories
@@ -15,5 +16,7 @@ Rails.application.routes.draw do
   end
   resources :carts
   resources :users, only: [:index, :show]
-  resources :orders, only: [:show, :create]
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: :new
+  end
 end
