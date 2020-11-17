@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @variant = Variant.new
+
   end
 
   def new

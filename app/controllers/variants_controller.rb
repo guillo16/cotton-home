@@ -1,16 +1,19 @@
 class VariantsController < ApplicationController
   before_action :set_variant, only: %i[show edit update destroy]
-  def show
+  before_action :set_product, only: %i[new create]
+  def show; end
+
+  def new
+    @variant = Variant.new
   end
 
   def create
-    @product = Product.friendly.find(params[:product_id])
     @variant = Variant.new(variant_params)
     @variant.product = @product
     if @variant.save
       redirect_to product_path(@product)
     else
-      render "products/show"
+      render :new
     end
   end
 
@@ -23,10 +26,14 @@ class VariantsController < ApplicationController
 
   def destroy
     @variant.destroy
-    redirect_to products_path
+    redirect_to product_path(@variant.product)
   end
 
   private
+
+  def set_product
+    @product = Product.friendly.find(params[:product_id])
+  end
 
   def set_variant
     if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"

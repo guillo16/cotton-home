@@ -1,7 +1,7 @@
-<div class="container my-5">
-  <div class="bg-white p-5 ">
-    <h2 class="text-center pb-4 pt-5">Completar <%= @product.name %></h2>
-    <%= render "variants/new" %>
+<div class="container my-5 pt-5">
+  <div class="bg-white p-5 mt-5">
+    <h2 class="text-center pb-4 pt-5 h4 font-weight-bold">Completar <%= @product.name %></h2>
+    <%= link_to 'Crear Talles', new_product_variant_path(@product), class: "btn btn-primary btn-block my-4" %>
   </div>
   <table class="table table-striped mt-3">
     <thead>
@@ -23,8 +23,8 @@
           <%= link_to 'editar', edit_variant_path(variant), class: "pr-2"  %>
         </td>
       </tr>
+      <% end %>
     </tbody>
-    <% end %>
   </table>
 </div>
 <div class="product-container">
