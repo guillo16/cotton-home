@@ -1,0 +1,27 @@
+<div class="bg-white p-5 mt-5">
+  <h2 class="text-center pb-4 pt-5 h4 font-weight-bold">Completar <%= @product.name %></h2>
+  <%= link_to 'Crear Talles', new_product_variant_path(@product), class: "btn btn-primary btn-block my-4" %>
+</div>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Talle</th>
+      <th>Stock</th>
+      <th>Precio</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @product.variants.each do |variant| %>
+    <tr>
+      <th><%= variant.size %></th>
+      <td><%= variant.stock %></td>
+      <td><%= humanized_money_with_symbol(variant.price) %></td>
+      <td class="text-right">
+        <%= link_to 'ver', variant_path(variant), class: "pr-2"  %>
+        <%= link_to 'editar', edit_variant_path(variant), class: "pr-2"  %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

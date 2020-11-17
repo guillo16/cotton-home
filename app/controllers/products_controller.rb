@@ -11,7 +11,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @products = Product.all
+  end
 
   def new
     if user_has_permission_level?
