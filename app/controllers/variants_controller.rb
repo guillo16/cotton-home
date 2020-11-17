@@ -4,7 +4,12 @@ class VariantsController < ApplicationController
   def show; end
 
   def new
-    @variant = Variant.new
+    if user_has_permission_level?
+      @variant = Variant.new
+    else
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
   end
 
   def create
@@ -20,8 +25,11 @@ class VariantsController < ApplicationController
   def edit; end
 
   def update
-    @variant.update(variant_params)
-    redirect_to variant_path(@variant)
+    if @variant.update(variant_params)
+      redirect_to variant_path(@variant)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -36,7 +44,7 @@ class VariantsController < ApplicationController
   end
 
   def set_variant
-    if current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
+    if user_has_permission_level?
       @variant = Variant.find(params[:id])
     else
       redirect_to root_path
