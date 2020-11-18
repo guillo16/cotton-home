@@ -1,7 +1,6 @@
-
 #category-container {
   display: grid;
-  grid-template-columns: 1fr  1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
 }
 
@@ -11,16 +10,16 @@
 
 @media (max-width: 991.98px) {
   #category-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+  }
 }
- }
 
 @media(max-width: 575.98px) {
   #category-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
-}
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
 }
