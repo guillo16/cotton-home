@@ -22,18 +22,16 @@ class LineItemsController < ApplicationController
 
   def decrease
     @line_item = LineItem.find(params[:id])
-    @line_item.decrement!(:quantity)
-    return unless @line_item.save
+    return unless @line_item.decrement!(:quantity)
 
-    redirect_to @line_item.cart, notice: "Eliminaste una unidad de #{@line_item.product.name}-#{@line_item.variant.size}"
+    redirect_to cart_path(@line_item.cart, anchor: "#{@line_item.id}")
   end
 
   def increase
     @line_item = LineItem.find(params[:id])
-    @line_item.increment!(:quantity)
-    return unless @line_item.save
+    return unless @line_item.increment!(:quantity)
 
-    redirect_to @line_item.cart, notice: "Agregaste una unidad de #{@line_item.product.name}-#{@line_item.variant.size}"
+    redirect_to cart_path(@line_item.cart, anchor: "#{@line_item.id}")
   end
 
   def destroy
