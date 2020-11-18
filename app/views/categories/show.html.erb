@@ -4,9 +4,9 @@
   </div>
 </div>
 <div class="categories">
-  <div class="d-flex justify-content-center py-5">
+  <div class="d-md-flex justify-content-center py-2 py-md-5 text-center px-3 px-md-0">
     <% @category.sub_categories.each do |sub_category| %>
-    <h5><%= link_to sub_category.name, sub_category_path(sub_category), class: "pl-3 text-body" %></h5>
+    <h5 class="py-2 py-md-3 mb-0 border-bottom"><%= link_to sub_category.name, sub_category_path(sub_category), class: "pl-md-3 text-body" %></h5>
     <% end %>
   </div>
   <div class="container" id="category-container">
