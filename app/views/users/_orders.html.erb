@@ -1,0 +1,7 @@
+<% orders = @user.orders.filter { |order| order.state == 'Encargado' } %>
+<% orders.reverse_each do |order| %>
+<tr>
+  <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+  <td><%= link_to 'Ver orden', order_path(order) %></td>
+</tr>
+<% end %>
