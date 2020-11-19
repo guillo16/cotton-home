@@ -1,0 +1,17 @@
+  <% @order.cart.line_items.each do |line| %>
+  <div class="order-show-container d-flex">
+    <div class="product-order-show">
+      <% line.product.photos.first(1).each do |photo| %>
+      <%= cl_image_tag photo.key %>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="pl-3">
+      <p><strong>Producto:</strong> <%= line.product.name %></p>
+      <p><strong>Cantidad:</strong> <%= line.quantity %></p>
+    </div>
+  <% end %>
+  <div class="order-show-footer">
+    <p>Estado:<strong> <%= @order.state %> <i class="far fa-check-circle"></i></p></strong>
+    <p>Sub-total: <%= humanized_money_with_symbol(@order.amount) %></p>
