@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_line_item, only: %i[show destroy]
+  before_action :set_line_item, only: %i[show update destroy]
   before_action :set_cart, only: :create
 
   def show; end
@@ -20,18 +20,9 @@ class LineItemsController < ApplicationController
     end
   end
 
-  def decrease
-    @line_item = LineItem.find(params[:id])
-    return unless @line_item.decrement!(:quantity)
-
-    redirect_to cart_path(@line_item.cart, anchor: "#{@line_item.id}")
-  end
-
-  def increase
-    @line_item = LineItem.find(params[:id])
-    return unless @line_item.increment!(:quantity)
-
-    redirect_to cart_path(@line_item.cart, anchor: "#{@line_item.id}")
+  def update
+    @line_item.update(line_item_params)
+    redirect_to cart_path(@line_item.cart, anchor: @line_item.id.to_s)
   end
 
   def destroy
@@ -50,6 +41,6 @@ class LineItemsController < ApplicationController
   end
 
   def line_item_params
-    params.require(:line_item).permit(:product_id, :variant_id)
+    params.require(:line_item).permit(:product_id, :variant_id, :quantity)
   end
 end

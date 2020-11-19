@@ -1,17 +1,31 @@
-  <% @order.cart.line_items.each do |line| %>
-  <div class="order-show-container d-flex">
-    <div class="product-order-show">
-      <% line.product.photos.first(1).each do |photo| %>
-      <%= cl_image_tag photo.key %>
-      <% end %>
+<div class="order-banner mt-5 d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1574643156929-51fa098b0394?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80');">
+  <div class="order-wrapper">
+    <div class="d-flex align-items-center justify-content-center py-3">
+      <h1>Gracias por tu compra</h1>
+      <img src="https://cdn1.iconfinder.com/data/icons/color-bold-style/21/34-512.png" alt="" style="width: 40px; padding-bottom: 10px;">
     </div>
-
+    <% @order.cart.line_items.each do |line| %>
+    <div class="order-show-container d-flex">
+      <div class="product-order-show">
+        <% line.product.photos.first(1).each do |photo| %>
+        <%= cl_image_tag photo.key %>
+        <% end %>
+      </div>
+      <div class="pl-3">
+        <p><strong>Producto:</strong> <%= line.product.name %></p>
+        <p><strong>Talle:</strong> <%= line.variant&.size %></p>
+        <p><strong>Cantidad:</strong> <%= line.quantity %></p>
+      </div>
+    </div>
+    <% end %>
+    <div class="order-show-footer">
+      <p>Estado:<strong> <%= @order.state %> <i class="far fa-check-circle"></i></p></strong>
+      <p>Total: <%= humanized_money_with_symbol(@order.amount) %></p>
+    </div>
+    <div class="order-show-button pb-3">
+      <%= link_to 'Perfil', user_path(current_user), class: 'btn btn-primary btn-lg btn-block'  %>
+      <br>
+      <%= link_to 'Ver más Productos', root_path, class: 'btn btn-secondary btn-lg btn-block'  %>
+    </div>
   </div>
-  <div class="pl-3">
-      <p><strong>Producto:</strong> <%= line.product.name %></p>
-      <p><strong>Cantidad:</strong> <%= line.quantity %></p>
-    </div>
-  <% end %>
-  <div class="order-show-footer">
-    <p>Estado:<strong> <%= @order.state %> <i class="far fa-check-circle"></i></p></strong>
-    <p>Sub-total: <%= humanized_money_with_symbol(@order.amount) %></p>
+</div>

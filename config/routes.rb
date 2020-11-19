@@ -10,10 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :variants, only: [:show, :edit, :update, :destroy]
-  resources :line_items, only: [:show, :create, :destroy] do
-    patch 'decrease', on: :member
-    patch 'increase', on: :member
-  end
+  resources :line_items, only: [:show, :create, :update, :destroy]
   resources :carts
   resources :users, only: [:index, :show]
   resources :orders, only: [:show, :create] do

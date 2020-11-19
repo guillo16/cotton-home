@@ -13,7 +13,7 @@
     <h2 class="pt-5">Mas vendidos</h2>
     <p class="pb-5">Renovate elegi nuestros productos mas vendidos</p>
   </div>
-  <div class="products-home-cards">
+  <div class="products-home-cards pb-5">
     <% @products.last(3).each do |product| %>
       <%= render 'shared/product_card', product: product %>
     <% end %>

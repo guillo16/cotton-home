@@ -61,6 +61,16 @@
   }
 }
 
+.increase {
+  .form-control {
+     background: none;
+     border-color: black;
+     &:hover {
+      color: black !important;
+     }
+  }
+}
+
 @media (max-width: 767.98px) {
   .line-wrapper {
     display: block;
