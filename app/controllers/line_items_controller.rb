@@ -22,9 +22,7 @@ class LineItemsController < ApplicationController
 
   def update
     @line_item.update(line_item_params)
-    respond_to do |format|
-      format.html { redirect_to @line_item.cart, notice: 'Articulo removido' }
-    end
+    redirect_to cart_path(@line_item.cart, anchor: @line_item.id.to_s)
   end
 
   def destroy
