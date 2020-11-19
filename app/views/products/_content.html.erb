@@ -23,7 +23,7 @@
       <input data-target="radio-selector.input" id="price">
     </div>
     <div class="flex-grow-1">
-      <% if @product.variants(&:stock).count <= 0 %>
+      <% if @product.variants.sum(&:stock) <= 0 %>
       <button disabled class="btn btn-secondary btn-lg btn-block">Agotado</button>
       <% else %>
       <%= submit_tag 'COMPRAR', class: 'btn btn-dark btn-lg btn-block' %>
