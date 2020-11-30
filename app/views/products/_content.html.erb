@@ -5,11 +5,11 @@
     <% @product.variants.each do |variant| %>
     <% unless variant.stock <= 0 %>
     <div class="form-check py-4">
+      <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
       <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark" for="<%= variant.id %>" >
         <p class="d-none" data-target="radio-selector.option"><%= humanized_money_with_symbol(variant.price) %></p>
         <span ><%= variant.size %></span>
       </label>
-      <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
     </div>
     <% end %>
     <% end %>
