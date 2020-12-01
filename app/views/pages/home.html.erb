@@ -15,7 +15,7 @@
   </div>
   <div class="products-home-cards pb-5">
     <% @products.last(3).each do |product| %>
-      <%= render 'shared/product_card', product: product %>
+    <%= render 'shared/product_card', product: product %>
     <% end %>
   </div>
 </div>

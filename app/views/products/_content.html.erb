@@ -5,10 +5,9 @@
     <% @product.variants.each do |variant| %>
     <% unless variant.stock <= 0 %>
     <div class="form-check py-4">
-      <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked>
-      <label data-target="radio-selector.option" data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-outline-success" >
-        <%= humanized_money_with_symbol(variant.price) %>
-        <%= variant.size %>
+      <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
+      <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark" for="<%= variant.id %>" >
+        <p class="mb-0" data-target="radio-selector.option"><%= humanized_money_with_symbol(variant.price) %>-<%= variant.size %></p>
       </label>
     </div>
     <% end %>
@@ -19,11 +18,13 @@
   </h6>
   <hr>
   <div class="d-flex justify-content-around px-3 px-md-5 py-3">
-    <div class="">
-      <input data-target="radio-selector.input" id="price">
+    <div class="disabled">
+      <% @product.variants.last(1).each do |d| %>
+      <input data-target="radio-selector.input" id="price" value="<%= d.price %>" >
+      <% end %>
     </div>
     <div class="flex-grow-1">
-      <% if @product.variants(&:stock).count <= 0 %>
+      <% if @product.variants.sum(&:stock) <= 0 %>
       <button disabled class="btn btn-secondary btn-lg btn-block">Agotado</button>
       <% else %>
       <%= submit_tag 'COMPRAR', class: 'btn btn-dark btn-lg btn-block' %>
@@ -32,27 +33,4 @@
   </div>
   <% end %>
 </div>
-
-
-<div class="modal fade" id="ModalSize" tabindex="-1" role="dialog" aria-labelledby="ModalSizeTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="ModalSizeTitle">Guía de Medidas</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-left">
-        <h3 class="bg-secondary h5 py-2 px-1 font-weight-bold">Cuna</h3>
-        <p>Para colchón de hasta 0.60 m de ancho x 1.20 m de largo x 0.20 m de alto.</p>
-        <h3 class="bg-secondary h5 py-2 px-1 font-weight-bold">Twin Size</h3>
-        <p>Para colchón de hasta 1 m de ancho x 2 m de largo x 0.25 m de alto.</p>
-        <h3 class="bg-secondary h5 py-2 px-1 font-weight-bold">Queen Size</h3>
-        <p>Para colchón de hasta 1.50 m de ancho x 1.90 m de largo x 0.25 m de alto.</p>
-        <h3 class="bg-secondary h5 py-2 px-1 font-weight-bold">King Size</h3>
-        <p>Para colchón de hasta 2 m de ancho x 2 m de largo x 0.35 m de alto</p>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'modal' %>
