@@ -19,7 +19,8 @@
   <hr>
   <div class="d-flex justify-content-around px-3 px-md-5 py-3">
     <div class="disabled">
-      <% @product.variants.last(1).each do |d| %>
+      <% g = @product.variants.reject { |f| f.stock < 1 } %>
+      <% g.last(1).each do |d| %>
       <input data-target="radio-selector.input" id="price" value="<%= d.price %>" >
       <% end %>
     </div>

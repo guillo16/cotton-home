@@ -10,8 +10,16 @@
     <form action="/procesar-pago" method="POST">
       <%= hidden_field_tag :authenticity_token %>
       <input type="hidden" name='order_id' value=<%= @order.id %>>
-      <button type="submit" class="btn btn-dark btn-lg btn-block" data-transaction-amount="<%= @order.amount %>">Comprar</button>
-    </form>
-    <% end %>
-  </div>
+      <script
+      src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+      data-public-key="TEST-1f6e5430-3a71-4285-91ea-f29959551977"
+      data-transaction-amount="<%= @order.amount %>">
+    </script>
+  </form>
+</form>
+<% end %>
 </div>
+</div>
+
+
+
