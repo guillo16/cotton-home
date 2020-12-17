@@ -36,3 +36,15 @@
   }
 }
 
+@media(max-width: 575px) {
+  .banner {
+    height: 60vh;
+    h1 {
+      font-size: 32px;
+    }
+
+    a {
+      font-size: 13px;
+    }
+  }
+}
