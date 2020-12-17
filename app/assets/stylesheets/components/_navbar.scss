@@ -2,6 +2,12 @@
   justify-content: space-between;
   background: white;
   width: 100%;
+
+  img {
+    width: 130px;
+    height: 55px;
+    object-fit: cover;
+  }
   .navbar-toggler {
     border: transparent;
     &:focus {
