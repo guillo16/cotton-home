@@ -1,0 +1,146 @@
+.login-wrapper {
+  padding-top: 120px;
+  width: 100%;
+  background-color: white;
+  height: 110vh;
+}
+.login-container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  margin-bottom: 0px;
+  h2 {
+    font-size: 22px;
+  }
+  p {
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+//line in the middel effect
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: .5;
+  font-size: 22px;
+  &:before {
+    content: '';
+    // use the linear-gradient for the fading effect
+    // use a solid background color for a solid bar
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  &:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    // this is really the only tricky part, you need to specify the background color of the container element...
+    color: black;
+    background-color: white;
+  }
+}
+//remember part of the login form
+.remember {
+  font-size: 12px;
+  a {
+    margin-left: 80px;
+    color: black;
+    text-decoration: underline;
+    &:hover {
+      color: grey;
+    }
+  }
+}
+.sing-up-navbar {
+  padding: 10px 0px;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 2px 10px lightgrey;
+  h2 {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.login-navbar {
+  padding: 20px 0px;
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0px 2px 10px lightgrey;
+  h2 {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+//edit account
+.sing-up-wrapper {
+  width: 100%;
+  padding-top: 100px;
+  background-color: white;
+  height: 100vh;
+}
+.sing-up-container {
+  width: 400px;
+  margin: 0px auto;
+  padding: 0px  30px;
+  h2 {
+    font-size: 22px;
+  }
+  p {
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+@media(max-width: 686px) {
+  .form-container {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .login-container {
+    width: 100%;
+    margin: 30px auto;
+  }
+  .remember {
+    a {
+      margin-left: 70px;
+    }
+  }
+  .sing-up-container {
+    width: 100%;
+    margin: 0px auto;
+  }
+}
+
+@media(max-width: 330px){
+  .remember {
+    a {
+      margin-left: 40px;
+    }
+  }
+}
