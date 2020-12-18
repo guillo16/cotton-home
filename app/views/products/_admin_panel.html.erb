@@ -1,6 +1,7 @@
 <div class="bg-white p-5 mt-5">
   <h2 class="text-center pb-4 pt-5 h4 font-weight-bold">Completar <%= @product.name %></h2>
   <%= link_to 'Crear Talles', new_product_variant_path(@product), class: "btn btn-primary btn-block my-4" %>
+  <%= link_to 'Editar Producto', edit_product_path(@product), class: "btn btn-warning btn-block mt-3"  %>
 </div>
 <table class="table table-striped mt-3">
   <thead>
