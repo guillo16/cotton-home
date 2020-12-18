@@ -1,0 +1,39 @@
+es:
+  activerecord:
+    models:
+      category:
+        one: "Categoria principal"
+        other: "Categorias principales"
+      sub_category:
+        one: "Categoria"
+        other: "Categorias"
+      product:
+        one: "Producto"
+        other: "Productos"
+      variant:
+        one: "Talle"
+        other: "Talles"
+    attributes:
+      category:
+        name: "Nombre"
+        photo: "Foto"
+      sub_category:
+        name: "Nombre"
+        category: "Categoria Principal"
+      product:
+        name: "Nombre"
+        photos: "Fotos"
+        sub_category: "Categoria"
+      variant:
+        size: "Talle"
+        price_cents: "Precio"
+    errors:
+      messages:
+        taken: "ya existe"
+        blank: "no puede estar vacio."
+        too_short: "es demasiado corto."
+      models:
+        sub_category:
+          required: "tiene que estar presente"
+        product:
+          required: "tiene que estar presente"
