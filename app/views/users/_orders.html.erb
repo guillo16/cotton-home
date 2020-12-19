@@ -1,7 +1,29 @@
-<% orders = @user.orders.filter { |order| order.state == 'Encargado' } %>
-<% orders.reverse_each do |order| %>
-<tr>
-  <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
-  <td><%= link_to 'Ver orden', order_path(order) %></td>
-</tr>
-<% end %>
+<div class="user-order-container">
+  <% orders = @user.orders.filter { |order| order.state == 'Encargado' } %>
+  <% if orders.present? %>
+  <h3 class= "product-user-title">HISTORIAL DE PEDIDOS</h3>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Precio</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders = @user.orders.filter { |order| order.state == 'Encargado' } %>
+      <% orders.reverse_each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+        <td><%= order.amount %></td>
+        <td><%= link_to 'Ver orden', order_path(order) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% else %>
+  <h3 class= "product-user-title">HISTORIAL DE PEDIDOS</h3>
+  <p style="font-size: 13px; color: grey;">No hemos registrado ningún pedido para esta cuenta</p>
+  <%= link_to 'Empezar a comprar', root_path, class: 'btn-gradient'  %>
+  <% end %>
+</div>

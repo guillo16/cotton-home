@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :line_items, only: [:show, :create, :update, :destroy]
   resources :carts
   resources :users, only: [:index, :show]
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:index, :show, :create] do
     resources :payments, only: :new
   end
 end
