@@ -1,5 +1,5 @@
 <h2 class="text-center font-weight-bold h3 pb-5">PRODUCTOS RECOMENDADOS</h2>
-<div class= "user-product-container">
+<div class= "user-product-container pb-5">
   <% @products.first(6).each do |product| %>
   <%= render 'shared/product_card', product: product %>
   <% end %>

@@ -1,11 +1,13 @@
+<% if user_signed_in? && current_user.permission_level == 'admin' %>
 <div class="container my-5 pt-5">
 <%= render 'admin_panel' %>
 </div>
-<div class="product-container mb-5">
-  <div class="product-image">
+<% end %>
+<div class="product-container my-5 pt-4 mb-5">
+  <div class="product-image pt-2">
     <%= render 'carousel' %>
   </div>
-  <div class="text-center px-3 px-md-5 pt-4 pt-md-0">
+  <div class="text-center px-3 px-md-5 pt-4">
     <h2><%= @product.name %></h2>
     <hr>
     <div class="product-image-container py-4">

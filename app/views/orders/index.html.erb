@@ -1,0 +1,45 @@
+<div class="order-index-total">
+  <h1 class="title-orders">Ventas</h1>
+  <div class="text-center">
+   <h1>TOTAL</h1>
+   <h4><strong>$<%= @order %></strong></h4>
+ </div>
+</div>
+<div class="order-index-content">
+  <% @orders.each do |order| %>
+  <div class="order-index-container">
+    <div class="d-md-flex justify-content-between align-items-center">
+      <h2><strong>Fecha: </strong><%= order.created_at.in_time_zone("Buenos Aires").strftime('%d/%m/%Y %H:%M') %></h2>
+      <h2><strong>Precio: </strong>$<%= order.amount %></h2>
+    </div>
+    <div class="d-md-flex justify-content-between align-items-center">
+      <h2><strong>Nombre: </strong>nombre del usuario</h2>
+      <h2><strong>Email: </strong><%= order.user.email %> </h2>
+    </div>
+
+    <div class="d-md-flex justify-content-between align-items-center">
+      <h2><strong>Teléfono: </strong>telefono del usuario</h2>
+      <h2><strong>Direccción: </strong>direccion del usuario </h2>
+    </div>
+    <div class="d-md-flex justify-content-between align-items-center">
+      <h2><strong>Ciudad: </strong>ciudad del usuario </h2>
+    </div>
+    <% order.cart.line_items.each do |line_item| %>
+    <div class="order-index-footer">
+     <% line_item.product.photos.first(1).each do |photo| %>
+     <%= cl_image_tag photo.key %>
+     <% end %>
+     <div>
+      <h2><strong>Producto: </strong><%= line_item.product.name %></h2>
+      <h2><strong>Talle: </strong><%= line_item.variant.size %></h2>
+      <h2><strong>Cantidad: </strong><%= line_item.quantity %></h2>
+      <h2><strong>Precio: </strong><%= line_item.variant.price %></h2>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end%>
+<div class="d-flex justify-content-center">
+  <%= will_paginate @orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+</div>
