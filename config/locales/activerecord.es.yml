@@ -27,6 +27,13 @@ es:
       variant:
         size: "Talle"
         price_cents: "Precio"
+      user:
+        name: "Nombre"
+        address: "Dirección"
+        phone: "Teléfono"
+        city: "Ciudad"
+        state: "Provincia"
+        zip_code: "Codigo Postal"
     errors:
       messages:
         taken: "ya existe"
