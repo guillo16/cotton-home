@@ -1,5 +1,5 @@
-<div class="sing-up-wrapper">
-  <div class="sing-up-container">
+<div class="edit-wrapper">
+  <div class="edit-container">
     <div class="text-center">
       <hr class="hr-text" data-content="Editar Usuario">
     </div>
@@ -17,34 +17,55 @@
       <%= current_user.email %>
       <br><br>
       <p>Nombre</p>
+      <%= f.input :name, required: true, autofocus: true, label: false %>
       <p>Dirección</p>
-      <p>Ciudad</p>
-      <p>Nueva contraseña</p>
-      <%= f.input :password,
-      hint: "Dejar en blanco si no queres cambiar la contraseña",
-      required: false,
-      label: false,
-      input_html: { autocomplete: "new-password" } %>
-      <p>Confirmar contraseña</p>
-      <%= f.input :password_confirmation,
-      required: false,
-      label: false,
-      input_html: { autocomplete: "new-password" } %>
-      <p>Contraseña actual</p>
-      <%= f.input :current_password,
-      hint: "necesitamos tu contraseña actual para realizar los cambios",
-      required: true,
-      label: false,
-      input_html: { autocomplete: "current-password" } %>
-      <div class="form-actions mt-1">
-        <%= f.button :submit, "Confirmar Cambios", class: 'btn btn-primary btn-block' %>
+      <%= f.input :address, required: true, autofocus: true, label: false %>
+      <div class="row">
+        <div class="col-6">
+          <p>Provincia</p>
+          <%= f.input :state, required: true, autofocus: true, label: false %>
+        </div>
+        <div class="col-6">
+          <p>Ciudad</p>
+          <%= f.input :city, required: true, autofocus: true, label: false %>
+        </div>
       </div>
-      <% end %>
-      <div class=" text-center mt-3">
-        <p> Queres eliminar la cuenta? <%= link_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro? si eliminas tendras que volver a crear una para compar" }, method: :delete, class: "text-danger" %></p>
-        <br>
-        <%= link_to "Volver", user_path(@user), class: "btn btn-dark" %>
+      <div class="row">
+        <div class="col-6">
+         <p>Codigo Postal</p>
+         <%= f.input :zip_code, required: true, autofocus: true, label: false %>
+       </div>
+       <div class="col-6">
+        <p>Teléfono</p>
+        <%= f.input :phone, required: true, autofocus: true, label: false %>
       </div>
     </div>
+    <p>Nueva contraseña</p>
+    <%= f.input :password,
+    hint: "Dejar en blanco si no queres cambiar la contraseña",
+    required: false,
+    label: false,
+    input_html: { autocomplete: "new-password" } %>
+    <p>Confirmar contraseña</p>
+    <%= f.input :password_confirmation,
+    required: false,
+    label: false,
+    input_html: { autocomplete: "new-password" } %>
+    <p>Contraseña actual</p>
+    <%= f.input :current_password,
+    hint: "necesitamos tu contraseña actual para realizar los cambios",
+    required: true,
+    label: false,
+    input_html: { autocomplete: "current-password" } %>
+    <div class="form-actions mt-1">
+      <%= f.button :submit, "Confirmar Cambios", class: 'btn btn-primary btn-block' %>
+    </div>
+    <% end %>
+    <div class=" text-center mt-3">
+      <p> Queres eliminar la cuenta? <%= link_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Estas seguro? si eliminas tendras que volver a crear una para compar" }, method: :delete, class: "text-danger" %></p>
+      <br>
+      <%= link_to "Volver", user_path(@user), class: "btn btn-dark" %>
+    </div>
   </div>
+</div>
 </div>

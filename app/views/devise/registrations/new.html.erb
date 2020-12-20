@@ -1,4 +1,4 @@
-<div class="login-wrapper pt-5">
+<div class="login-wrapper pt-4">
   <div class="login-container">
     <div class="text-center">
       <hr class="hr-text" data-content="Registrarse">
@@ -6,7 +6,31 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <br><br>
+      <p>Nombre Completo</p>
+      <%= f.input :name, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+      <div class="row">
+        <div class="col-6">
+          <p>Provincia</p>
+          <%= f.input :state, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+        </div>
+        <div class="col-6">
+          <p>Ciudad</p>
+          <%= f.input :city, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+        </div>
+      </div>
+      <p>Dirección</p>
+      <%= f.input :address, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+      <div class="row">
+        <div class="col-6">
+          <p>Codigo Postal</p>
+          <%= f.input :zip_code, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+        </div>
+        <div class="col-6">
+          <p>Teléfono</p>
+          <%= f.input :phone, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
+        </div>
+      </div>
+      <br>
       <p>Email</p>
       <%= f.input :email, autofocus: true, input_html: {autocomplete: "email", class: "form-control form-control"}, label: false %>
       <p>Contraseña</p>
