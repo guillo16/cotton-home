@@ -10,6 +10,11 @@
       <% end %>
     </div>
     <h3 class="text-center font-weight-bold py-3"><%= @sub_category.name %></h3>
+    <div class="d-md-flex justify-content-center py-2 py-md-3 text-center px-3 px-md-0">
+      <% @sub_category.products.uniq(&:color).each do |product| %>
+      <p><%= link_to product.color, sub_category_path(color: product.color)%></p>
+      <% end %>
+    </div>
     <hr>
     <div id="category-container">
       <% @sub_category.products.each do |product| %>
@@ -18,3 +23,5 @@
     </div>
   </div>
 </div>
+
+

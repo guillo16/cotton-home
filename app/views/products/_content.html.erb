@@ -7,7 +7,7 @@
     <div class="form-check py-4">
       <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
       <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark" for="<%= variant.id %>" >
-        <p class="mb-0" data-target="radio-selector.option"><%= humanized_money_with_symbol(variant.price) %>-<%= variant.size %></p>
+        <p class="mb-0" data-target="radio-selector.option"><%= variant.size %> - <%= humanized_money_with_symbol(variant.price) %></p>
       </label>
     </div>
     <% end %>

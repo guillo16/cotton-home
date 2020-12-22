@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Clearing database"
 
+LineItem.destroy_all
+Cart.destroy_all
+Order.destroy_all
+Variant.destroy_all
+Product.destroy_all
 SubCategory.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -36,22 +41,5 @@ SubCategory.create! name: "Almohadones", category: habitacion
 mantitas = SubCategory.create! name: "Mantas", category: living
 almohadones = SubCategory.create! name: "Almohadones", category: living
 
-puts "Creating Products"
-
-Product.create! name: "Sabana Vainilla", photo: "url", sub_category: sabanas
-Product.create! name: "Sabanas Lisa", photo: "url", sub_category: sabanas
-Product.create! name: "Sabanas Carlos", photo: "url", sub_category: sabanas
-Product.create! name: "Cubrecamas lisos", photo: "url", sub_category: cubrecamas
-Product.create! name: "Cubrecamas rayados", photo: "url", sub_category: cubrecamas
-Product.create! name: "Cubrecamas cuadrados", photo: "url", sub_category: cubrecamas
-Product.create! name: "Mantas", photo: "url", sub_category: mantas
-Product.create! name: "Mantas lisas", photo: "url", sub_category: mantas
-Product.create! name: "Mantas rayadas", photo: "url", sub_category: mantas
-Product.create! name: "Mantas", photo: "url", sub_category: mantitas
-Product.create! name: "Mantas lisas", photo: "url", sub_category: mantitas
-Product.create! name: "Mantas rayadas", photo: "url", sub_category: mantitas
-Product.create! name: "Almohadones", photo: "url", sub_category: almohadones
-Product.create! name: "Almohadones lisas", photo: "url", sub_category: almohadones
-Product.create! name: "Almohadones rayadas", photo: "url", sub_category: almohadones
 
 puts "finish"

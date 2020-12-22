@@ -24,6 +24,7 @@ es:
         name: "Nombre"
         photos: "Fotos"
         sub_category: "Categoria"
+        description: "Descripción"
       variant:
         size: "Talle"
         price_cents: "Precio"
