@@ -12,6 +12,13 @@ class SubCategoriesController < ApplicationController
   end
 
   def show
+    @products = @sub_category.products
+    if params["color"]
+      @products = @sub_category.products.where(color: params["color"])
+    else
+      @products
+    end
+    @categories = Category.all
     @sub_categories = SubCategory.order(name: :asc)
   end
 

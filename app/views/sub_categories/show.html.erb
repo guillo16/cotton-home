@@ -1,5 +1,5 @@
 <div class="sub-categories">
-  <div class="container">
+  <div class="container pb-5" data-controller="filter">
     <div class="d-md-flex justify-content-center py-2 py-md-3 text-center px-3 px-md-0">
       <% category_name =  @sub_category.category.name %>
       <% sub_category_links = @sub_categories.filter { |sub_category| sub_category.category.name == category_name } %>
@@ -9,19 +9,20 @@
       <% end %>
       <% end %>
     </div>
-    <h3 class="text-center font-weight-bold py-3"><%= @sub_category.name %></h3>
-    <div class="d-md-flex justify-content-center py-2 py-md-3 text-center px-3 px-md-0">
-      <% @sub_category.products.uniq(&:color).each do |product| %>
-      <p><%= link_to product.color, sub_category_path(color: product.color)%></p>
-      <% end %>
+    <h3  class="text-center font-weight-bold py-3" ><%= @sub_category.name %></h3>
+    <p data-action="click->filter#hideFilters" class="text-right">Color <i class="fas fa-chevron-down"></i></p>
+    <div class="d-none" data-target="filter.color">
+      <div class="d-md-flex justify-content-center text-center px-3 px-md-0">
+        <% @sub_category.products.uniq(&:color).each do |product| %>
+        <p class="py-2 py-md-3 mb-0 pl-md-3 text-body"><%= link_to product.color, sub_category_path(color: product.color)%></p>
+        <% end %>
+      </div>
     </div>
     <hr>
     <div id="category-container">
-      <% @sub_category.products.each do |product| %>
+      <% @products.each do |product| %>
       <%= render 'shared/product_card', product: product %>
       <% end %>
     </div>
   </div>
 </div>
-
-
