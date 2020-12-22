@@ -19,12 +19,10 @@ es:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
-    helpers:
-      submit:
-        create: "ggggd"
-        update: "保存编辑"
-    labels:
+
     hints:
+      product:
+        color: "Siempre en minuscula"
         # phone:
         #   area_code: "No agregar 0 (ej. 911)"
         #   number: "Ingrese el número sin '-' o espacios"

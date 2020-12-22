@@ -8,6 +8,11 @@
   margin-top: 100px;
 }
 
+ //show filters in stimulus
+ .show {
+    display: block !important;
+  }
+
 @media (max-width: 991.98px) {
   #category-container {
     display: grid;

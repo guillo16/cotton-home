@@ -14,16 +14,16 @@
       <h6 class="pb-4">COLOR</h6>
       <% product_name =  @product.name %>
       <% product_links = @products.filter { |product| product.name == product_name } %>
-      <% product_links.each do |p| %>
+      <% product_links.each do |product| %>
 
-      <%= link_to product_path(p) do %>
-      <% p.photos.first(1).each do |photo| %>
+      <%= link_to product_path(product) do %>
+      <% product.photos.first(1).each do |photo| %>
       <%= cl_image_tag photo.key %>
       <% end %>
       <% end %>
       <% end %>
     </div>
-    <p class="px-2 px-md-5 pt-3">Sábana de 400 hilos, 100% algodón egipcio con bordado en forma de cadena. Vienen 3 o 4 piezas según el tamaño elegido: Sábana ajustable, Sábana plana y una o dos fundas de almohada.</p>
+    <p class="px-2 px-md-5 pt-3"><%= @product.description %></p>
     <%= render 'content' %>
   </div>
 </div>

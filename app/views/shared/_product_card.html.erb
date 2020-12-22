@@ -8,6 +8,9 @@
     <% product.variants.last(1).each do |variant| %>
     <p class="card-text pb-3"><%= humanized_money_with_symbol(variant.price) %> </p>
     <% end %>
+    <% if product.variants.sum(&:stock) <= 0 %>
+     <p class="badge badge-secondary">Agotado</p>
+    <% end %>
     <hr>
   </div>
   <% end %>
