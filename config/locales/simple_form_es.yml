@@ -22,7 +22,7 @@ es:
 
     hints:
       product:
-        color: "Primera letra mayuscula"
+        color: "Siempre en minuscula"
         # phone:
         #   area_code: "No agregar 0 (ej. 911)"
         #   number: "Ingrese el número sin '-' o espacios"
