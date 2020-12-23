@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @products = Product.all
+    @sub_categories = SubCategory.all
   end
 end

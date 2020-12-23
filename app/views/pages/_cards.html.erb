@@ -21,17 +21,17 @@
   <% end %>
 </div>
 <div class="column">
-  <% @categories.where(name: "Living").each do |category| %>
-  <%= link_to category_path(category) do  %>
-  <div class="card-category-2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
+  <% @sub_categories.where(name: "Sabanas").each do |sub_category| %>
+  <%= link_to sub_category_path(sub_category) do  %>
+  <div class="card-category-2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1549638441-b787d2e11f14?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
     <div class="text-center">
-      <h2><%= category.name.upcase %></h2>
+      <h2><%= sub_category.name.upcase %></h2>
       <button class="home-button">VER MAS</button>
     </div>
   </div>
   <% end %>
   <% end %>
-  <% @categories.where(name: "Habitación").each do |category| %>
+  <% @categories.where(name: "Living").each do |category| %>
   <%= link_to category_path(category) do  %>
   <div class="card-category-1" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(<%= category.photo %>)">
     <div class="text-center">
