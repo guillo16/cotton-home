@@ -24,6 +24,7 @@ gem "webpacker", "~> 4.0"
 gem "will_paginate", "~> 3.1.0"
 gem "will_paginate-bootstrap4"
 gem 'mercadopago-sdk', '~> 1.3'
+gem 'letter_opener', group: :development
 
 group :development, :test do gem "pry-byebug"
   gem "pry-rails"

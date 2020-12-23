@@ -1,0 +1,59 @@
+<style>
+  .email-title {
+    display: flex;
+    padding-bottom: 8px;
+    border-bottom: 1px solid lightgrey;
+
+  }
+  .email-title h2 {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    margin: 0px;
+    font-size: 18px;
+  }
+
+  .email-content {
+    padding-bottom: 30px;
+    border-bottom: 1px solid lightgrey;
+
+  }
+  .email-content p {
+    margin: 0px;
+    padding-top: 20px;
+    color: #484848;
+    font-size: 18px;
+  }
+  .email-footer {
+    padding: 10px 0px;
+  }
+
+  .email-footer a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+  }
+  .email-footer button {
+    margin-right: 20px;
+  }
+
+</style>
+<div class="email-container" style="width: 90%; margin: 0 auto;">
+  <div class="email-title">
+    <div>
+      <h2>Cotton</h2>
+      <h2>Home</h2>
+    </div>
+  </div>
+  <div class="email-content">
+    <p>Hola <%= @user.email %>!!</p>
+    <p>Gracias por ser parte de cotton home 😀</p>
+    <p>Nos vemos pronto,</p>
+  </div>
+  <div class="email-footer">
+    <button style="padding: 10px 20px; background-color: #167a92; border-radius: 8px; border-color: #167a92;  text-decoration: none; color: white;"><%= link_to 'Ver Productos', root_url %>
+    </button>
+    <button style="padding: 10px 20px; background-color: #167a92; border-radius: 8px; border-color: #167a92;  text-decoration: none; color: white;"><%= link_to 'Novedades', root_url %>
+    </button>
+  </div>
+</div>
