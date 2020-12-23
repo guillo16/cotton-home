@@ -1,0 +1,14 @@
+<p>Gracias <%= @order.user.email %> por comprar en Cotton Home</p>
+
+
+Detalle de la orden<br>
+--------------------------
+<p><strong>Total:</strong> $<%= @order.amount %></p>
+<br>
+<% @order.cart.line_items.each do |line_item| %>
+
+<p><strong>Producto: </strong><%= line_item.product.name %></p>
+<p><strong>Cantidad: </strong><%= line_item.quantity %></p>
+
+
+<% end %>
