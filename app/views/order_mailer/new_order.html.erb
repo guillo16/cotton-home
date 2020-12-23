@@ -1,0 +1,13 @@
+<p>Tienes una nueva Venta en Cotton Home <%= @order.user.email %></p>
+
+Detalle de la orden<br>
+--------------------------
+<p><strong>Precio:</strong> <%= @order.amount %></p>
+<% @order.cart.line_items.each do |line_item| %>
+
+<p><strong>Producto: </strong><%= line_item.product.name %></p>
+<p><strong>Cantidad: </strong><%= line_item.quantity %></p>
+<p><strong>Talle: </strong><%= line_item.variant.size %></p>
+</div>
+</div>
+<% end %>
