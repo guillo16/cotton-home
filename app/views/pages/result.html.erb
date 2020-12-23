@@ -1,0 +1,13 @@
+<div class= "product-search-wrapper">
+  <h5><strong>Resultados</strong> (<%= @products.uniq(&:name).count %>)</h5>
+  <div class= "division-container ">
+    <% @products.uniq(&:name).each do |product| %>
+    <%= render 'shared/product_card', product: product %>
+    <% end %>
+  </div>
+  <div class="p-5 text-center">
+    <div class="p-5">
+      <%= link_to 'INICIO', root_path , class: 'btn btn-block btn-product' %>
+    </div>
+  </div>
+</div>

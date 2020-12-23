@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
-  get 'products/search', to: 'products#search'
+  get 'pages/search', to: 'pages#search'
+  get 'pages/result', to: 'pages#result'
 
   resources :categories
   resources :sub_categories
