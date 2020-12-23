@@ -8,72 +8,67 @@
   </button>
   <div>
     <%= link_to root_path, class: 'navbar-brand' do  %>
-      <%= image_tag 'logo1.png' %>
+    <%= image_tag 'logo1.png' %>
     <% end %>
   </div>
-
   <div class="d-lg-none magnify">
-   <div class="d-flex align-items-center justify-content-end">
-    <div class="cart-item">
-      <% if total_cart_items %>
-      <%= link_to cart_path(@cart) do %>
-      <span class="icon is-small">
-        <i class="fas fa-shopping-basket "></i>
-      </span>
-      <span><%= cart_count_over_one %></span>
-      <% end %>
-      <% end %>
-    </div>
-    <div class="cart-search">
-      <%= link_to "#" do  %>
-      <i class="fas fa-search"></i>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="collapse navbar-collapse" id="navbarNav">
-  <% @categories.each do |category| %>
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <%= link_to category.name, category_path(category), class: "nav-link" %>
-    </li>
-    <% end %>
-  </ul>
-</div>
-<div class="d-none d-lg-block">
-
-  <div class="d-flex align-items-center">
-    <div class="cart-item-lg">
-      <% if total_cart_items %>
-      <%= link_to cart_path(@cart) do %>
-      <span class="icon is-small">
-        <i class="fas fa-shopping-basket"></i>
-      </span>
-      <span><%= cart_count_over_one %></span>
-      <% end %>
-      <% end %>
-    </div>
-    <div>
-      <%= link_to "#" do  %>
-      <i class="fas fa-search" style="color: black; font-size: 24px;"></i>
-      <% end %>
-      <% if user_signed_in? %>
-      <%= link_to user_path(current_user) do%>
-      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
-      <% end %>
-      <% else %>
-      <%= link_to new_user_session_path do%>
-      <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
-      <% end %>
-      <% end %>
+    <div class="d-flex align-items-center justify-content-end">
+      <div class="cart-item">
+        <% if total_cart_items %>
+        <%= link_to cart_path(@cart) do %>
+        <span class="icon is-small">
+          <i class="fas fa-shopping-basket "></i>
+        </span>
+        <span><%= cart_count_over_one %></span>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="cart-search">
+        <%= link_to "#" do  %>
+        <i class="fas fa-search"></i>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <% @categories.each do |category| %>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to category.name, category_path(category), class: "nav-link" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="d-none d-lg-block" id="right-menu">
+    <div class="d-flex align-items-center justify-content-end">
+      <div class="cart-item-lg">
+        <% if total_cart_items %>
+        <%= link_to cart_path(@cart) do %>
+        <span class="icon is-small">
+          <i class="fas fa-shopping-basket"></i>
+        </span>
+        <span><%= cart_count_over_one %></span>
+        <% end %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to "#" do  %>
+        <i class="fas fa-search" style="color: black; font-size: 24px;"></i>
+        <% end %>
+        <% if user_signed_in? %>
+        <%= link_to user_path(current_user) do%>
+        <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+        <% end %>
+        <% else %>
+        <%= link_to new_user_session_path do%>
+        <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </nav>
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="navbar-modal" tabindex="-1" role="dialog" aria-labelledby="navbar-modalTitle" aria-hidden="true">
@@ -89,30 +84,27 @@
         </button>
       </div>
       <div class="modal-body px-5">
-       <ul class="navbar-nav mr-auto">
-        <% @categories.each do |category| %>
-        <li class="nav-item">
-          <%= link_to category.name, category_path(category), class: "nav-link" %>
-        </li>
-        <% end %>
-      </ul>
-      <div class="pt-5">
-        <h6 class="font-weight-bold mb-3">Conoce mas sobre Cotton</h6>
-        <p class="mb-2">Contacto</p>
-        <p class="mb-2">Quienes somos?</p>
+        <ul class="navbar-nav mr-auto">
+          <% @categories.each do |category| %>
+          <li class="nav-item">
+            <%= link_to category.name, category_path(category), class: "nav-link" %>
+          </li>
+          <% end %>
+        </ul>
+        <div class="pt-5">
+          <h6 class="font-weight-bold mb-3">Conoce mas sobre Cotton</h6>
+          <p class="mb-2">Contacto</p>
+          <p class="mb-2">Quienes somos?</p>
+        </div>
       </div>
-    </div>
-    <div class="px-4 pb-5 border-secondary mt-3 text-center">
-      <% if user_signed_in? %>
-      <p><%= link_to 'Menu',user_path(current_user), class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
-      <% else %>
-      <p><%= link_to 'Iniciar sesión', new_user_session_path, class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
-      <% end %>
-      <%= link_to 'Carrito','#', class: "btn btn-dark btn-block rounded-pill py-2" %>
+      <div class="px-4 pb-5 border-secondary mt-3 text-center">
+        <% if user_signed_in? %>
+        <p><%= link_to 'Menu',user_path(current_user), class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
+        <% else %>
+        <p><%= link_to 'Iniciar sesión', new_user_session_path, class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
+        <% end %>
+        <%= link_to 'Carrito','#', class: "btn btn-dark btn-block rounded-pill py-2" %>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
-
