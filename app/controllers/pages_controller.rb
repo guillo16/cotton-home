@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
+  before_action :set_sub_category, only: %i[home search]
   skip_before_action :authenticate_user!, only: %i[home search result]
 
   def home
     @products = Product.all
-    @sub_categories = SubCategory.all
   end
 
   def search; end
@@ -18,5 +18,11 @@ class PagesController < ApplicationController
     else
       @products = Product.all
     end
+  end
+
+  private
+
+  def set_sub_category
+    @sub_categories = SubCategory.all
   end
 end
