@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <br>
+  <h5 class="pb-5 pt-5"><strong>Resultados</strong> (<%= @products.uniq(&:name).count %>)</h5>
+  <div id="category-container">
+    <% @products.uniq(&:name).each do |product| %>
+    <%= render 'shared/product_card', product: product %>
+    <% end %>
+  </div>
+  <div class="p-5 text-center">
+    <div class="p-5" style="margin-bottom: 300px;">
+      <%= link_to 'Volver', root_path , class: 'btn btn-dark px-5' %>
+    </div>
+  </div>
+</div>
