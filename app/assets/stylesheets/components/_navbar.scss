@@ -40,6 +40,7 @@
 // the mobile right part
 .cart-item-lg {
   margin-right: 10px;
+  margin-left: 16px;
   a {
    color: black;
  }
@@ -67,6 +68,9 @@
 
 #right-menu {
   width: 130px;
+  a {
+    text-decoration: none;
+  }
 }
 
 // full size search
