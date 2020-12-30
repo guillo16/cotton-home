@@ -12,25 +12,8 @@
     <% end %>
   </div>
   <div class="d-lg-none magnify">
-    <div class="d-flex align-items-center justify-content-end">
-      <div class="cart-item">
-        <% if total_cart_items %>
-        <%= link_to cart_path(@cart) do %>
-        <span class="icon is-small">
-          <i class="fas fa-shopping-basket "></i>
-        </span>
-        <span><%= cart_count_over_one %></span>
-        <% end %>
-        <% end %>
-      </div>
-      <div class="cart-search">
-        <%= link_to pages_search_path do  %>
-        <i class="fas fa-search"></i>
-        <% end %>
-      </div>
-    </div>
+  <%= render 'shared/mobile_navbar' %>
   </div>
-
   <div class="collapse navbar-collapse" id="navbarNav">
     <% @categories.each do |category| %>
     <ul class="navbar-nav">
@@ -41,32 +24,7 @@
     </ul>
   </div>
   <div class="d-none d-lg-block" id="right-menu">
-    <div class="d-flex align-items-center justify-content-end">
-      <div class="cart-item-lg">
-        <% if total_cart_items %>
-        <%= link_to cart_path(@cart) do %>
-        <span class="icon is-small">
-          <i class="fas fa-shopping-basket"></i>
-        </span>
-        <span><%= cart_count_over_one %></span>
-        <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to pages_search_path do  %>
-        <i class="fas fa-search" style="color: black; font-size: 24px;"></i>
-        <% end %>
-        <% if user_signed_in? %>
-        <%= link_to user_path(current_user) do%>
-        <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
-        <% end %>
-        <% else %>
-        <%= link_to new_user_session_path do%>
-        <i class="fas fa-user" style="color: black; margin-left: 8px;font-size: 24px;"></i>
-        <% end %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'shared/desktop_navbar' %>
   </div>
 </nav>
 

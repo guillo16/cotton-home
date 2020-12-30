@@ -40,6 +40,7 @@
 // the mobile right part
 .cart-item-lg {
   margin-right: 10px;
+  margin-left: 16px;
   a {
    color: black;
  }
@@ -53,7 +54,8 @@
 }
 .cart-item {
   font-size: 16px;
-  margin-left: -30px;
+  margin-left: 10px;
+  margin-bottom: 6px;
   i {
     color: black;
     font-size: 24px;
@@ -66,6 +68,9 @@
 
 #right-menu {
   width: 130px;
+  a {
+    text-decoration: none;
+  }
 }
 
 // full size search
