@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_214551) do
+ActiveRecord::Schema.define(version: 2021_01_26_231416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2021_01_26_214551) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "dimensions", force: :cascade do |t|
+    t.string "size"
+    t.integer "price"
+    t.string "description"
+    t.bigint "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_dimensions_on_article_id"
   end
 
   create_table "divisions", force: :cascade do |t|
@@ -147,6 +157,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_214551) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "divisions"
+  add_foreign_key "dimensions", "articles"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "line_items", "variants"

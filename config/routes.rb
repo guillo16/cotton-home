@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dimensions/new'
+  get 'dimensions/create'
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
