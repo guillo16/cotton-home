@@ -1,2 +1,15 @@
-<h1>Divisions#show</h1>
-<p>Find me in app/views/divisions/show.html.erb</p>
+<div class="container pt-5 mt-5">
+  <h1 class="text-center"><%= @division.name %></h1>
+  <div class="categories pb-5">
+    <div class="d-md-flex justify-content-center py-2 py-md-5 text-center px-3 px-md-0">
+      <% @divisions.each do |division| %>
+      <h5 class="py-2 py-md-3 mb-0 border-bottom"><%= link_to division.name, division_path(division), class: "pl-md-3 text-body" %></h5>
+      <% end %>
+    </div>
+    <div class="container" id="category-container">
+      <% @division.articles.each do |article| %>
+      <%= render 'shared/article_card', article: article %>
+      <% end %>
+    </div>
+  </div>
+</div>

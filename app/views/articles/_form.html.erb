@@ -1,0 +1,9 @@
+<%= simple_form_for @article do |f| %>
+<%= f.input :name %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
+<%= f.association :division %>
+<div class="text-right">
+  <%= f.submit class: "btn btn-primary btn-block mt-4" %>
+  <%= link_to "volver", :back , class: "btn btn-secondary mt-4"%>
+</div>
+<% end %>
