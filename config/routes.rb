@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'articles/index'
+  get 'articles/show'
+  get 'articles/edit'
+  get 'articles/new'
+  get 'divisions/index'
+  get 'divisions/show'
+  get 'divisions/edit'
+  get 'divisions/new'
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
