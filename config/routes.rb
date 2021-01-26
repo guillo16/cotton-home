@@ -21,5 +21,8 @@ Rails.application.routes.draw do
     resources :payments, only: :new
   end
   resources :divisions
-  resources :articles
+  resources :articles do
+    resources :dimensions, only: [:new, :create]
+  end
+  resources :dimensions, only: [:show, :edit, :update, :destroy]
 end

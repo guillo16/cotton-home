@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :division
+  has_many :dimensions, dependent: :destroy
   has_many_attached :photos
 
   validates :name, presence: true

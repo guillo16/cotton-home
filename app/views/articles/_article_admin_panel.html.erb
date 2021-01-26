@@ -1,0 +1,28 @@
+<div class="bg-white p-5 mt-5">
+  <h2 class="text-center pb-4 pt-5 h4 font-weight-bold">Completar <%= @article.name %></h2>
+  <%= link_to 'Crear Talles', new_article_dimension_path(@article), class: "btn btn-primary btn-block my-4" %>
+  <%= link_to 'Editar articleo', edit_article_path(@article), class: "btn btn-warning btn-block mt-3"  %>
+</div>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Talle</th>
+      <th>Stock</th>
+      <th>Precio</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @article.dimensions.each do |dimension| %>
+    <tr>
+      <th><%= dimension.size %></th>
+      <td><%= dimension.price %></td>
+      <td><%= dimension.description %></td>
+      <td class="text-right">
+        <%= link_to 'ver', dimension_path(dimension), class: "pr-2"  %>
+        <%= link_to 'editar', edit_dimension_path(dimension), class: "pr-2"  %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

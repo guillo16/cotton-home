@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Talle</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th><%= @dimension.size %></th>
+        <td><%= @dimension.price %></td>
+        <td><%= @dimension.description %></td>
+        <td class="text-right">
+          <%= link_to 'editar', edit_dimension_path(@dimension), class: "pr-2"  %>
+          <%= link_to 'ir al producto mayorista', article_path(@dimension.article.id) %>
+          <%= link_to 'eliminar', dimension_path(@dimension), method: :delete, data: { confirm: 'Estas seguro?' }, class: "text-danger"  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
