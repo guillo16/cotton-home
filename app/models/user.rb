@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum permission_level: { buyer: 0, admin: 1, super_admin: 2 }
+  enum permission_level: { buyer: 0, wholesaler: 1, admin: 2, super_admin: 3 }
 
   after_create :send_welcome_email
 
