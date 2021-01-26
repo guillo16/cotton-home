@@ -3,8 +3,8 @@ class ArticlesController < ApplicationController
 
   def index
     if user_is_wholesaler?
-      @articles = Article.all
-      @division = Division.all
+      @articles = Article.includes(:division).order(division_id: :asc).order(name: :asc).paginate(page: params[:page], per_page: 20)
+      @divisions = Division.all
     else
       flash[:notice] = "Accesso denegado!"
       redirect_to root_path
@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   def show
     if user_is_wholesaler?
       @article = Article.friendly.find(params[:id])
+      @articles = Article.all
     else
       flash[:notice] = "Accesso denegado!"
       redirect_to root_path
@@ -56,7 +57,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    return unless current_user.permission_level == "super_admin"
+    return unless current_user.permission_level == "admin"
 
     @article.destroy
     redirect_to articles_path

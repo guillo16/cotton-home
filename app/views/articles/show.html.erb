@@ -1,2 +1,23 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="product-container my-5 pt-4 mb-5">
+  <div class="product-image pt-2">
+    <%= render 'article_carousel' %>
+  </div>
+  <div class="text-center px-3 px-md-5 pt-4">
+    <h2><%= @article.name %></h2>
+    <hr>
+    <div class="product-image-container py-4">
+      <h6 class="pb-4">COLOR</h6>
+      <% article_name =  @article.name %>
+      <% article_links = @articles.filter { |article| article.name == article_name } %>
+      <% article_links.each do |article| %>
+
+      <%= link_to article_path(article) do %>
+      <% article.photos.first(1).each do |photo| %>
+      <%= cl_image_tag photo.key %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+    <p class="px-2 px-md-5 pt-3"></p>
+  </div>
+</div>
