@@ -27,15 +27,17 @@
         <tr>
           <th>Talles</th>
           <th>Precio</th>
-          <th>Descripcion</th>
+          <th class="text-left">Medidas</th>
+          <th class="text-left">Descripción</th>
         </tr>
       </thead>
       <tbody>
         <% @article.dimensions.each do |dimension| %>
         <tr>
           <th><%= dimension.size %></th>
-          <td>$<%= dimension.price %></td>
-          <td><%= dimension.description %></td>
+          <th>$<%= dimension.price %></th>
+          <td class="text-left"><%= dimension.clarification %></td>
+          <td class="text-left"><%= dimension.description %></td>
         </tr>
         <% end %>
       </tbody>
