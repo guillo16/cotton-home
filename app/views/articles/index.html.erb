@@ -1,9 +1,10 @@
 <% if current_user.permission_level == "admin" %>
 <div class="container pt-5">
-  <table class="table table-striped mt-5">
+  <h2 class="text-danger font-weight-bold h5 mt-5 py-3">Esta es la sección mayorista</h2>
+  <table class="table table-striped ">
     <thead>
       <tr>
-        <th>Producto</th>
+        <th>Producto (Mayorista)</th>
         <th>Categorias</th>
       </tr>
     </thead>
@@ -21,7 +22,7 @@
       <% end %>
     </tbody>
   </table>
-  <div class="text-right mt-5">
+  <div class="text-right mt-5 mb-5">
     <%= link_to 'volver', :back, class: "btn btn-secondary" %>
   </div>
   <div class="d-flex justify-content-center">
