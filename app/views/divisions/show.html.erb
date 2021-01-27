@@ -7,7 +7,7 @@
       <% end %>
     </div>
     <div class="container" id="category-container">
-      <% @division.articles.each do |article| %>
+      <% @division.articles.uniq(&:name).each do |article| %>
       <%= render 'shared/article_card', article: article %>
       <% end %>
     </div>

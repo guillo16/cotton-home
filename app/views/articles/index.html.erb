@@ -4,8 +4,9 @@
   <table class="table table-striped ">
     <thead>
       <tr>
-        <th>Producto (Mayorista)</th>
+        <th>Producto</th>
         <th>Categorias</th>
+        <th>Color</th>
       </tr>
     </thead>
     <tbody>
@@ -13,6 +14,7 @@
       <tr>
         <th class="font-weight-light"><%= article.name %></th>
         <th class="badge badge-pill badge-secondary h6 text-center ml-2 mt-2"><%= article.division.name %></th>
+        <th class="font-weight-light"><%= article.color %></th>
         <td class="text-right">
           <%= link_to 'ver', article_path(article), class: "pr-2" %>
           <%= link_to 'editar', edit_article_path(article), class: "pr-2" %>
@@ -37,7 +39,7 @@
     <% end %>
   </div>
   <div class="container" id="category-container">
-    <% @articles.each do |article| %>
+    <% @articles.uniq(&:name).each do |article| %>
     <%= render 'shared/article_card', article: article %>
     <% end %>
   </div>

@@ -1,6 +1,7 @@
 <%= simple_form_for @article do |f| %>
 <%= f.input :name %>
 <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+<%= f.input :color %>
 <%= f.association :division %>
 <div class="text-right">
   <%= f.submit class: "btn btn-primary btn-block mt-4" %>
