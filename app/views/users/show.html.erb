@@ -2,6 +2,7 @@
 <% if current_user.admin? %>
 <%= render 'admin_menu' %>
 <% else %>
+<%= render 'wholesaler_menu' %>
 <% end %>
 <div class="container pt-5">
   <div class="d-flex justify-content-between align-items-center my-5 py-3 border-bottom">
@@ -25,7 +26,6 @@
     </div>
   </div>
 </div>
-
 <% else %>
 <%= render "shared/denied" %>
 <% end %>
