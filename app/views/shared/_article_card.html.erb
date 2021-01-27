@@ -1,0 +1,11 @@
+<div class="card" style="width: 100%;">
+  <%= link_to article_path(article) do %>
+  <% article.photos.first(1).each do |photo| %>
+  <%= cl_image_tag photo.key , class: "w-100", height: '350px';%>
+  <% end %>
+  <div class="card-body text-center">
+    <h5 class="card-title"><%= article.name %></h5>
+    <hr>
+  </div>
+  <% end %>
+</div>

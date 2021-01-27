@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     current_user.permission_level == "admin" || current_user.permission_level == "super_admin"
   end
 
+  def user_is_wholesaler?
+    current_user.permission_level == "admin" || current_user.permission_level == "wholesaler"
+  end
+
   def set_categories
     @categories = Category.order(name: :asc)
   end

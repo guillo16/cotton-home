@@ -1,0 +1,44 @@
+<% if user_signed_in? && current_user.permission_level == 'admin' %>
+<div class="container my-5 pt-5">
+  <%= render 'article_admin_panel' %>
+</div>
+<% end %>
+<div class="product-container my-5 pt-4 mb-5">
+  <div class="product-image pt-2">
+    <%= render 'article_carousel' %>
+  </div>
+  <div class="text-center px-3 px-md-5 pt-4">
+    <h2><%= @article.name %></h2>
+    <hr>
+    <div class="product-image-container py-4">
+      <h6 class="pb-4">COLOR</h6>
+      <% article_name =  @article.name %>
+      <% article_links = @articles.filter { |article| article.name == article_name } %>
+      <% article_links.each do |article| %>
+      <%= link_to article_path(article) do %>
+      <% article.photos.first(1).each do |photo| %>
+      <%= cl_image_tag photo.key %>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>Talles</th>
+          <th>Precio</th>
+          <th>Descripcion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @article.dimensions.each do |dimension| %>
+        <tr>
+          <th><%= dimension.size %></th>
+          <td>$<%= dimension.price %></td>
+          <td><%= dimension.description %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

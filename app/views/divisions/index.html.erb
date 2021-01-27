@@ -1,0 +1,27 @@
+<div class="container pt-5 pb-5">
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th>Categoria (Mayorista)</th>
+        <th><span class="text-danger">Esta es la sección mayorista</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @divisions.each do |division| %>
+      <tr>
+        <th class="font-weight-light"><%= division.name %></th>
+        <td class="text-right">
+          <%= link_to 'ver', division_path(division), class: "pr-2" %>
+          <%= link_to 'editar', edit_division_path(division), class: "pr-2" %>
+          <% if current_user.permission_level? == "super_admin" %>
+          <%= link_to 'eliminar', division_path(division),  method: :delete,  data: { confirm: 'Are you sure?' }, class: "text-danger"  %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-right mt-5 mb-5">
+    <%= link_to 'menu', user_path(current_user), class: "btn btn-secondary"  %>
+  </div>
+</div>

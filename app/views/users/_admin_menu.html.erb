@@ -2,12 +2,22 @@
   <div class="p-5 bg-white mt-5">
     <%= link_to 'Crear Categoria Principal', new_category_path, class: 'btn btn-dark btn-lg btn-block' %>
     <%= link_to 'Ver Categoria Principal', categories_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <hr>
     <%= link_to 'Crear Categoria', new_sub_category_path, class: 'btn btn-dark btn-lg btn-block' %>
     <%= link_to 'Ver Categorias', sub_categories_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <%= link_to 'Crear Producto', new_product_path, class: 'btn btn-dark btn-lg btn-block'  %>
-    <%= link_to 'Inventario de Productos', products_path, class: 'btn btn-primary btn-lg btn-block'  %>
-    <%= link_to 'Ver Usuarios', users_path, class: 'btn btn-primary btn-lg btn-block'  %>
-    <%= link_to 'Ver Ordenes', orders_path, class: 'btn btn-success btn-lg btn-block'  %>
+    <hr>
+    <%= link_to 'Crear Producto', new_product_path, class: 'btn btn-dark btn-lg btn-block' %>
+    <%= link_to 'Inventario de Productos', products_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <hr>
+    <%= link_to 'Ver Usuarios', users_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <hr>
+    <%= link_to 'Ver Ordenes', orders_path, class: 'btn btn-success btn-lg btn-block' %>
+    <hr>
+    <h2 class="text-center h5 pt-3 pb-3 font-weight-bold">Mayorista</h2>
+    <%= link_to 'Crear categorias', new_division_path, class: 'btn btn-dark btn-lg btn-block' %>
+    <%= link_to 'Ver categorias', divisions_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <hr>
+    <%= link_to 'Crear Productos', new_article_path, class: 'btn btn-dark btn-lg btn-block' %>
+    <%= link_to 'Ver Productos', articles_path, class: 'btn btn-primary btn-lg btn-block' %>
   </div>
 </div>
-

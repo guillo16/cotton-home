@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dimensions/new'
+  get 'dimensions/create'
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
@@ -18,4 +20,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create] do
     resources :payments, only: :new
   end
+  resources :divisions
+  resources :articles do
+    resources :dimensions, only: [:new, :create]
+  end
+  resources :dimensions, only: [:show, :edit, :update, :destroy]
 end

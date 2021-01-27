@@ -1,0 +1,15 @@
+<div class="container pt-5">
+  <div class="p-5 bg-white mt-5 mb-5">
+    <div class="d-flex justify-content-between pb-5">
+      <h3 class="font-weight-bold h4">Bienvenido a la cuenta mayorista</h3>
+      <h3><%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger" %></h3>
+    </div>
+    <% @divisions.each do |division| %>
+    <%= link_to division.name, division_path(division), class: 'btn btn-dark btn-lg btn-block'  %>
+    <% end %>
+    <%= link_to 'Ver todos los productos', articles_path, class: 'btn btn-primary btn-lg btn-block' %>
+  </div>
+  <hr>
+  <br><br><br>
+  <h2 class="font-weight-bold h3 mt-5 pt-5">Productos minoristas <i class="fas fa-arrow-down"></i></h2>
+</div>
