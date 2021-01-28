@@ -1,11 +1,12 @@
 <div class="container pt-5">
   <div class="bg-white mt-5 p-5">
+    <h2 class="text-danger font-weight-bold h5 pb-5">Esta es la sección mayorista</h2>
     <h2 class="text-center pb-4">Crear Talles para <%= @article.name %></h2>
     <%= simple_form_for([@article, @dimension ], remote: true)  do |f| %>
     <%= f.input :size %>
     <%= f.input :price %>
     <%= f.input :description %>
-    <%= f.input :clarification %>
+    <%= f.input :clarification, label: "Medidas" %>
     <div class="text-right">
       <%= f.submit class: "btn btn-primary btn-block mt-4" %>
       <%= link_to "volver", article_path(@article) , class: "btn btn-secondary mt-4"%>
