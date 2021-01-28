@@ -1,10 +1,12 @@
-<div class="container mt-5">
+<div class="container mt-5 pt-5 pb-5">
   <div class="bg-white p-5">
+    <h2 class="text-danger font-weight-bold h5 pb-5">Esta es la sección mayorista</h2>
     <h2 class="text-center pb-4">Editar</h2>
     <%= simple_form_for @dimension do |f| %>
     <%= f.input :size %>
     <%= f.input :price %>
     <%= f.input :description %>
+    <%= f.input :clarification , label: "Medidas" %>
     <div class="text-right">
       <%= f.submit class: "btn btn-primary btn-block mt-4" %>
       <%= link_to "volver", :back , class: "btn btn-secondary mt-4"%>

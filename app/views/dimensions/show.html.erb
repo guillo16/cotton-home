@@ -1,17 +1,18 @@
-<div class="container mt-5">
+<div class="px-3 mt-5 pt-5 pb-5">
   <table class="table table-striped mt-3">
     <thead>
       <tr>
         <th>Talle</th>
         <th>Precio</th>
-        <th>Stock</th>
-        <th></th>
+        <th>Medidas</th>
+        <th>Descripcion</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th><%= @dimension.size %></th>
         <td><%= @dimension.price %></td>
+        <td><%= @dimension.clarification %></td>
         <td><%= @dimension.description %></td>
         <td class="text-right">
           <%= link_to 'editar', edit_dimension_path(@dimension), class: "pr-2"  %>
