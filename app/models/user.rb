@@ -9,9 +9,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
 
+  def user_is_admin?
+    self.permission_level == "admin" || self.permission_level == "super_admin"
+  end
+
   private
 
   def send_welcome_email
     UserMailer.with(user: self).welcome.deliver_now
   end
+
 end

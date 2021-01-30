@@ -13,7 +13,7 @@
         <td class="text-right">
           <%= link_to 'ver', division_path(division), class: "pr-2" %>
           <%= link_to 'editar', edit_division_path(division), class: "pr-2" %>
-          <% if current_user.permission_level? == "super_admin" %>
+          <% if current_user.permission_level == "super_admin" %>
           <%= link_to 'eliminar', division_path(division),  method: :delete,  data: { confirm: 'Are you sure?' }, class: "text-danger"  %>
           <% end %>
         </td>
