@@ -2,6 +2,10 @@ buyer:
   email: "buyer@mail.com"
   permission_level: "buyer"
 
+wholesaler:
+  email: "wholesaler@mail.com"
+  permission_level: "wholesaler"
+
 admin:
   email: "admin@mail.com"
   permission_level: "admin"
