@@ -1,4 +1,4 @@
-<div class="card" style="width: 100%;">
+<div class="card" style="width: 100%;" id="article-card">
   <%= link_to article_path(article) do %>
   <% article.photos.first(1).each do |photo| %>
   <%= cl_image_tag photo.key , class: "w-100", height: '350px';%>
