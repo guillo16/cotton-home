@@ -98,15 +98,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "admin should create an artilce" do
-    assert_difference "Article.count", 1 do
-      post articles_url, params: { article: @article_params }
-    end
-
-
-    assert_redirected_to article_path(article)
-  end
-
   test "admin should be able to destroy a article" do
     assert_difference "Article.count", -1 do
       delete article_path(@article)
