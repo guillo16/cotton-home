@@ -1,4 +1,5 @@
 require 'test_helper'
+require "open-uri"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -8,8 +9,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     @article_params = {
       name: "second_pillow",
       color: "red",
-      photo: "something",
-      division_id: @division.id
+      photo: "guillo",
+      division: @division.id
     }
   end
 
@@ -95,6 +96,28 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     get edit_article_path(@article)
 
     assert_response :success
+  end
+
+  test "admin should create an artilce" do
+    assert_difference "Article.count", 1 do
+      post articles_url, params: { article: @article_params }
+    end
+
+
+    assert_redirected_to article_path(article)
+  end
+
+  test "admin should be able to destroy a article" do
+    assert_difference "Article.count", -1 do
+      delete article_path(@article)
+    end
+  end
+
+  test "buyer should not be able to destroy a article" do
+    login_as users(:buyer)
+    assert_no_difference "Article.count", 0 do
+      delete article_path(@article)
+    end
   end
 
 end

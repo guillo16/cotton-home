@@ -70,7 +70,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   #   assert_equal "Sabanas king size", Product.find(@product.id).name
   # end
 
-  test "admin should be able to destroy a sub_category" do
+  test "admin should be able to destroy a product" do
     assert_difference "Product.count", -1 do
       delete product_path(@product)
     end
