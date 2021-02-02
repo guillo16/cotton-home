@@ -1,0 +1,6 @@
+first_order:
+  state: "pending"
+  amount_cents: 2334,
+  checkout_session_id: 12234
+  user: buyer
+  cart: first_cart

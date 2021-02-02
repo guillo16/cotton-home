@@ -13,7 +13,7 @@
       <% @articles.each do |article| %>
       <tr>
         <th class="font-weight-light"><%= article.name %></th>
-        <th class="badge badge-pill badge-secondary h6 text-center ml-2 mt-2"><%= article.division.name %></th>
+        <th class="badge badge-pill badge-secondary h6 text-center ml-2 mt-2"><%= article.division&.name %></th>
         <th class="font-weight-light"><%= article.color %></th>
         <td class="text-right">
           <%= link_to 'ver', article_path(article), class: "pr-2" %>

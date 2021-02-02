@@ -1,0 +1,5 @@
+pillow:
+  name: "pillow_first"
+  photo: "photo"
+  color: "blue"
+  division: sheets
