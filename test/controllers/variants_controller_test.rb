@@ -9,12 +9,12 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
       size: "XS",
       stock: 34,
       price_cents: 23,
-      product_id: @product.id
+      product: @product
     }
   end
 
   test "admin should get new view" do
-    get new_product_variant_url(@product.id)
+    get new_product_variant_url(@product)
 
     assert_response :success
   end
@@ -22,14 +22,14 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
   test "buyer should not get new view" do
     login_as users(:buyer)
 
-    get new_product_variant_url(@product.id)
+    get new_product_variant_url(@product)
 
     assert_response :redirect
   end
 
    test "create should be success" do
     assert_difference "Variant.count", 1 do
-      post product_variants_url(@product.id), params: { variant: @variant_params }
+      post product_variants_url(@product), params: { variant: @variant_params }
     end
 
     assert_redirected_to product_path(@product)
@@ -47,4 +47,5 @@ class VariantsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
   end
+
 end

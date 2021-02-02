@@ -1,4 +1,4 @@
 sheets:
   name: "Sabanas"
   photo: "url"
-  sub_category: sub_categories(:pillow)
+  sub_category: pillow
