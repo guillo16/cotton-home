@@ -7,17 +7,20 @@
   <% else %>
   <div class="payment-order mt-5">
     <p><strong>TOTAL:</strong><%= humanized_money_with_symbol(@order.amount) %></p>
-    <form action="/procesar-pago" method="POST">
-      <%= hidden_field_tag :authenticity_token %>
-      <input type="hidden" name='order_id' value=<%= @order.id %>>
-      <button type="submit" class="btn btn-dark btn-lg btn-block" >Comprar</button>
-    </form>
-    <% end %>
-  </div>
+    <form action="/procesar-pago" method="post"
+    data-controller="authenticity-token">
+    <%= hidden_field_tag :authenticity_token %>
+    <input type="hidden" name='order_id' value=<%= @order.id %>>
+    <script
+    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+    data-preference-id="<%= @preference_id %>">
+  </script>
+</form>
+<% end %>
+</div>
 </div>
 
 <pre><%= JSON.pretty_generate(@preference["response"]) %> </pre>
-<script
-  src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-  data-preference-id="<%= @preference_id %>">
-</script>
+
+
+
