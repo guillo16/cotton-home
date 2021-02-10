@@ -10,8 +10,15 @@
     <form action="/procesar-pago" method="POST">
       <%= hidden_field_tag :authenticity_token %>
       <input type="hidden" name='order_id' value=<%= @order.id %>>
+      <script
+  src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+  data-preference-id="<%= @preference_id %>">
+</script>
       <button type="submit" class="btn btn-dark btn-lg btn-block" >Comprar</button>
     </form>
     <% end %>
   </div>
 </div>
+
+<pre><%= JSON.pretty_generate(@preference) %> </pre>
+
