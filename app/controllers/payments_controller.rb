@@ -1,4 +1,3 @@
-
 class PaymentsController < ApplicationController
   before_action :set_order, only: %i[new create]
 
@@ -6,13 +5,11 @@ class PaymentsController < ApplicationController
     @order = current_user.orders.where(state: 'Pendientes').find(params[:order_id])
     require 'mercadopago.rb'
     mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
-
     # Crea un objeto de preferencia
-
     preference_data = {
       "items": [
         {
-          "title": "Mi Orden",
+          "title": "Total",
           "unit_price": @order.amount.to_i,
           "quantity": 1,
           "currency_id": "ARS"
@@ -32,10 +29,9 @@ class PaymentsController < ApplicationController
       OrderMailer.with(order: @order).new_payment.deliver_later
       redirect_to order_path(@order)
     else
+      flash[:notice] = "Pago rechazado por favor intente de nuevo!"
       redirect_to new_order_payment_path(@order)
     end
-    # OrderMailer.with(order: @order).new_order.deliver_later
-    # OrderMailer.with(order: @order).new_payment.deliver_later
   end
 
   private
