@@ -2,7 +2,6 @@ class PaymentsController < ApplicationController
   before_action :set_order, only: %i[new create]
 
   def new
-    @order = current_user.orders.where(state: 'Pendientes').find(params[:order_id])
     require 'mercadopago.rb'
     mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
     # Crea un objeto de preferencia
