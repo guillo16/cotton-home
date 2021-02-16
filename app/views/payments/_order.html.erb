@@ -1,20 +1,22 @@
 <h2 class="font-weight-bold mb-1 pb-1 border-bottom h3">Resumen</h2>
-<div class="d-flex py-3 pb-1 border-bottom">
+<div class=" pb-1 border-bottom">
   <% @order.cart.line_items.each do |line_item| %>
-  <div class="payment-image pr-3">
-    <% line_item.product.photos.first(1).each do |photo| %>
-    <%= cl_image_tag photo.key %>
-    <% end %>
-  </div>
-  <div class="d-flex flex-column">
-    <div class="mb-auto">
-      <h2 class="h5 font-weight-bold"><%= line_item.product.name %></h2>
+  <div class="d-flex py-3">
+    <div class="payment-image pr-3">
+      <% line_item.product.photos.first(1).each do |photo| %>
+      <%= cl_image_tag photo.key %>
+      <% end %>
     </div>
-    <div>
-      <p>Talle: <%= line_item.variant&.size %></p>
-      <div class="d-flex justify-content-between">
-        <p>Cantidad: <%= line_item.quantity %></p>
-        <p><%= humanized_money_with_symbol(line_item.variant.price) %></p>
+    <div class="d-flex flex-column w-100">
+      <div class="mb-auto">
+        <h2 class="h5 font-weight-bold"><%= line_item.product.name %></h2>
+      </div>
+      <div>
+        <p>Talle: <%= line_item.variant&.size %></p>
+        <div class="d-flex justify-content-between">
+          <p>Cantidad: <%= line_item.quantity %></p>
+          <p class="text-right"><%= humanized_money_with_symbol(line_item.variant.price) %></p>
+        </div>
       </div>
     </div>
   </div>
@@ -34,9 +36,11 @@
   <h3 class="mb-0 h4 font-weight-bold text-dark">TOTAL</h3>
   <h3 class="mb-0 h4 font-weight-bold text-dark"><%= humanized_money_with_symbol(@order.total) %></h3>
 </div>
+<% if @order&.shipping&.valid? %>
 <form action="/procesar-pago" method="post" data-controller="authenticity-token">
   <%= hidden_field_tag :authenticity_token %>
   <input type="hidden" name='order_id' value=<%= @order.id %>>
   <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<%= @preference_id %>">
   </script>
 </form>
+<% end %>
