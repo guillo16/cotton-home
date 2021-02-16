@@ -14,6 +14,18 @@
   }
 }
 
+.shipping-form {
+  h3 {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 13px;
+  }
+}
+
 .shipping-content {
   display: flex;
   justify-content: space-between;
@@ -36,5 +48,64 @@
     margin-bottom: 6px;
     font-size: 18px;
     font-weight: bold;
+  }
+
+  h4 {
+    font-size: 17px;
+  }
+}
+
+@media(max-width: 575px) {
+  .shipping-content {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .shipping-wrapper {
+
+    .col {
+      padding-right: 8px ;
+      padding-left: 8px ;
+    }
+
+    .col-7 {
+      padding-right: 8px ;
+      padding-left: 8px ;
+    }
+
+    .col-5 {
+      padding-right: 8px ;
+      padding-left: 8px ;
+    }
+
+    .col-4 {
+      padding-right: 8px ;
+      padding-left: 8px ;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    h4 {
+      text-align: right;
+    }
+  }
+
+  .shipping-form {
+    h2 {
+      text-align: center;
+    }
+
+    p {
+      font-size: 10px;
+    }
+  }
+
+  .payment-container {
+    h2 {
+      text-align: center;
+    }
   }
 }

@@ -1,24 +1,58 @@
 <%= simple_form_for [@order, @shipping] do |f| %>
 <div class="row">
   <div class="col">
-    <%= f.input :first_name %>
+    <h3>Nombre</h3>
+    <%= f.input :first_name, label: false %>
   </div>
   <div class="col">
-    <%= f.input :last_name %>
+    <h3>Apellido</h3>
+    <%= f.input :last_name, label: false %>
   </div>
 </div>
-<%= f.input :address %>
 <div class="row">
-  <div class="col-5">
-    <%= f.input :state %>
+  <div class="col-7 col-md-5">
+    <h3>Provincia</h3>
+    <%= f.input :state, label: false %>
   </div>
-   <div class="col-3">
-    <%= f.input :amount %>
+  <div class="col-5 col-md-3">
+    <h3>Codigo Postal</h3>
+    <p>4107</p>
   </div>
-  <div class="col-4">
-    <%= f.input :city %>
+  <div class="col col-md-4">
+    <h3>Ciudad</h3>
+    <%= f.input :city, label: false %>
   </div>
 </div>
-<%= f.submit %>
+<div class="row">
+  <div class="col">
+    <h3>Direccion</h3>
+    <%= f.input :address, label: false %>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <h3>Numero</h3>
+    <p>600</p>
+  </div>
+  <div class="col">
+    <h3>Piso</h3>
+    <p>5a</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-4">
+    <h3>Cód. Área</h3>
+    <p>381</p>
+  </div>
+  <div class="col-8">
+    <h3>Telefono</h3>
+    <p>155873403</p>
+  </div>
+</div>
+<h3>Costo de envio</h3>
+<%= f.input :amount, label: false %>
+<div class="d-md-flex justify-content-between">
+  <%= f.submit 'Continuar', class: 'btn btn-dark btn-block ml-md-5 py-3 order-2' %>
+  <p class="order-1 pt-2 pt-md-0">*Al hacer click en Continuar estás aceptando estos Términos y condiciones</p>
+</div>
 <% end %>
-
