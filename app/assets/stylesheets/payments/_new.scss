@@ -13,3 +13,28 @@
     color: grey;
   }
 }
+
+.shipping-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px lightgrey;
+  padding: 8px;
+  background-color: white;
+  border-radius: 6px;
+  p {
+    margin-bottom: 0px;
+  }
+  i {
+    color: #1EDD88;
+  }
+}
+
+.shipping-wrapper {
+  h3 {
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}

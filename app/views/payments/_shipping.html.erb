@@ -1,4 +1,79 @@
- <h1><%= @order.shipping.address %></h1>
- <h2><%= @order.shipping.first_name %></h2>
- <h3><%= @order.shipping.last_name %></h3>
-<%= link_to 'editar', edit_shipping_path(@order.shipping.id) %>
+<div class="shipping-wrapper">
+  <div class="row">
+    <div class="col">
+      <h3>Nombre</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.first_name %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Apellido</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.last_name %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5">
+      <h3>Provincia</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.state %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-3">
+      <h3>Codigo Postal</h3>
+      <div class="shipping-content">
+        <p>4107</p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-4">
+      <h3>Ciudad</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.city %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <h3>Direccion</h3>
+  <div class="shipping-content">
+    <p><%= @order.shipping.address %></p>
+    <i class="far fa-check-square"></i>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Numero</h3>
+      <div class="shipping-content">
+        <p>600</p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Piso</h3>
+      <div class="shipping-content">
+        <p>5a</p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h3>Codigo de area</h3>
+      <div class="shipping-content">
+        <p>381</p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-8">
+      <h3>Telefono</h3>
+      <div class="shipping-content">
+        <p>155873403</p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <p class="py-2"><%= link_to 'editar', edit_shipping_path(@order.shipping.id), class: "badge badge-primary"%></p>
+</div>
