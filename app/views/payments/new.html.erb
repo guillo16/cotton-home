@@ -1,25 +1,20 @@
 <div class="pt-5">
-  <% if @order.amount == 0 %>
-  <div class="text-center mb-1 mt-5">
-    Tienes que tener un articulo para poder comprar
-  </div>
-  <%= link_to 'Ir al Carrito',cart_path(@cart), class: "btn btn-gradient btn-lg btn-block"  %>
+  <% unless @order&.shipping&.valid? %>
+  <%= render 'shippings/new' %>
   <% else %>
+  <%= render 'shipping' %>
+  <% end %>
   <div class="payment-order mt-5">
     <p><strong>TOTAL:</strong><%= humanized_money_with_symbol(@order.amount) %></p>
-    <form action="/procesar-pago" method="post"
-    data-controller="authenticity-token">
-    <%= hidden_field_tag :authenticity_token %>
-    <input type="hidden" name='order_id' value=<%= @order.id %>>
-    <script
-    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-    data-preference-id="<%= @preference_id %>">
-  </script>
-</form>
-<% end %>
+    <form action="/procesar-pago" method="post" data-controller="authenticity-token">
+      <%= hidden_field_tag :authenticity_token %>
+      <input type="hidden" name='order_id' value=<%= @order.id %>>
+      <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<%= @preference_id %>">
+      </script>
+    </form>
+  </div>
 </div>
-</div>
-<%= render 'shipping/new' %>
+
 
 
 

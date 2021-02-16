@@ -1,0 +1,4 @@
+ <h1><%= @order.shipping.address %></h1>
+ <h2><%= @order.shipping.first_name %></h2>
+ <h3><%= @order.shipping.last_name %></h3>
+<%= link_to 'editar', edit_shipping_path(@order.shipping.id) %>
