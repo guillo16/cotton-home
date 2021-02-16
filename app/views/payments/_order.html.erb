@@ -1,0 +1,21 @@
+<h2 class="font-weight-bold mb-1 pb-1 border-bottom">Resumen</h2>
+<% @order.cart.line_items.each do |d| %>
+<div>
+  <% d.product.photos.first(1).each do |photo| %>
+  <%= cl_image_tag photo.key %>
+  <% end %>
+</div>
+<div>
+  <p><strong>Producto:</strong> <%= d.product.name %></p>
+  <p><strong>Talle:</strong> <%= d.variant&.size %></p>
+  <p><strong>Cantidad:</strong> <%= d.quantity %></p>
+</div>
+<% end %>
+<p>Envio: <%= @order&.shipping&.amount %> </p>
+<p><strong>TOTAL:</strong><%= humanized_money_with_symbol(@order.amount) %></p>
+<form action="/procesar-pago" method="post" data-controller="authenticity-token">
+  <%= hidden_field_tag :authenticity_token %>
+  <input type="hidden" name='order_id' value=<%= @order.id %>>
+  <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<%= @preference_id %>">
+  </script>
+</form>

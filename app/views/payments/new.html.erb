@@ -1,17 +1,13 @@
-<div class="pt-5">
-  <% unless @order&.shipping&.valid? %>
-  <%= render 'shippings/new' %>
-  <% else %>
-  <%= render 'shipping' %>
-  <% end %>
-  <div class="payment-order mt-5">
-    <p><strong>TOTAL:</strong><%= humanized_money_with_symbol(@order.amount) %></p>
-    <form action="/procesar-pago" method="post" data-controller="authenticity-token">
-      <%= hidden_field_tag :authenticity_token %>
-      <input type="hidden" name='order_id' value=<%= @order.id %>>
-      <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<%= @preference_id %>">
-      </script>
-    </form>
+<div class="container d-flex justify-content-center pt-5 mt-5">
+  <div class="shipping-form">
+    <% unless @order&.shipping&.valid? %>
+    <%= render 'shippings/new' %>
+    <% else %>
+    <%= render 'shipping' %>
+    <% end %>
+  </div>
+  <div class="payment-container">
+    <%= render 'order' %>
   </div>
 </div>
 
