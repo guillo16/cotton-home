@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
+  has_one :shipping, dependent: :destroy
 
   def user_is_admin?
     self.permission_level == "admin" || self.permission_level == "super_admin"

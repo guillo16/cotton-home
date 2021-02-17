@@ -1,0 +1,99 @@
+<div class="shipping-wrapper">
+  <div class="row">
+    <div class="col">
+      <h3>Nombre</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.first_name %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Apellido</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.last_name %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>DNI</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.dni %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-7 col-md-5">
+      <h3>Provincia</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.state %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-5 col-md-3">
+      <h3>Codigo Postal</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.postal_code %> </p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <h3>Ciudad</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.city %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Direccion</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.address %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h3>Numero</h3>
+      <div class="shipping-content">
+        <p><%= @order&.shipping&.number %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-3">
+      <h3>Piso</h3>
+      <div class="shipping-content">
+        <p><%= @order&.shipping&.floor %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+     <div class="col-3">
+      <h3>Depto</h3>
+      <div class="shipping-content">
+        <p><%= @order&.shipping&.building %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h3>Cód. Área</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.area_code %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+    <div class="col-8">
+      <h3>Telefono</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.phone %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <h4 class="py-3"><%= link_to 'editar envio', edit_shipping_path(@order.shipping.id), class: "badge badge-primary"%></h4>
+</div>

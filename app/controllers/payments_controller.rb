@@ -17,6 +17,7 @@ class PaymentsController < ApplicationController
     }
     @preference = mp.create_preference(preference_data)
     @preference_id = @preference["response"]["id"]
+    @shipping = Shipping.new
   end
 
   def create
