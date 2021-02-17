@@ -30,7 +30,19 @@ class ShippingsController < ApplicationController
   private
 
   def shipping_params
-    params.require(:shipping).permit(:address, :amount, :city, :first_name, :last_name, :state)
+    params.require(:shipping).permit(:address,
+                                     :amount,
+                                     :area_code,
+                                     :building,
+                                     :city,
+                                     :dni,
+                                     :floor,
+                                     :first_name,
+                                     :last_name,
+                                     :number,
+                                     :phone,
+                                     :state
+                                    )
   end
 
   def set_shipping
