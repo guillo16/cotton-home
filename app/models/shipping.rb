@@ -8,10 +8,10 @@ class Shipping < ApplicationRecord
   validates :amount, presence: true
   validates :area_code, length: { in: 2..5 }, numericality: true, allow_blank: true
   validates :area_code, presence: true
-  validates :building, lenght: { in: 1..8 }
+  validates :building, length: { in: 1..8, allow_blank: true }
   validates :city, presence: true
   validates :dni, presence: true, length: { in: 7..8, allow_blank: true }
-  validates :floor, lenght: { in: 1..2 }, numericality: true
+  validates :floor, length: { in: 1..2 }, numericality: true, allow_blank: true
   validates :first_name, presence: true, length: { in: 2..20, allow_blank: true }
   validates :last_name, presence: true, length: { in: 2..20, allow_blank: true }
   validates :number, presence: true, numericality: true, allow_blank: true

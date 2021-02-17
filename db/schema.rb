@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_02_17_132630) do
     t.string "number"
     t.string "building"
     t.string "floor"
+    t.string "postal_code"
     t.index ["order_id"], name: "index_shippings_on_order_id"
     t.index ["user_id"], name: "index_shippings_on_user_id"
   end

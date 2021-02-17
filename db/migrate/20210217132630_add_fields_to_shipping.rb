@@ -6,5 +6,6 @@ class AddFieldsToShipping < ActiveRecord::Migration[6.0]
     add_column :shippings, :number, :string
     add_column :shippings, :building, :string
     add_column :shippings, :floor, :string
+    add_column :shippings, :postal_code, :string
   end
 end
