@@ -10,13 +10,19 @@
   </div>
 </div>
 <div class="row">
+  <div class="col">
+    <h3>DNI</h3>
+    <%= f.input :dni, label: false %>
+  </div>
+</div>
+<div class="row">
   <div class="col-7 col-md-5">
     <h3>Provincia</h3>
     <%= f.input :state, label: false %>
   </div>
   <div class="col-5 col-md-3">
     <h3>Codigo Postal</h3>
-    <p>4107</p>
+    <%= f.input :postal_code, label: false %>
   </div>
   <div class="col col-md-4">
     <h3>Ciudad</h3>
@@ -60,8 +66,3 @@
   <p class="order-1 pt-2 pt-md-0">*Al hacer click en Continuar estás aceptando estos Términos y condiciones</p>
 </div>
 <% end %>
-
-
-add_column :shippings, :dni, :string
-add_column :shippings, :building, :string
-

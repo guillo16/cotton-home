@@ -17,6 +17,7 @@ class Shipping < ApplicationRecord
   validates :number, presence: true, numericality: true, allow_blank: true
   validates :phone, length: { in: 5..9 }, numericality: true, allow_blank: true
   validates :phone, presence: true
+  validates :postal_code, presence: true, length: { in: 4..8, allow_blank: true }
   validates :state, presence: true
 
   def full_name

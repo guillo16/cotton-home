@@ -41,6 +41,7 @@ class ShippingsController < ApplicationController
                                      :last_name,
                                      :number,
                                      :phone,
+                                     :postal_code,
                                      :state
                                     )
   end

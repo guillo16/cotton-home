@@ -16,6 +16,15 @@
     </div>
   </div>
   <div class="row">
+    <div class="col">
+      <h3>DNI</h3>
+      <div class="shipping-content">
+        <p><%= @order.shipping.dni %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-7 col-md-5">
       <h3>Provincia</h3>
       <div class="shipping-content">
@@ -26,7 +35,7 @@
     <div class="col-5 col-md-3">
       <h3>Codigo Postal</h3>
       <div class="shipping-content">
-        <p>4107</p>
+        <p><%= @order.shipping.postal_code %> </p>
         <i class="far fa-check-square"></i>
       </div>
     </div>
@@ -48,17 +57,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-6">
       <h3>Numero</h3>
       <div class="shipping-content">
-        <p>600</p>
+        <p><%= @order&.shipping&.number %></p>
         <i class="far fa-check-square"></i>
       </div>
     </div>
-    <div class="col">
+    <div class="col-3">
       <h3>Piso</h3>
       <div class="shipping-content">
-        <p>5a</p>
+        <p><%= @order&.shipping&.floor %></p>
+        <i class="far fa-check-square"></i>
+      </div>
+    </div>
+     <div class="col-3">
+      <h3>Depto</h3>
+      <div class="shipping-content">
+        <p><%= @order&.shipping&.building %></p>
         <i class="far fa-check-square"></i>
       </div>
     </div>
