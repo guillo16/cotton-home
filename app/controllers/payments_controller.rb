@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
       "items": [
         {
           "title": "Total",
-          "unit_price": @order.amount.to_i,
+          "unit_price": @order.total.to_i,
           "quantity": 1,
           "currency_id": "ARS"
         }

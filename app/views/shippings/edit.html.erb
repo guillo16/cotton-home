@@ -1,3 +1,4 @@
+<% if @shipping.user == current_user %>
 <h2 class="pt-5 mt-5 text-center">Editar Envio</h2>
 <div class="container shipping-form mt-3 bg-white p-5 mb-5">
   <%= simple_form_for @shipping do |f| %>
@@ -68,3 +69,6 @@
   </div>
   <% end %>
 </div>
+<% else %>
+<%= render "shared/denied" %>
+<% end %>
