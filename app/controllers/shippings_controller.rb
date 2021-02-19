@@ -2,12 +2,11 @@ class ShippingsController < ApplicationController
   before_action :set_shipping, only: %w[edit update]
 
   def create
-    @order = Order.find(params[:order_id])
+    @order = Order.friendly.find(params[:order_id])
     @shipping = Shipping.new(shipping_params)
     @shipping.order = @order
     @shipping.user = current_user
     if @shipping.save
-      flash[:notice] = "Acceso garantizado!"
       @order.update(total: @order.total.to_i + @shipping.amount)
       redirect_to new_order_payment_path(@order)
     else

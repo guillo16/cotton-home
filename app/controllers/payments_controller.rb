@@ -37,6 +37,6 @@ class PaymentsController < ApplicationController
   private
 
   def set_order
-    @order = current_user.orders.where(state: 'Pendientes').find(params[:order_id])
+    @order = current_user.orders.where(state: 'Pendientes').friendly.find(params[:order_id])
   end
 end
