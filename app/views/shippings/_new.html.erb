@@ -60,7 +60,12 @@
   </div>
 </div>
 <h3>Costo de envio</h3>
-<%= f.input :amount, label: false %>
+<% if @order.amount.to_i > 4000 %>
+Envio Gratis
+<%= f.input :amount, collection: [[ 'Gratis', 'local']], selected: 'local' %>
+<% else %>
+<%= f.input :amount, collection: [['caba', 'Envio a Caba y San Nicolas - $500'], ['address', 'Envios al resto del pais - $600'],['local', 'Retiro por el local - $0']], label: false %>
+<% end %>
 <div class="d-md-flex justify-content-between">
   <%= f.submit 'Continuar', class: 'btn btn-dark btn-block ml-md-5 py-3 order-2' %>
   <p class="order-1 pt-2 pt-md-0">*Al hacer click en Continuar estás aceptando estos Términos y condiciones</p>
