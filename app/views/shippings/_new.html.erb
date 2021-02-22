@@ -4,13 +4,13 @@
 Envio Gratis
 <div class="row">
   <div class="col">
-    <%= f.input :floor, collection: [[ 'Gratis', 'local']], selected: 'local' %>
+    <%= f.input :amount, collection: [[ 'Gratis', 'local']], selected: 'local' %>
   </div>
 </div>
 <% else %>
 <div class="row">
   <div class="col">
-    <%= f.input :floor, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
+    <%= f.input :amount, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
   </div>
 </div>
 <% end %>
@@ -58,7 +58,7 @@ Envio Gratis
   </div>
   <div class="col-3">
     <h3>Piso</h3>
-    <%= f.input :amount, label: false %>
+    <%= f.input :floor, label: false %>
   </div>
   <div class="col-3">
     <h3>Depto</h3>

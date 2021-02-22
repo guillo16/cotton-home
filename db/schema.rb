@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_224608) do
+ActiveRecord::Schema.define(version: 2021_02_22_133224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_224608) do
     t.string "building"
     t.string "floor"
     t.string "postal_code"
+    t.string "shipping_method"
     t.index ["order_id"], name: "index_shippings_on_order_id"
     t.index ["user_id"], name: "index_shippings_on_user_id"
   end
