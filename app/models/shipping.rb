@@ -5,7 +5,6 @@ class Shipping < ApplicationRecord
   belongs_to :user
 
   validates :address, presence: true
-  validates :amount, presence: true
   validates :area_code, length: { in: 2..5 }, numericality: true, allow_blank: true
   validates :area_code, presence: true
   validates :building, length: { in: 1..8, allow_blank: true }
@@ -18,6 +17,7 @@ class Shipping < ApplicationRecord
   validates :phone, length: { in: 5..9 }, numericality: true, allow_blank: true
   validates :phone, presence: true
   validates :postal_code, presence: true, length: { in: 4..8, allow_blank: true }
+  validates :shipping_method, presence: true
   validates :state, presence: true
 
   def full_name

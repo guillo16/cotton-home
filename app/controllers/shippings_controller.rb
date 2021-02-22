@@ -7,12 +7,13 @@ class ShippingsController < ApplicationController
     @shipping.order = @order
     @shipping.user = current_user
     if @shipping.save
-      if @shipping.floor == 'address'
+      if @shipping.shipping_method == 'address'
         @shipping.amount = 600
       else
         @shipping.amount = 0
       end
       @order.update(total: @order.total.to_i + @shipping.amount)
+      flash[:notice] = "Orden creada!"
       redirect_to new_order_payment_path(@order)
     else
       render 'payments/new'
@@ -24,7 +25,7 @@ class ShippingsController < ApplicationController
 
   def update
     if @shipping.update(shipping_params)
-      if @shipping.floor == 'address'
+      if @shipping.shipping_method == 'address'
         shipping_total = 600
       else
         shipping_total = 0
@@ -41,7 +42,6 @@ class ShippingsController < ApplicationController
 
   def shipping_params
     params.require(:shipping).permit(:address,
-                                     :amount,
                                      :area_code,
                                      :building,
                                      :city,
@@ -52,6 +52,7 @@ class ShippingsController < ApplicationController
                                      :number,
                                      :phone,
                                      :postal_code,
+                                     :shipping_method,
                                      :state
                                     )
   end

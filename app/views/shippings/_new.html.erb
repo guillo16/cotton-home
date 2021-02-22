@@ -1,16 +1,15 @@
 <h2 class="font-weight-bold mb-3 pb-1 h3">1.Envío</h2>
 <%= simple_form_for [@order, @shipping] do |f| %>
 <% if @order.amount.to_i > 4000 %>
-Envio Gratis
 <div class="row">
   <div class="col">
-    <%= f.input :amount, collection: [[ 'Gratis', 'local']], selected: 'local' %>
+    <%= f.input :shipping_method, collection: [[ 'Gratis', 'local']], selected: 'local', label: false %>
   </div>
 </div>
 <% else %>
 <div class="row">
   <div class="col">
-    <%= f.input :amount, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
+    <%= f.input :shipping_method, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
   </div>
 </div>
 <% end %>
