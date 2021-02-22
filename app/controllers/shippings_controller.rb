@@ -7,6 +7,11 @@ class ShippingsController < ApplicationController
     @shipping.order = @order
     @shipping.user = current_user
     if @shipping.save
+      if @shipping.floor == 'address'
+        @shipping.amount = 600
+      else
+        @shipping.amount = 0
+      end
       @order.update(total: @order.total.to_i + @shipping.amount)
       redirect_to new_order_payment_path(@order)
     else
@@ -19,7 +24,13 @@ class ShippingsController < ApplicationController
 
   def update
     if @shipping.update(shipping_params)
-      @shipping.order.update(total: @shipping.order.amount.to_i + @shipping.amount)
+      if @shipping.floor == 'address'
+        shipping_total = 600
+      else
+        shipping_total = 0
+      end
+      shipping = shipping_total
+      @shipping.order.update(total: @shipping.order.amount.to_i + shipping)
       redirect_to new_order_payment_path(@shipping.order.id)
     else
       render :edit
