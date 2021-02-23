@@ -2,3 +2,13 @@
   width: 100%;
   background: black;
 }
+
+#btn-shipping {
+  padding: 10px 90px;
+}
+
+@media(max-width: 991.98px) {
+  #btn-shipping {
+    width: 100%;
+  }
+}
