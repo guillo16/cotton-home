@@ -1,7 +1,6 @@
 <div class="container pt-5 mt-5" id="footer-margin">
   <h2 class="font-weight-bold pt-3 h3">PAGOS</h2>
   <table class="table table-bordered bg-white table-hover table-sm">
-    <% @payments.each_with_index do |payment, index| %>
     <thead>
       <tr>
         <th scope="col"></th>
@@ -12,6 +11,7 @@
         <th scope="col"></th>
       </tr>
     </thead>
+    <% @payments.each_with_index do |payment, index| %>
     <tbody>
       <tr>
         <th class="text-center" scope="row"><%= index + 1 %></th>

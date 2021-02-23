@@ -7,7 +7,16 @@
     <h2 class="font-weight-bold py-3 h3"> <u>Datos del comprador</u></h2>
     <p><strong>Email:</strong> <%= @payment.order.user.email %></p>
     <p><strong>Nombre:</strong> <%= @payment.order.shipping.full_name %></p>
-    <p><strong>dni:</strong> <%= @payment.order.shipping.dni %></p>
+    <p><strong>Dni:</strong> <%= @payment.order.shipping.dni %></p>
+    <p><strong>Provincia:</strong> <%= @payment.order.shipping.state %></p>
+    <p><strong>Código postal:</strong> <%= @payment.order.shipping.postal_code %></p>
+    <p><strong>Ciudad:</strong> <%= @payment.order.shipping.city %></p>
+    <p><strong>Dirección:</strong> <%= @payment.order.shipping.address %></p>
+    <p><strong>Número:</strong> <%= @payment.order&.shipping&.number %></p>
+    <p><strong>Piso:</strong> <%= @payment.order&.shipping&.floor %></p>
+    <p><strong>Depto:</strong> <%= @payment.order&.shipping&.building %></p>
+    <p><strong>Télefono:</strong> <%= @payment.order.shipping.full_number %></p>
+    <p><strong> Costo de envío:</strong> $<%= @payment.order.total.to_i - @payment.order.amount.to_i %></p>
   </div>
   <%= link_to 'volver', payments_path, class: "btn btn-primary px-5"  %>
 </div>
