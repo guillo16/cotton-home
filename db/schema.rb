@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_133224) do
+ActiveRecord::Schema.define(version: 2021_02_23_132434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,20 @@ ActiveRecord::Schema.define(version: 2021_02_22_133224) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string "payment_status"
+    t.string "payment_status_detail"
+    t.string "processing_mode"
+    t.string "merchant_order_id"
+    t.string "back_url"
+    t.string "merchant_account_id"
+    t.string "authenticity_token"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "photo"
@@ -192,6 +206,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_133224) do
   add_foreign_key "line_items", "variants"
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
+  add_foreign_key "payments", "orders"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "shippings", "orders"
   add_foreign_key "shippings", "users"
