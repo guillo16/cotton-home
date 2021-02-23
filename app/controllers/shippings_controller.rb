@@ -2,13 +2,18 @@ class ShippingsController < ApplicationController
   before_action :set_shipping, only: %w[edit update]
 
   def create
-    @order = Order.find(params[:order_id])
+    @order = Order.friendly.find(params[:order_id])
     @shipping = Shipping.new(shipping_params)
     @shipping.order = @order
     @shipping.user = current_user
     if @shipping.save
-      flash[:notice] = "Acceso garantizado!"
+      if @shipping.shipping_method == 'address'
+        @shipping.amount = 600
+      else
+        @shipping.amount = 0
+      end
       @order.update(total: @order.total.to_i + @shipping.amount)
+      flash[:notice] = "Orden creada!"
       redirect_to new_order_payment_path(@order)
     else
       render 'payments/new'
@@ -20,7 +25,13 @@ class ShippingsController < ApplicationController
 
   def update
     if @shipping.update(shipping_params)
-      @shipping.order.update(total: @shipping.order.amount.to_i + @shipping.amount)
+      if @shipping.shipping_method == 'address'
+        shipping_total = 600
+      else
+        shipping_total = 0
+      end
+      shipping = shipping_total
+      @shipping.order.update(total: @shipping.order.amount.to_i + shipping)
       redirect_to new_order_payment_path(@shipping.order.id)
     else
       render :edit
@@ -31,7 +42,6 @@ class ShippingsController < ApplicationController
 
   def shipping_params
     params.require(:shipping).permit(:address,
-                                     :amount,
                                      :area_code,
                                      :building,
                                      :city,
@@ -42,6 +52,7 @@ class ShippingsController < ApplicationController
                                      :number,
                                      :phone,
                                      :postal_code,
+                                     :shipping_method,
                                      :state
                                     )
   end

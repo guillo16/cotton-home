@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_132630) do
+ActiveRecord::Schema.define(version: 2021_02_22_133224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,7 +103,9 @@ ActiveRecord::Schema.define(version: 2021_02_17_132630) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "total_cents", default: 0, null: false
     t.string "total_currency", default: "ARS", null: false
+    t.string "slug"
     t.index ["cart_id"], name: "index_orders_on_cart_id"
+    t.index ["slug"], name: "index_orders_on_slug", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -138,6 +140,7 @@ ActiveRecord::Schema.define(version: 2021_02_17_132630) do
     t.string "building"
     t.string "floor"
     t.string "postal_code"
+    t.string "shipping_method"
     t.index ["order_id"], name: "index_shippings_on_order_id"
     t.index ["user_id"], name: "index_shippings_on_user_id"
   end

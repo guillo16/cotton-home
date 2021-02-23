@@ -1,4 +1,19 @@
+<h2 class="font-weight-bold mb-3 pb-1 h3">1.Envío</h2>
 <%= simple_form_for [@order, @shipping] do |f| %>
+<% if @order.amount.to_i > 4000 %>
+<div class="row">
+  <div class="col">
+    <%= f.input :shipping_method, collection: [[ 'Gratis', 'local']], selected: 'local', label: false %>
+  </div>
+</div>
+<% else %>
+<div class="row">
+  <div class="col">
+    <%= f.input :shipping_method, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
+  </div>
+</div>
+<% end %>
+<h2 class="py-3 h3 font-weight-bold">2.Datos personales</h2>
 <div class="row">
   <div class="col">
     <h3>Nombre</h3>
@@ -12,7 +27,7 @@
 <div class="row">
   <div class="col">
     <h3>DNI</h3>
-    <%= f.input :dni, label: false %>
+    <%= f.input :dni, label: false, input_html: { maxlength: "8" } %>
   </div>
 </div>
 <div class="row">
@@ -21,8 +36,8 @@
     <%= f.input :state, label: false %>
   </div>
   <div class="col-5 col-md-3">
-    <h3>Codigo Postal</h3>
-    <%= f.input :postal_code, label: false %>
+    <h3>Código Postal</h3>
+    <%= f.input :postal_code, label: false, as: :numeric %>
   </div>
   <div class="col col-md-4">
     <h3>Ciudad</h3>
@@ -31,18 +46,18 @@
 </div>
 <div class="row">
   <div class="col">
-    <h3>Direccion</h3>
+    <h3>Dirección</h3>
     <%= f.input :address, label: false %>
   </div>
 </div>
 <div class="row">
   <div class="col-6">
-    <h3>Numero</h3>
-    <%= f.input :number, label: false %>
+    <h3>Número</h3>
+    <%= f.input :number, label: false, as: :numeric %>
   </div>
   <div class="col-3">
     <h3>Piso</h3>
-    <%= f.input :floor, label: false %>
+    <%= f.input :floor, label: false, as: :numeric %>
   </div>
   <div class="col-3">
     <h3>Depto</h3>
@@ -52,17 +67,15 @@
 <div class="row">
   <div class="col-4">
     <h3>Cód. Área</h3>
-    <%= f.input :area_code, label: false %>
+    <%= f.input :area_code, label: false, as: :numeric %>
   </div>
   <div class="col-8">
-    <h3>Telefono</h3>
-    <%= f.input :phone, label: false %>
+    <h3>Teléfono</h3>
+    <%= f.input :phone, label: false, as: :numeric %>
   </div>
 </div>
-<h3>Costo de envio</h3>
-<%= f.input :amount, label: false %>
-<div class="d-md-flex justify-content-between">
-  <%= f.submit 'Continuar', class: 'btn btn-dark btn-block ml-md-5 py-3 order-2' %>
-  <p class="order-1 pt-2 pt-md-0">*Al hacer click en Continuar estás aceptando estos Términos y condiciones</p>
+<div class="d-md-flex justify-content-between pt-4">
+  <%= f.submit 'Continuar', class: 'btn btn-dark ml-md-5 py-2 order-2', id: 'btn-shipping' %>
+  <p class="order-1 pt-2 pt-md-0 text-secondary">*Al hacer click en Continuar estás aceptando estos Términos y condiciones</p>
 </div>
 <% end %>

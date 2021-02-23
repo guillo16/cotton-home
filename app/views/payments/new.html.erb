@@ -1,6 +1,5 @@
-<div class="container d-md-flex justify-content-between pt-5 mt-5 mb-5 pb-5">
-  <div class="shipping-form flex-grow-1 pr-md-5">
-    <h2 class="font-weight-bold mb-3 pb-1 h3">Envio</h2>
+<div class="container pt-5 mt-5 mb-5 pb-5" id="payment-wrapper">
+  <div class="shipping-form pr-md-5">
     <% unless @order&.shipping&.valid? %>
     <%= render 'shippings/new' %>
     <% else %>
@@ -39,7 +38,7 @@
       </div>
       <div class="d-flex justify-content-between">
         <p class="mb-0">Envio</p>
-        <p class="mb-0"><%= @order&.shipping&.amount %> </p>
+        <p class="mb-0">$<%= @order.total.to_i - @order.amount.to_i  %></p>
       </div>
     </div>
     <div class="d-flex justify-content-between py-3">

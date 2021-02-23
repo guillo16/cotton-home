@@ -1,3 +1,8 @@
+#payment-wrapper {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  grid-gap: 16px;
+}
 .payment-image {
   img {
     width: 100px;
@@ -16,9 +21,9 @@
 
 .shipping-form {
   h3 {
-    margin-top: 16px;
-    margin-bottom: 6px;
-    font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    font-size: 16px;
     font-weight: bold;
   }
   p {
@@ -52,6 +57,12 @@
 
   h4 {
     font-size: 17px;
+  }
+}
+
+@media(max-width: 991.98px) {
+  #payment-wrapper {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -104,9 +115,6 @@
   }
 
   .shipping-form {
-    h2 {
-      text-align: center;
-    }
 
     p {
       font-size: 10px;

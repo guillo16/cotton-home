@@ -1,6 +1,13 @@
+<% if @shipping.user == current_user %>
 <h2 class="pt-5 mt-5 text-center">Editar Envio</h2>
 <div class="container shipping-form mt-3 bg-white p-5 mb-5">
   <%= simple_form_for @shipping do |f| %>
+  <h3>Metodo de envio</h3>
+  <% if @shipping.order.amount.to_i > 4000 %>
+    <%= f.input :shipping_method, collection: [[ 'Gratis', 'local']], selected: 'local' %>
+  <% else %>
+    <%= f.input :shipping_method, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
+  <% end %>
   <div class="row">
     <div class="col">
       <h3>Nombre</h3>
@@ -61,10 +68,11 @@
       <%= f.input :phone, label: false %>
     </div>
   </div>
-  <h3>Costo de envio</h3>
-  <%= f.input :amount, label: false %>
   <div class="d-md-flex justify-content-between">
     <%= f.submit 'Continuar', class: 'btn btn-dark btn-block' %>
   </div>
   <% end %>
 </div>
+<% else %>
+<%= render "shared/denied" %>
+<% end %>

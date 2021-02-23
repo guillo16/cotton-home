@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
       "items": [
         {
           "title": "Total",
-          "unit_price": @order.amount.to_i,
+          "unit_price": @order.total.to_i,
           "quantity": 1,
           "currency_id": "ARS"
         }
@@ -37,6 +37,6 @@ class PaymentsController < ApplicationController
   private
 
   def set_order
-    @order = current_user.orders.where(state: 'Pendientes').find(params[:order_id])
+    @order = current_user.orders.where(state: 'Pendientes').friendly.find(params[:order_id])
   end
 end
