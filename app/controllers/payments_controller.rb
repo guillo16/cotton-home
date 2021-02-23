@@ -2,16 +2,26 @@ class PaymentsController < ApplicationController
   before_action :set_order, only: %i[new create]
 
   def index
-    @payments = Payment.includes(:order).includes(:user)
+    if user_has_permission_level?
+      @payments = Payment.includes(:order)
+    else
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
   end
 
   def show
-    @payment = Payment.find(params[:id])
-  end
+    if user_has_permission_level?
+      @payment = Payment.find(params[:id])
+    else
+     flash[:notice] = "Accesso denegado!"
+     redirect_to root_path
+   end
+ end
 
-  def new
-    require 'mercadopago.rb'
-    mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
+ def new
+  require 'mercadopago.rb'
+  mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
     # Crea un objeto de preferencia
     preference_data = {
       "items": [
