@@ -35,11 +35,26 @@ es:
         city: "Ciudad"
         state: "Provincia"
         zip_code: "Codigo Postal"
+      shipping:
+        address: "Dirección"
+        area_code: "Código de área"
+        building: "Departamento"
+        city: "Ciudad"
+        first_name: "Nombre"
+        floor: "Piso"
+        last_name: "Apellido"
+        number: "Número"
+        phone: "Teléfono"
+        postal_code: "Código postal"
+        shipping_method: "Método de envío"
+        state: "Provincia"
     errors:
       messages:
         taken: "ya existe"
         blank: "no puede estar vacio."
         too_short: "es demasiado corto."
+        too_long: "es demasiado largo."
+
       models:
         sub_category:
           required: "tiene que estar presente"
