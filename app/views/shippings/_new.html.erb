@@ -27,7 +27,7 @@
 <div class="row">
   <div class="col">
     <h3>DNI</h3>
-    <%= f.input :dni, label: false %>
+    <%= f.input :dni, label: false, input_html: { maxlength: "8" } %>
   </div>
 </div>
 <div class="row">
@@ -37,7 +37,7 @@
   </div>
   <div class="col-5 col-md-3">
     <h3>Codigo Postal</h3>
-    <%= f.input :postal_code, label: false %>
+    <%= f.input :postal_code, label: false, as: :numeric %>
   </div>
   <div class="col col-md-4">
     <h3>Ciudad</h3>
@@ -53,11 +53,11 @@
 <div class="row">
   <div class="col-6">
     <h3>Numero</h3>
-    <%= f.input :number, label: false %>
+    <%= f.input :number, label: false, as: :numeric %>
   </div>
   <div class="col-3">
     <h3>Piso</h3>
-    <%= f.input :floor, label: false %>
+    <%= f.input :floor, label: false, as: :numeric %>
   </div>
   <div class="col-3">
     <h3>Depto</h3>
@@ -67,11 +67,11 @@
 <div class="row">
   <div class="col-4">
     <h3>Cód. Área</h3>
-    <%= f.input :area_code, label: false %>
+    <%= f.input :area_code, label: false, as: :numeric %>
   </div>
   <div class="col-8">
     <h3>Telefono</h3>
-    <%= f.input :phone, label: false %>
+    <%= f.input :phone, label: false, as: :numeric %>
   </div>
 </div>
 <div class="d-md-flex justify-content-between pt-4">
