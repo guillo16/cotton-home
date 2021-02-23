@@ -118,11 +118,9 @@ ActiveRecord::Schema.define(version: 2021_02_23_132434) do
     t.string "merchant_account_id"
     t.string "authenticity_token"
     t.bigint "order_id", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_payments_on_order_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -209,7 +207,6 @@ ActiveRecord::Schema.define(version: 2021_02_23_132434) do
   add_foreign_key "orders", "carts"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
-  add_foreign_key "payments", "users"
   add_foreign_key "products", "sub_categories"
   add_foreign_key "shippings", "orders"
   add_foreign_key "shippings", "users"

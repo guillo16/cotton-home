@@ -8,6 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :orders, dependent: :destroy
+  has_many :payments
   has_one :shipping, dependent: :destroy
 
   def user_is_admin?

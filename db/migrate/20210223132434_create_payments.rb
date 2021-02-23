@@ -9,7 +9,6 @@ class CreatePayments < ActiveRecord::Migration[6.0]
       t.string :merchant_account_id
       t.string :authenticity_token
       t.references :order, null: false, foreign_key: true
-      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
