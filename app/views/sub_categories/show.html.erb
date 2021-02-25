@@ -4,7 +4,7 @@
       <% sub_category_links = @sub_categories.filter { |sub_category| sub_category.category.name == @sub_category.category.name } %>
       <% sub_category_links.each do |sub_category| %>
       <%= link_to sub_category_path(sub_category) do  %>
-      <h5 class="py-2 py-md-3 mb-0 border-bottom pl-md-3 text-body"><%= sub_category.name %></h5>
+      <h5 class="py-2 py-md-3 mb-0 border-bottom pl-md-3"><%= sub_category.name %></h5>
       <% end %>
       <% end %>
     </div>

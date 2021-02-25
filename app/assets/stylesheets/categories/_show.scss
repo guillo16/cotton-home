@@ -6,6 +6,13 @@
 
 .sub-categories {
   margin-top: 100px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  a:hover {
+    color: grey;
+  }
 }
 
  //show filters in stimulus

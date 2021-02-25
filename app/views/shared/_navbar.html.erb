@@ -18,8 +18,9 @@
     <%= render 'shared/mobile_navbar' %>
   </div>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <% @categories.each do |category| %>
     <ul class="navbar-nav">
+    <!-- <li><%= link_to 'Todos', "#",  class: "nav-link"  %> </li> -->
+    <% @categories.each do |category| %>
       <li class="nav-item">
         <%= link_to category.name, category_path(category), class: "nav-link" %>
       </li>
