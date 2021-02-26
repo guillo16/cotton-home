@@ -1,25 +1,37 @@
-<div class="bg-secondary" id="footer">
- <h2 class="text-center">Suscribite al newsletter</h2>
- <form action="">
-   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Enter email">
+<div class="bg-white" id="footer">
+  <div class="py-5 bg-light">
+    <h2 class="text-center pb-3">Suscribite al newsletter</h2>
+    <div class="d-flex justify-content-center">
+      <div class="d-flex align-items-start">
+        <div class="form-group">
+          <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu email">
+        </div>
+        <button class="btn btn-dark">OK</button>
+      </div>
+    </div>
   </div>
- </form>
-  <h2>Seguinos en:</h2>
-  <div class="d-flex align-items-center justify-content-center py-4">
+  <h3 class="text-center pt-3">Seguinos en:</h3>
+  <div class="d-flex align-items-center justify-content-center pt-3 pb-5">
     <%= link_to "#", target: "_blank" do  %>
-      <i class="fab fa-facebook-f h2 mr-3"></i>
+    <i class="fab fa-facebook-f h3 mr-3"></i>
     <% end %>
     <%= link_to "#", target: "_blank" do %>
-      <i class="fab fa-instagram h1 mr-3"></i>
+    <i class="fab fa-instagram h2"></i>
     <% end %>
-    <i class="fab fa-whatsapp-square h1"></i>
   </div>
-  <div class="container border-top border-white py-3">
-    <div class="text-center text-md-left d-md-flex justify-content-between">
-      <p><i class="far fa-copyright h6"></i> 2020 - <strong>COTTON HOME</strong> Todos los derechos reservados</p>
-      <p class="pt-2 pt-md-0">Made by <strong> <%= link_to 'GV', 'http://www.guillermo-varela.com', target: "_blank"  %></strong></p>
+  <div class="container pb-1 text-center d-md-flex justify-content-between align-items-end">
+    <h4 class="font-weight-bold"> Ayuda - Terminos y condiciones - Como comprar</h4>
+    <div>
+      <img src="https://res.cloudinary.com/dye9yotct/image/upload/c_scale,w_408/v1614297740/visa-blue-gradient-800x450_bd2v5n.jpg" alt="visa-logo" id="payment-cards">
+      <img src="https://res.cloudinary.com/dye9yotct/image/upload/v1614297947/mc_acc_opt_70_3x_9_zcuttp.png" alt="master-card" id="payment-cards">
+      <img src="https://res.cloudinary.com/dye9yotct/image/upload/v1614298061/AXP_BlueBoxLogo_EXTRALARGEscale_RGB_DIGITAL_1600x1600_ntxduw.png" alt="american-express" id="payment-cards" class="bg-primary">
+      <img src="https://res.cloudinary.com/dye9yotct/image/upload/v1614298487/mercado-pago-peru_yjjtfo.jpg" alt="mercado-pago">
+    </div>
+  </div>
+  <div class="container border-top border-dark pt-4">
+    <div class="text-center">
+      <p><i class="far fa-copyright h6"></i> 2021 - <strong>COTTON HOME</strong> Todos los derechos reservados</p>
+      <p class="pt-2 pt-md-0 pb-3">Made by <strong> <%= link_to 'GV', 'http://www.guillermo-varela.com', target: "_blank"  %></strong></p>
     </div>
   </div>
 </div>
