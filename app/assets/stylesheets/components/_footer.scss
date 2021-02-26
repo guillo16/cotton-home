@@ -1,16 +1,43 @@
 #footer {
   i {
-    color: rgba(250, 250, 250, 0.9);
+    color: black;
     margin-bottom: 0px;
   }
 
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
   p {
-    color: white;
-    font-size: 13px;
+    color: black;
+    font-size: 12px;
     margin-bottom: 0px;
   }
 
   a {
-    color: white;
+    color: black;
+  }
+
+  img {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+
+  }
+
+  #payment-cards {
+    width: 44px !important;
+    height: 26px !important;
+    object-fit: cover;
   }
 }
+
+
