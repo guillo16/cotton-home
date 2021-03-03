@@ -2,7 +2,8 @@
 
 Detalle de la orden<br>
 --------------------------
-<p><strong>Precio:</strong> <%= @order.amount %></p>
+<p><strong>Precio:</strong> <%= @order.total %></p>
+<p><strong>Estado del pago:</strong> <%= @order.payment.payment_status %></p>
 <% @order.cart.line_items.each do |line_item| %>
 
 <p><strong>Producto: </strong><%= line_item.product.name %></p>

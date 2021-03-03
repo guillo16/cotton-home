@@ -62,8 +62,8 @@ class PaymentsController < ApplicationController
         line_quantity = item.quantity
         item.variant.decrement!(:stock, line_quantity)
       end
-      # OrderMailer.with(order: @order).new_order.deliver_later
-      # OrderMailer.with(order: @order).new_payment.deliver_later
+      OrderMailer.with(order: @order).new_order.deliver_later
+      OrderMailer.with(order: @order).new_payment_pending.deliver_later
       redirect_to order_path(@order)
     else
       flash[:notice] = "Pago rechazado por favor intente de nuevo!"
