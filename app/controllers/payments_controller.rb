@@ -22,7 +22,6 @@ class PaymentsController < ApplicationController
   def new
     require 'mercadopago.rb'
     mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
-    # Crea un objeto de preferencia
     preference_data = {
       "items": [
         {
@@ -52,6 +51,18 @@ class PaymentsController < ApplicationController
       end
       OrderMailer.with(order: @order).new_order.deliver_later
       OrderMailer.with(order: @order).new_payment.deliver_later
+      redirect_to order_path(@order)
+    elsif params[:payment_status] == "in_process" || params[:payment_status] == "pending"
+      @cart = Cart.find(session[:cart_id])
+      session[:cart_id] = nil
+      @payment.save
+      @order.update(state: 'Encargado')
+      @order.cart.line_items.each do |item|
+        line_quantity = item.quantity
+        item.variant.decrement!(:stock, line_quantity)
+      end
+      OrderMailer.with(order: @order).new_order.deliver_later
+      OrderMailer.with(order: @order).new_payment_pending.deliver_later
       redirect_to order_path(@order)
     else
       flash[:notice] = "Pago rechazado por favor intente de nuevo!"

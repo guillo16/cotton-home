@@ -8,6 +8,12 @@ class OrderMailer < ApplicationMailer
   def new_payment
     @order = params[:order]
     user = @order.user.email
-    mail(to: user, subject: "Tienes una nueva orden!")
+    mail(to: user, subject: "Compra realizada con exito!")
+  end
+
+  def new_payment_pending
+    @order = params[:order]
+    user = @order.user.email
+    mail(to: user, subject: "Compra realizada con pago pendiente")
   end
 end
