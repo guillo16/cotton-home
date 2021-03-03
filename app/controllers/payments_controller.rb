@@ -14,14 +14,14 @@ class PaymentsController < ApplicationController
     if user_has_permission_level?
       @payment = Payment.find(params[:id])
     else
-     flash[:notice] = "Accesso denegado!"
-     redirect_to root_path
-   end
- end
+      flash[:notice] = "Accesso denegado!"
+      redirect_to root_path
+    end
+  end
 
- def new
-  require 'mercadopago.rb'
-  mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
+  def new
+    require 'mercadopago.rb'
+    mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
     # Crea un objeto de preferencia
     preference_data = {
       "items": [
@@ -46,6 +46,10 @@ class PaymentsController < ApplicationController
       session[:cart_id] = nil
       @payment.save
       @order.update(state: 'Encargado')
+      @order.cart.line_items.each do |item|
+        line_quantity = item.quantity
+        item.variant.decrement!(:stock, line_quantity)
+      end
       OrderMailer.with(order: @order).new_order.deliver_later
       OrderMailer.with(order: @order).new_payment.deliver_later
       redirect_to order_path(@order)

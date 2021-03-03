@@ -19,10 +19,6 @@ class OrdersController < ApplicationController
                           state: 'Pendientes',
                           user: current_user,
                           cart: cart, total: cart.total_price, checkout_session_id: SecureRandom.hex)
-    order.cart.line_items.each do |item|
-      line_quantity = item.quantity
-      item.variant.decrement!(:stock, line_quantity)
-    end
     redirect_to new_order_payment_path(order)
   end
 end
