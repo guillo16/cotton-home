@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 60% 1fr;
   grid-gap: 16px;
+  margin-bottom: 220px;
 }
 .payment-image {
   img {
@@ -23,8 +24,8 @@
   h3 {
     margin-top: 0px;
     margin-bottom: 3px;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Poppins' !important;
   }
   p {
     font-size: 13px;
@@ -53,6 +54,7 @@
     margin-bottom: 6px;
     font-size: 18px;
     font-weight: bold;
+    font-family: 'Poppins' !important;
   }
 
   h4 {

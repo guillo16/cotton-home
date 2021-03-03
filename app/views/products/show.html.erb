@@ -11,7 +11,7 @@
     <h2><%= @product.name %></h2>
     <hr>
     <div class="product-image-container py-4">
-      <h6 class="pb-4">COLOR</h6>
+      <h6 class="pb-2">COLOR</h6>
       <% product_name =  @product.name %>
       <% product_links = @products.filter { |product| product.name == product_name } %>
       <% product_links.each do |product| %>

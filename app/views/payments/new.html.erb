@@ -1,4 +1,4 @@
-<div class="container pt-5 mt-5 mb-5 pb-5" id="payment-wrapper">
+<div class="container pt-5 mt-5" id="payment-wrapper">
   <div class="shipping-form pr-md-5">
     <% unless @order&.shipping&.valid? %>
     <%= render 'shippings/new' %>
