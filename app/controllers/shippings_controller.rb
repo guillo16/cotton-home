@@ -7,7 +7,9 @@ class ShippingsController < ApplicationController
     @shipping.order = @order
     @shipping.user = current_user
     if @shipping.save
-      if @shipping.shipping_method == 'address'
+      if @shipping.shipping_method == 'caba'
+        @shipping.amount = 400
+      elsif @shipping.shipping_method == 'address'
         @shipping.amount = 600
       else
         @shipping.amount = 0
@@ -25,7 +27,9 @@ class ShippingsController < ApplicationController
 
   def update
     if @shipping.update(shipping_params)
-      if @shipping.shipping_method == 'address'
+      if @shipping.shipping_method == 'caba'
+        @shipping.amount = 400
+      elsif @shipping.shipping_method == 'address'
         shipping_total = 600
       else
         shipping_total = 0

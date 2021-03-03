@@ -22,7 +22,6 @@ class PaymentsController < ApplicationController
   def new
     require 'mercadopago.rb'
     mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
-    # Crea un objeto de preferencia
     preference_data = {
       "items": [
         {
@@ -53,7 +52,7 @@ class PaymentsController < ApplicationController
       OrderMailer.with(order: @order).new_order.deliver_later
       OrderMailer.with(order: @order).new_payment.deliver_later
       redirect_to order_path(@order)
-    elsif params[:payment_status] == "in_process"
+    elsif params[:payment_status] == "in_process" || params[:payment_status] == "pending"
       @cart = Cart.find(session[:cart_id])
       session[:cart_id] = nil
       @payment.save
