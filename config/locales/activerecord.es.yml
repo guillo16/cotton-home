@@ -25,6 +25,7 @@ es:
         photos: "Fotos"
         sub_category: "Categoria"
         description: "Descripción"
+        second_description: "Segunda Descripción"
       variant:
         size: "Talle"
         price_cents: "Precio"
