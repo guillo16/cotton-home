@@ -20,10 +20,10 @@
     <% end %>
     <div class="order-show-footer">
       <% if @order.payment.payment_status == 'approved' %>
-        <p>Estado:<strong> Aprovado<i class="far fa-check-circle"></i></p></strong>
+        <p>Estado:<strong> Aprobado<i class="far fa-check-circle"></i></p></strong>
       <% else %>
         <p>Estado:<strong> <span class="text-warning">Pendiente</span></p></strong>
-        <p style="font-size: 12px; margin-bottom: 6px;"><strong>*nos comunicaremos con vos cuando el pago este aprovado</strong></p>
+        <p style="font-size: 12px; margin-bottom: 6px;"><strong>*nos comunicaremos con vos cuando el pago este aprobado</strong></p>
       <% end %>
       <p>Total: <%= humanized_money_with_symbol(@order.amount) %></p>
     </div>

@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
 
   def index
     if user_has_permission_level?
-      @payments = Payment.includes(:order)
+      @payments = Payment.includes(:order).order(created_at: :desc)
     else
       flash[:notice] = "Accesso denegado!"
       redirect_to root_path

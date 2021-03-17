@@ -5,7 +5,6 @@
     <p><strong>Monto del pago:</strong> <%= @payment.order.total %></p>
     <p><strong>Estado del pago:</strong> <%= @payment.payment_status %></p>
     <p><strong>Estado del pago:</strong> <%= @payment.payment_status_detail %></p>
-
     <h2 class="font-weight-bold py-3 h3"> <u>Datos del comprador</u></h2>
     <p><strong>Email:</strong> <%= @payment.order.user.email %></p>
     <p><strong>Nombre:</strong> <%= @payment.order.shipping.full_name %></p>

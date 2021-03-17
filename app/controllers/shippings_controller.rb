@@ -18,7 +18,6 @@ class ShippingsController < ApplicationController
       redirect_to new_order_payment_path(@order)
     else
       render 'payments/new'
-      flash[:notice] = "Accesso denegado!"
     end
   end
 
