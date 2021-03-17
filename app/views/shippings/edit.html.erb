@@ -3,11 +3,12 @@
 <div class="container shipping-form mt-3 bg-white p-5 mb-5">
   <%= simple_form_for @shipping do |f| %>
   <h3>Metodo de envio</h3>
-  <% if @shipping.order.amount.to_i > 4000 %>
-    <%= f.input :shipping_method, collection: [[ 'Gratis', 'local']], selected: 'local' %>
-  <% else %>
-    <%= f.input :shipping_method, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
-  <% end %>
+  <%= f.input :shipping_method, collection: [['Zona 1 - $500', 'one'], ['Zona 2 - $600', 'two'], ['Zona 3 - $700', 'three'], ['Retiro por el local - $0', 'local']], label: false %>
+  <div class="pb-3">
+    <p class="mb-1"><strong>Zona 1:</strong> Buenos Aires, Cordoba, Entre Ríos, La Pampa, Santa Fe</p>
+    <p class="mb-1"><strong>Zona 2:</strong> Catamarca, Chaco, Corrientes, Formosa, La Rioja, Mendoza, Misiones, Neuquen, Rio Negro, San Juan, San Luis, Santiago del Estero, Tucumán</p>
+    <p class="mb-1"><strong>Zona 3:</strong> Chubut, Jujuy, Salta, Santa Cruz, Tierra del Fuego </p>
+  </div>
   <div class="row">
     <div class="col">
       <h3>Nombre</h3>

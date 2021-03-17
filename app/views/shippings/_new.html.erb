@@ -2,8 +2,13 @@
 <%= simple_form_for [@order, @shipping] do |f| %>
 <div class="row">
   <div class="col">
-    <%= f.input :shipping_method, collection: [['Envio a Caba y San Nicolas - $500', 'caba'], ['Envios al resto del pais - $600', 'address'],['Retiro por el local - $0', 'local']], label: false %>
+    <%= f.input :shipping_method, collection: [['Zona 1 - $500', 'one'], ['Zona 2 - $600', 'two'], ['Zona 3 - $700', 'three'], ['Retiro por el local - $0', 'local']], label: false %>
   </div>
+</div>
+<div class="">
+  <p class="mb-1"><strong>Zona 1:</strong> Buenos Aires, Cordoba, Entre Ríos, La Pampa, Santa Fe</p>
+  <p class="mb-1"><strong>Zona 2:</strong> Catamarca, Chaco, Corrientes, Formosa, La Rioja, Mendoza, Misiones, Neuquen, Rio Negro, San Juan, San Luis, Santiago del Estero, Tucumán</p>
+  <p class="mb-1"><strong>Zona 3:</strong> Chubut, Jujuy, Salta, Santa Cruz, Tierra del Fuego </p>
 </div>
 <h2 class="py-3 h3 font-weight-bold">2.Datos personales</h2>
 <div class="row">
