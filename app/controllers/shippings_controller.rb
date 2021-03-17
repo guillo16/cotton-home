@@ -15,7 +15,6 @@ class ShippingsController < ApplicationController
         @shipping.amount = 0
       end
       @order.update(total: @order.total.to_i + @shipping.amount)
-      flash[:notice] = "Orden creada!"
       redirect_to new_order_payment_path(@order)
     else
       render 'payments/new'

@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col">
       <h3>DNI</h3>
-      <%= f.input :dni, label: false %>
+      <%= f.input :dni, label: false, input_html: { maxlength: "8" } %>
     </div>
   </div>
   <div class="row">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-5 col-md-3">
       <h3>Codigo Postal</h3>
-      <%= f.input :postal_code, label: false %>
+      <%= f.input :postal_code, label: false, as: :numeric %>
     </div>
     <div class="col col-md-4">
       <h3>Ciudad</h3>
