@@ -25,6 +25,7 @@ es:
         photos: "Fotos"
         sub_category: "Categoria"
         description: "Descripción"
+        second_description: "Segunda Descripción"
       variant:
         size: "Talle"
         price_cents: "Precio"
@@ -54,7 +55,7 @@ es:
         blank: "no puede estar vacio."
         too_short: "es demasiado corto."
         too_long: "es demasiado largo."
-
+        not_a_number: "tiene que ser un numero."
       models:
         sub_category:
           required: "tiene que estar presente"

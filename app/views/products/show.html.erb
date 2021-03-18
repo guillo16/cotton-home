@@ -23,7 +23,8 @@
       <% end %>
       <% end %>
     </div>
-    <p class="px-2 px-md-5 pt-3"><%= @product.description %></p>
+    <p class="px-2 px-md-5 pt-3 mb-0"><%= @product.description %></p>
+    <p class="px-2 px-md-5 pt-1"><%= @product&.second_description %></p>
     <%= render 'content' %>
   </div>
 </div>
@@ -32,7 +33,7 @@
     <h2 class="py-5">Más Productos</h2>
   </div>
   <div class="products-home-cards">
-    <% @products.last(3).each do |product| %>
+    <% @products.uniq(&:name).last(4).each do |product| %>
       <%= render 'shared/product_card', product: product %>
     <% end %>
   </div>

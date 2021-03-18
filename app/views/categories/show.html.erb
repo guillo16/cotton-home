@@ -10,7 +10,7 @@
     <% end %>
   </div>
   <div class="container" id="category-container">
-    <% @products.each do |product| %>
+    <% @products.uniq(&:name).each do |product| %>
       <%= render 'shared/product_card', product: product %>
     <% end %>
   </div>

@@ -2,6 +2,7 @@
 <%= f.input :name %>
 <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <%= f.input :description, as: :text, input_html: { rows:"4" } %>
+<%= f.input :second_description, as: :text, input_html: { rows:"4" } %>
 <%= f.input :color %>
 <%= f.association :sub_category %>
 <div class="text-right">
