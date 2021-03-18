@@ -33,7 +33,7 @@
     <h2 class="py-5">Más Productos</h2>
   </div>
   <div class="products-home-cards">
-    <% @products.uniq(&:name).last(3).each do |product| %>
+    <% @products.uniq(&:name).last(4).each do |product| %>
       <%= render 'shared/product_card', product: product %>
     <% end %>
   </div>
