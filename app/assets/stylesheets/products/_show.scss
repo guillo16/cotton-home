@@ -4,6 +4,14 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.disabled {
+  input {
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+}
+
 //carousel
 .product-image {
   img {
@@ -28,13 +36,13 @@
 #price {
   width: 100%;
   border: none;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   margin: 0 auto;
 }
 
 
-@media(max-width: 700px) {
+@media(max-width: 769px) {
   .product-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -47,5 +55,9 @@
     img {
       height: 500px;
     }
+  }
+
+  #price {
+    font-size: 18px;
   }
 }

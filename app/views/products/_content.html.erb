@@ -1,12 +1,12 @@
 <div class="text-center px-0 px-md-5" data-controller="radio-selector">
   <%= form_tag line_items_path do %>
   <%= hidden_field_tag 'product_id', @product.id %>
-  <div class="label-size d-flex justify-content-center">
+  <div class="label-size d-xl-flex justify-content-center">
     <% @product.variants.each do |variant| %>
     <% unless variant.stock <= 0 %>
-    <div class="form-check py-4">
+    <div class="form-check py-1 py-xl-4">
       <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
-      <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark" for="<%= variant.id %>" >
+      <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark btn-block" for="<%= variant.id %>" >
         <p class="mb-0" data-target="radio-selector.option"><%= variant.size %> - <%= humanized_money_with_symbol(variant.price) %></p>
       </label>
     </div>
@@ -17,11 +17,11 @@
     Guía de Medidas
   </h6>
   <hr>
-  <div class="d-flex justify-content-around px-3 px-md-5 py-3">
-    <div class="disabled">
+  <div>
+    <div class="disabled py-3">
       <% g = @product.variants.reject { |f| f.stock < 1 } %>
       <% g.last(1).each do |d| %>
-      <input data-target="radio-selector.input" id="price" value="<%= d.price %>" >
+      <input data-target="radio-selector.input" id="price" value="<%= d.price %>" disabled >
       <% end %>
     </div>
     <div class="flex-grow-1">
