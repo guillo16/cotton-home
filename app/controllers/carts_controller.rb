@@ -11,7 +11,13 @@ class CartsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    return if @cart.line_items.count.positive?
+
+    @cart.destroy
+    flash[:notice] = "Tu carrito esta vacio"
+    redirect_to root_path
+  end
 
   def new
     @cart = Cart.new
