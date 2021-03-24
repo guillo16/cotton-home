@@ -10,12 +10,11 @@
   <div class="text-center px-3 px-md-5 pt-4">
     <h2><%= @product.name %></h2>
     <hr>
-    <div class="product-image-container py-4">
-      <h6 class="pb-2">COLOR</h6>
+    <div class="product-image-container py-2">
+      <h6 class="pb-1">COLOR</h6>
       <% product_name =  @product.name %>
       <% product_links = @products.filter { |product| product.name == product_name } %>
       <% product_links.each do |product| %>
-
       <%= link_to product_path(product) do %>
       <% product.photos.first(1).each do |photo| %>
       <%= cl_image_tag photo.key %>
