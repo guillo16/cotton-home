@@ -1,12 +1,12 @@
 <div class="text-center px-0 px-md-5" data-controller="radio-selector">
   <%= form_tag line_items_path do %>
   <%= hidden_field_tag 'product_id', @product.id %>
-  <div class="label-size d-xl-flex justify-content-center">
+  <div class="label-size d-xl-flex justify-content-center pb-3 px-5 px-xl-0">
     <% @product.variants.each do |variant| %>
     <% unless variant.stock <= 0 %>
-    <div class="form-check py-1 py-xl-4">
+    <div class="form-check py-1">
       <input class="form-check-input d-none" type="radio" name="variant_id" value="<%= variant.id %>" checked id="<%= variant.id %>">
-      <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-dark btn-block" for="<%= variant.id %>" >
+      <label data-action="click->radio-selector#selectRadioOption" class="form-check-label btn btn-outline-dark btn-block btn-border-thick" for="<%= variant.id %>" >
         <p class="mb-0" data-target="radio-selector.option"><%= variant.size %> - <%= humanized_money_with_symbol(variant.price) %></p>
       </label>
     </div>
