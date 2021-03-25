@@ -20,55 +20,22 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    require 'mercadopago.rb'
-    mp = MercadoPago.new(ENV['ACCESS_TOKEN'])
-    preference_data = {
-      "items": [
-        {
-          "title": "Total",
-          "unit_price": @order.total.to_i,
-          "quantity": 1,
-          "currency_id": "ARS"
-        }
-      ]
-    }
-    @preference = mp.create_preference(preference_data)
-    @preference_id = @preference["response"]["id"]
     @shipping = Shipping.new
   end
 
   def create
+    headers = { 'accept': 'application/json', 'content-type': 'application/json' }
+    payment_attempt = JSON.parse(headers).body
+    p payment_attempt
     @payment = Payment.new(payment_params)
     @payment.order = @order
-    if params[:payment_status] == "approved"
-      @cart = Cart.find(session[:cart_id])
-      session[:cart_id] = nil
-      @payment.save
-      @order.update(state: 'Encargado')
-      @order.cart.line_items.each do |item|
-        line_quantity = item.quantity
-        item.variant.decrement!(:stock, line_quantity)
-      end
-      OrderMailer.with(order: @order).new_order.deliver_later
-      OrderMailer.with(order: @order).new_payment.deliver_later
-      redirect_to order_path(@order)
-    elsif params[:payment_status] == "in_process" || params[:payment_status] == "pending"
-      @cart = Cart.find(session[:cart_id])
-      session[:cart_id] = nil
-      @payment.save
-      @order.update(state: 'Encargado')
-      @order.cart.line_items.each do |item|
-        line_quantity = item.quantity
-        item.variant.decrement!(:stock, line_quantity)
-      end
-      OrderMailer.with(order: @order).new_order.deliver_later
-      OrderMailer.with(order: @order).new_payment_pending.deliver_later
-      redirect_to order_path(@order)
-    else
-      flash[:notice] = "Pago rechazado por favor intente de nuevo!"
-      @payment.save
-      redirect_to new_order_payment_path(@order)
+    @payment.save
+    @order.update(state: 'Encargado')
+    @order.cart.line_items.each do |item|
+      line_quantity = item.quantity
+      item.variant.decrement!(:stock, line_quantity)
     end
+    redirect_to order_path(@order)
   end
 
   private
