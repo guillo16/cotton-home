@@ -24,8 +24,7 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    headers = { 'accept': 'application/json', 'content-type': 'application/json' }
-    payment_attempt = JSON.parse(headers).body
+    payment_attempt = JSON.parse(payment_status)
     p payment_attempt
     @payment = Payment.new(payment_params)
     @payment.order = @order
