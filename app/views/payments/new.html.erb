@@ -51,8 +51,8 @@
       <input type="hidden" name='order_id' value=<%= @order.id %>>
       <script
       src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
-      data-public-key="TEST-1f6e5430-3a71-4285-91ea-f29959551977"
-      data-transaction-amount="1000">
+      data-public-key="<%= ENV['MP_TOKEN'] %>"
+      data-transaction-amount="<%= @order.total.to_i %>">
     </script>
   </form>
   <% end %>

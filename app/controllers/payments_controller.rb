@@ -24,17 +24,54 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    payment_attempt = JSON.parse(payment_status)
-    p payment_attempt
+    require 'mercadopago'
+    mp = MercadoPago.new(ENV["ACCESS_TOKEN"])
+    token = params[:token]
+    installments = 1
+    issuer_id = params[:issuer_id]
+
+    payment = {}
+    payment[:transaction_amount] = @order.total.to_i
+    payment[:token] = token
+    payment[:installments] = installments
+    payment[:issuer_id] = issuer_id
+    payment[:payer] = {
+      email: current_user.email
+    }
+
+    payment_response = mp.post("/v1/payments", payment)
     @payment = Payment.new(payment_params)
     @payment.order = @order
-    @payment.save
-    @order.update(state: 'Encargado')
-    @order.cart.line_items.each do |item|
-      line_quantity = item.quantity
-      item.variant.decrement!(:stock, line_quantity)
+    @payment.payment_status = payment_response["response"]["status"]
+    if payment_response["status"] == "201" && payment_response["response"]["status"] == "approved"
+      @cart = Cart.find(session[:cart_id])
+      session[:cart_id] = nil
+      @payment.save
+      @order.update(state: 'Encargado')
+      @order.cart.line_items.each do |item|
+        line_quantity = item.quantity
+        item.variant.decrement!(:stock, line_quantity)
+      end
+      OrderMailer.with(order: @order).new_order.deliver_later
+      OrderMailer.with(order: @order).new_payment.deliver_later
+      redirect_to order_path(@order)
+    elsif payment_response["status"] == "201" && payment_response["response"]["status"] == "in_process"
+      @cart = Cart.find(session[:cart_id])
+      session[:cart_id] = nil
+      @payment.save
+      @order.update(state: 'Encargado')
+      @order.cart.line_items.each do |item|
+        line_quantity = item.quantity
+        item.variant.decrement!(:stock, line_quantity)
+      end
+      OrderMailer.with(order: @order).new_order.deliver_later
+      OrderMailer.with(order: @order).new_payment_pending.deliver_later
+      redirect_to order_path(@order)
+    else
+      flash[:notice] = "Pago rechazado por favor intente de nuevo!"
+      @payment.save
+      redirect_to new_order_payment_path(@order)
     end
-    redirect_to order_path(@order)
   end
 
   private
