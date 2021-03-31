@@ -81,6 +81,6 @@ class PaymentsController < ApplicationController
   end
 
   def payment_params
-    params.permit(:back_url, :payment_type, :payment_status, :processing_mode, :merchant_order_id, :merchant_account_id, :authenticity_token, :payment_status_detail)
+    params.permit(:payment_type, :payment_status, :processing_mode, :merchant_order_id, :merchant_account_id, :authenticity_token, :payment_status_detail)
   end
 end

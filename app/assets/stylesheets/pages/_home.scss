@@ -13,7 +13,7 @@
 #card-category-grid{
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 80px;
 }
 
@@ -32,11 +32,16 @@
       height: 320px;
     }
   }
+  #card-category-grid {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 40px;
+  }
 }
 
 @media(max-width: 575px){
   #card-category-grid{
     grid-template-columns: 1fr;
+    margin-bottom: 20px;
   }
 
   #social-media-grid {
