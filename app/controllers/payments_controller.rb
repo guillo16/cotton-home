@@ -43,6 +43,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @payment.order = @order
     @payment.payment_status = payment_response["response"]["status"]
+
     if payment_response["status"] == "201" && payment_response["response"]["status"] == "approved"
       @cart = Cart.find(session[:cart_id])
       session[:cart_id] = nil
@@ -69,7 +70,6 @@ class PaymentsController < ApplicationController
       redirect_to order_path(@order)
     else
       flash[:notice] = "Pago rechazado por favor intente de nuevo!"
-      @payment.save
       redirect_to new_order_payment_path(@order)
     end
   end
