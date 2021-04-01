@@ -17,6 +17,7 @@ es:
       category:
         name: "Nombre"
         photo: "Foto"
+        photo_card: "Foto chica"
       sub_category:
         name: "Nombre"
         category: "Categoria Principal"

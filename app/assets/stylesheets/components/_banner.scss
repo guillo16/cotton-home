@@ -28,10 +28,10 @@
 }
 
 .category-banner {
-  margin-top: 70px;
+  margin-top: 81px;
   background-size: cover;
   background-position: center;
-  height: 38vh;
+  height: 360px;
 
   h1 {
     margin: 0;
@@ -71,6 +71,14 @@
   .article-banner {
     height: 250px;
     h2 {
+      font-size: 24px;
+    }
+  }
+
+  .category-banner {
+    height: 250px;
+
+    h1 {
       font-size: 24px;
     }
   }

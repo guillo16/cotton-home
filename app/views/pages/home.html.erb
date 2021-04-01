@@ -25,9 +25,11 @@
   <h2 class="pt-5 text-center pb-5">Categorias</h2>
   <div id="card-category-grid">
     <% @categories.each do |category| %>
+    <%= link_to category_path(category) do  %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= category.photo %>)">
       <%= category.name %>
     </div>
+    <% end %>
     <% end %>
   </div>
 </div>

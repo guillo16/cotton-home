@@ -46,12 +46,15 @@
       <h3 class="mb-0 h4 font-weight-bold text-dark"><%= humanized_money_with_symbol(@order.total) %></h3>
     </div>
     <% if @order&.shipping&.valid? %>
-    <form action="/procesar-pago" method="post" data-controller="authenticity-token">
+    <form action="/procesar-pago" method="POST">
       <%= hidden_field_tag :authenticity_token %>
       <input type="hidden" name='order_id' value=<%= @order.id %>>
-      <script src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js" data-preference-id="<%= @preference_id %>">
-      </script>
-    </form>
-    <% end %>
-  </div>
+      <script
+      src="https://www.mercadopago.com.ar/integrations/v1/web-tokenize-checkout.js"
+      data-public-key="<%= ENV['MP_TOKEN'] %>"
+      data-transaction-amount="<%= @order.total.to_i %>">
+    </script>
+  </form>
+  <% end %>
+</div>
 </div>

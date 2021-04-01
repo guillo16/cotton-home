@@ -1,6 +1,7 @@
 <%= simple_form_for @category do |f| %>
 <%= f.input :name %>
 <%= f.input :photo %>
+<%= f.input :photo_card %>
 <div class="text-right">
   <%= f.submit class: "btn btn-primary btn-block mt-4" %>
   <%= link_to "volver", :back , class: "btn btn-secondary mt-4 text-right mb-5"%>
