@@ -28,7 +28,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  # test "admin should create a product page" do
+  # test "admin should create a product" do
   #   assert_difference "Product.count", 1 do
   #     post products_url, params: { product: @product_params }
   #   end

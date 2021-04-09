@@ -1,5 +1,7 @@
 class Shipping < ApplicationRecord
   before_save :format_name
+  before_validation :sanitize_area_code
+  before_validation :sanitize_phone
 
   belongs_to :order
   belongs_to :user
