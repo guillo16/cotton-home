@@ -5,21 +5,21 @@ class ShippingTest < ActiveSupport::TestCase
     @user = users(:buyer)
     @order = orders(:first_order)
     @shipping = Shipping.new( address: "Ruben dario",
-      area_code: 123,
-      building: "5a",
-      city: "Yerba Buena",
-      dni: "32323232",
-      floor: 5,
-      first_name: "Benjamin",
-      last_name: "Carlos",
-      number: 154,
-      order: @order,
-      phone: 5888888,
-      postal_code: 3245,
-      shipping_method: "one",
-      state: "Tucuman",
-      user: @user
-      )
+                              area_code: 123,
+                              building: "5a",
+                              city: "Yerba Buena",
+                              dni: "32323232",
+                              floor: 5,
+                              first_name: "Benjamin",
+                              last_name: "Carlos",
+                              number: 154,
+                              order: @order,
+                              phone: 5888888,
+                              postal_code: 3245,
+                              shipping_method: "one",
+                              state: "Tucuman",
+                              user: @user
+                            )
   end
 
   test "should be valid if all fields are set" do
@@ -142,6 +142,66 @@ class ShippingTest < ActiveSupport::TestCase
 
   test "should be invalid if number is not set" do
     @shipping.number = nil
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if number is a letter" do
+    @shipping.number = "abc"
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if phone is not set" do
+    @shipping.phone = nil
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if phone is too short" do
+    @shipping.phone = 123
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if phone is too long" do
+    @shipping.phone = 1234567891011
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if phone is a letter" do
+    @shipping.phone = "abc"
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if postal_code is not set" do
+    @shipping.postal_code = nil
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if postal_code is too short" do
+    @shipping.postal_code = 123
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if postal_code is too long" do
+    @shipping.postal_code = 1234567891011
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if shipping_method is not set" do
+    @shipping.shipping_method = nil
+
+    assert_not @shipping.valid?
+  end
+
+  test "should be invalid if state is not set" do
+    @shipping.state = nil
 
     assert_not @shipping.valid?
   end
