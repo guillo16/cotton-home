@@ -3,6 +3,7 @@ require 'test_helper'
 class ShippingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     login_as users(:admin)
+    @user = users(:buyer)
     @order = orders(:first_order)
     @shipping = shippings(:first_shipping)
     @shipping_params = {
@@ -19,8 +20,6 @@ class ShippingsControllerTest < ActionDispatch::IntegrationTest
       postal_code: 3245,
       shipping_method: "one",
       state: "Tucuman",
-      user_id: users(:buyer),
-      order_id: @order.id,
     }
   end
 
@@ -30,15 +29,15 @@ class ShippingsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  # test "buyer should be able to update product" do
-  #   patch shipping_path(@shipping.id), params: {
-  #     shipping: {
-  #       address: "Cariola y Universo",
-  #       user_id: users(:buyer).id,
-  #       order_id: @order.id
-  #     }
-  #   }
+  # test "buyer should update shipping" do
+  #   patch shipping_url(@shipping), params: { shipping: { address: "Cariola y Universo" } }
+
   #   binding.pry
-  #   assert_equal "Cariola y Universo", Shipping.find(@shipping.id).address
+
+  #   # Reload association to fetch updated data and assert that title is updated.
+  #   @shipping.reload
+  #   assert_equal "Cariola y Universo", @shipping.address
   # end
+
+
 end
