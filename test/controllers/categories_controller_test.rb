@@ -34,14 +34,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to categories_path
   end
 
-  test "update should be a success" do
-    assert_difference "Category.count", 1 do
-      post categories_url, params: { category: @category_params }
-    end
-
-    assert_redirected_to categories_path
-  end
-
   test "create should not be a success if name is not present" do
     assert_no_difference("Category.count", 0) do
       post categories_url, params: {

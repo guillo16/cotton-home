@@ -19,6 +19,8 @@ class ShippingsControllerTest < ActionDispatch::IntegrationTest
       postal_code: 3245,
       shipping_method: "one",
       state: "Tucuman",
+      user_id: users(:buyer),
+      order_id: @order.id,
     }
   end
 
@@ -27,4 +29,16 @@ class ShippingsControllerTest < ActionDispatch::IntegrationTest
       post order_shippings_url(@order), params: { shipping: @shipping_params }
     end
   end
+
+  # test "buyer should be able to update product" do
+  #   patch shipping_path(@shipping.id), params: {
+  #     shipping: {
+  #       address: "Cariola y Universo",
+  #       user_id: users(:buyer).id,
+  #       order_id: @order.id
+  #     }
+  #   }
+  #   binding.pry
+  #   assert_equal "Cariola y Universo", Shipping.find(@shipping.id).address
+  # end
 end
