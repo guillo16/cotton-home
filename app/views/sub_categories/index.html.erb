@@ -15,7 +15,7 @@
         <td class="text-right">
           <%= link_to 'ver', sub_category_path(sub_category), class: "pr-2" %>
           <%= link_to 'editar', edit_sub_category_path(sub_category), class: "pr-2" %>
-          <% if current_user.permission_level? == "super_admin" %>
+          <% if current_user.permission_level == "super_admin" %>
           <%= link_to 'eliminar', sub_category_path(sub_category),  method: :delete,  data: { confirm: 'Are you sure?' }, class: "text-danger"  %>
           <% end %>
         </td>
