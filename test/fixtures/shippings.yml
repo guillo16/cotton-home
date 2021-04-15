@@ -1,0 +1,16 @@
+first_shipping:
+  address: Ruben dario y Algo,
+  area_code: 123,
+  building: 6a,
+  city: Yerba Buena,
+  dni: 31323232,
+  floor: 5,
+  first_name: Joe,
+  last_name: Doe,
+  number: 152,
+  order: orders(:first_order).id,
+  phone: 5888888,
+  postal_code: 3245,
+  shipping_method: one,
+  state: Tucuman,
+  user: users(:buyer)

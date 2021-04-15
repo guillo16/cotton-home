@@ -1,5 +1,7 @@
 class Shipping < ApplicationRecord
   before_save :format_name
+  before_validation :sanitize_area_code
+  before_validation :sanitize_phone
 
   belongs_to :order
   belongs_to :user
@@ -14,7 +16,8 @@ class Shipping < ApplicationRecord
   validates :floor, length: { in: 1..2 }, numericality: true, allow_blank: true
   validates :first_name, presence: true, length: { in: 2..20, allow_blank: true }
   validates :last_name, presence: true, length: { in: 2..20, allow_blank: true }
-  validates :number, presence: true, numericality: true, allow_blank: true
+  validates :number, presence: true
+  validates :number, numericality: true, allow_blank: true
   validates :phone, length: { in: 5..9 }, numericality: true, allow_blank: true
   validates :phone, presence: true
   validates :postal_code, presence: true, length: { in: 4..8, allow_blank: true }
