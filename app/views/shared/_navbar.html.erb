@@ -19,8 +19,7 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-    <!-- <li><%= link_to 'Todos', "#",  class: "nav-link"  %> </li> -->
-    <% @categories.each do |category| %>
+      <% @categories.each do |category| %>
       <li class="nav-item">
         <%= link_to category.name, category_path(category), class: "nav-link" %>
       </li>
@@ -65,7 +64,9 @@
         <% else %>
         <p><%= link_to 'Iniciar sesión', new_user_session_path, class: "btn btn-success btn-block rounded-pill py-2 text-white" %></p>
         <% end %>
-        <%= link_to 'Carrito','#', class: "btn btn-dark btn-block rounded-pill py-2" %>
+        <% if total_cart_items %>
+          <%= link_to 'Carrito',cart_path(@cart), class: "btn btn-dark btn-block rounded-pill py-2" %>
+        <% end %>
       </div>
     </div>
   </div>
