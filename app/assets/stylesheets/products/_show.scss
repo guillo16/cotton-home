@@ -9,15 +9,15 @@
 .disabled {
   input {
     background-color: white;
-    color: black;
+    color: black !important;
     text-align: center;
   }
 }
 
 .label-size {
- .form-check {
-  padding-left: 8px;
-}
+  .form-check {
+    padding-left: 8px;
+  }
 }
 
 //carousel
@@ -47,6 +47,7 @@
   font-size: 28px;
   font-weight: bold;
   margin: 0 auto;
+  color: black !important;
 }
 
 @media (max-width: 1199.98px) {
