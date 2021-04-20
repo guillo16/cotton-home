@@ -10,8 +10,8 @@ class Contact < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      subject: "Contacto Cotton Home",
-      to: "carlipassaglia@hotmail.com",
+      subject: "Mensaje de clientes de cotton home",
+      to: "cottonhome.sn@gmail.com",
       from: %("#{name}" <#{email}>)
     }
   end
