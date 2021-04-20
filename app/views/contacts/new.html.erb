@@ -1,14 +1,19 @@
-<div class="container pt-5 mt-5 mb-5 pb-5">
-  <h2 class="text-center pb-3">Contacto</h2>
-  <div class="bg-white p-5 rounded shadow">
+<div class="container pt-5 mt-5 mb-3 pb-5">
+  <h2 class="text-center pb-3 pt-3">Contacto</h2>
+  <div class="bg-white p-4 p-md-5 rounded shadow mb-5">
     <%= simple_form_for @contact do |f| %>
-    <%= f.input :name, input_html: { class: "form-control form-control-lg"}  %>
-    <%= f.input :email,input_html: { class: "form-control form-control-lg"} %>
-    <%= f.input :message, :as => :text, input_html: { class: "form-control form-control form-control-lg", id:"exampleFormControlTextarea1", rows:"4" }%>
+    <%= f.input :name, input_html: { class: "form-control"}  %>
+    <%= f.input :email,input_html: { class: "form-control"} %>
+    <%= f.input :message, :as => :text, input_html: { class: "form-control form-control", id:"exampleFormControlTextarea1", rows:"5" }%>
     <div class="d-none">
       <%= f.input :nickname %>
     </div>
-    <%= f.submit 'Enviar', class: 'btn btn-dark btn-block m-0' %>
+    <%= f.submit 'Enviar', class: 'btn btn-dark btn-block' %>
     <% end %>
+  </div>
+  <hr>
+  <div class="text-center">
+    <p class="mb-1">Para más información comunicarse con atención al cliente.</p>
+    <p>HORARIO DE ATENCIÓN AL CLIENTE: Lunes a Viernes: 10 hs a 17 hs</p>
   </div>
 </div>
