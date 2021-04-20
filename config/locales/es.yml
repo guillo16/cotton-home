@@ -3,3 +3,19 @@ es:
     submit:
       create: "Crear %{model}"
       update: "Confirmar cambios"
+  mail_form:
+    attributes:
+      contact:
+        name: "Nombre"
+        message: "Mensaje"
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: "no puede estar vacio."
+            email:
+              blank: "no puede estar vacio."
+              invalid: "esta en un formato incorrecto"
+            message:
+              blank: "no puede estar vacio."
