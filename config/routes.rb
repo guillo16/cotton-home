@@ -29,4 +29,5 @@ Rails.application.routes.draw do
   resources :dimensions, only: [:show, :edit, :update, :destroy]
   resources :shippings, only: [:edit, :update]
   resources :payments, only: [:index, :show]
+  resources :contacts, only: [:new, :create]
 end
