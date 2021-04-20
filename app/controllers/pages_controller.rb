@@ -1,12 +1,14 @@
 class PagesController < ApplicationController
   before_action :set_sub_category, only: %i[home search]
-  skip_before_action :authenticate_user!, only: %i[home search result]
+  skip_before_action :authenticate_user!, only: %i[home search result about]
 
   def home
     @products = Product.all
   end
 
   def search; end
+
+  def about; end
 
   def result
     if params[:query].present?

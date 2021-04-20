@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'procesar-pago', to: "payments#create"
   get 'pages/search', to: 'pages#search'
   get 'pages/result', to: 'pages#result'
+  get '/about', to: 'pages#about'
 
   resources :categories
   resources :sub_categories
