@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'contacts/new'
-  get 'contacts/create'
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
@@ -31,4 +29,5 @@ Rails.application.routes.draw do
   resources :dimensions, only: [:show, :edit, :update, :destroy]
   resources :shippings, only: [:edit, :update]
   resources :payments, only: [:index, :show]
+  resources :contacts, only: [:new, :create]
 end
