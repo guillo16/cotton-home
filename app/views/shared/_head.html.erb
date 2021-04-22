@@ -1,0 +1,24 @@
+<title>Cotton Home - De tu casa un hogar</title>
+<%= favicon_link_tag(source = "favicon.png") %>
+<meta name="title" content="Cotton Home - De tu casa un hogar">
+<meta name="description" content="Bienvenido al sitio oficial de Cotton Home. Encontrá en esta tienda online sábanas y ropa de cama, creados con tecnología y diseño. ¡Conoce más!">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.cottonhome.com.ar/">
+<meta property="og:title" content="Cotton Home - De tu casa un hogar">
+<meta property="og:description" content="Bienvenido al sitio oficial de Cotton Home. Encontrá en esta tienda online sábanas y ropa de cama, creados con tecnología y diseño. ¡Conoce más!">
+<meta property="og:image" content="<%= asset_path('cotton-avatar.png') %>">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://www.cottonhome.com.ar/">
+<meta property="twitter:title" content="Cotton Home - De tu casa un hogar">
+<meta property="twitter:description" content="Bienvenido al sitio oficial de Cotton Home. Encontrá en esta tienda online sábanas y ropa de cama, creados con tecnología y diseño. ¡Conoce más!">
+<meta property="twitter:image" content="<%= asset_path('cotton-avatar.png') %>">
+
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
