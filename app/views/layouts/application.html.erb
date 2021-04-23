@@ -4,18 +4,6 @@
     <%= render 'shared/head' %>
       <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRE1JZ4VMF"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      document.addEventListener("turbolinks:load", function(event) {
-        gtag('config', 'G-BRE1JZ4VMF', {
-          page_location: event.data.url,
-          page_path: event.srcElement.location.pathname,
-          page_title: event.srcElement.title
-        });
-      })
-    </script>
   </head>
   <body>
     <%= render 'shared/navbar' %>
