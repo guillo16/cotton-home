@@ -24,6 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "controllers"
+import gtag from 'src/analytics'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -33,4 +35,3 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
-import "controllers"
