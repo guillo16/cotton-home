@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :set_order, only: %i[new create]
+  before_action :set_order, only: %i[new create transfer]
 
   def index
     if user_has_permission_level?
@@ -72,6 +72,23 @@ class PaymentsController < ApplicationController
       flash[:notice] = "Pago rechazado por favor intente de nuevo!"
       redirect_to new_order_payment_path(@order)
     end
+  end
+
+  def transfer
+    @payment = Payment.new(payment_params)
+    @payment.order = @order
+    @cart = Cart.find(session[:cart_id])
+    session[:cart_id] = nil
+    @payment.payment_status = "wire_transfer"
+    @payment.save
+    @order.update(state: 'Encargado')
+    @order.cart.line_items.each do |item|
+      line_quantity = item.quantity
+      item.variant.decrement!(:stock, line_quantity)
+    end
+    # OrderMailer.with(order: @order).new_order.deliver_later
+    # OrderMailer.with(order: @order).new_payment.deliver_later
+    redirect_to order_path(@order)
   end
 
   private

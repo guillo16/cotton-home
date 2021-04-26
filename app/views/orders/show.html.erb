@@ -21,11 +21,17 @@
     <div class="order-show-footer">
       <% if @order.payment.payment_status == 'approved' %>
         <p>Estado:<strong> Aprobado<i class="far fa-check-circle"></i></p></strong>
+        <% elsif @order.payment.payment_status == 'transfer' %>
+        <p>Metodo de pago:<strong> Transferencia Bancaria<i class="far fa-check-circle"></i></p></strong>
+        <p>CBU: <strong>344938493849384938439</strong></p>
+        <p>Alias: <strong>RETO.PINCEL.ALGO</strong></p>
+        <p>Cuit: <strong>20-20202020-2</strong></p>
+        <p style="font-size: 12px; margin-bottom: 6px;"><strong>*Una vez realizada la transferencia envianos el comprobante a nuestro mail y procederemos a hacer el envio.</strong></p>
       <% else %>
         <p>Estado:<strong> <span class="text-warning">Pendiente</span></p></strong>
         <p style="font-size: 12px; margin-bottom: 6px;"><strong>*nos comunicaremos con vos cuando el pago este aprobado</strong></p>
       <% end %>
-      <p>Total: <%= humanized_money_with_symbol(@order.amount) %></p>
+      <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
     </div>
     <div class="order-show-button pb-3">
       <%= link_to 'Perfil', user_path(current_user), class: 'btn btn-primary btn-lg btn-block'  %>

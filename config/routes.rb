@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   post 'procesar-pago', to: "payments#create"
+  post 'efectivo', to: "payments#transfer"
   get 'pages/search', to: 'pages#search'
   get 'pages/result', to: 'pages#result'
   get '/about', to: 'pages#about'

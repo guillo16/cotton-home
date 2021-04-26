@@ -55,6 +55,11 @@
       data-transaction-amount="<%= @order.total.to_i %>">
     </script>
   </form>
+  <form action="/efectivo" method="POST">
+      <%= hidden_field_tag :authenticity_token %>
+      <input type="hidden" name='order_id' value=<%= @order.id %>>
+      <button type="submit" class="btn btn-product btn-lg btn-block" data-transaction-amount="<%= @order.total.to_i %>">Transferencia Bancaria</button>
+  </form>
   <% end %>
 </div>
 </div>
