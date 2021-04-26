@@ -21,7 +21,7 @@
     <div class="order-show-footer">
       <% if @order.payment.payment_status == 'approved' %>
         <p>Estado:<strong> Aprobado<i class="far fa-check-circle"></i></p></strong>
-        <% elsif @order.payment.payment_status == 'transfer' %>
+        <% elsif @order.payment.payment_status == 'wire_transfer' %>
         <p>Metodo de pago:<strong> Transferencia Bancaria<i class="far fa-check-circle"></i></p></strong>
         <p>CBU: <strong>344938493849384938439</strong></p>
         <p>Alias: <strong>RETO.PINCEL.ALGO</strong></p>
