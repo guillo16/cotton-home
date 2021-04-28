@@ -1,9 +1,9 @@
-<div class="category-banner d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @category.photo %>);">
+<!-- <div class="category-banner d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @category.photo %>);">
   <div>
     <h1><%= @category.name %></h1>
   </div>
-</div>
-<div class="categories pb-5">
+</div> -->
+<div class="categories pt-5 mt-5 pb-5">
   <div class="d-md-flex justify-content-center pt-2 pb-4 text-center px-3 px-md-0">
     <% @category.sub_categories.each do |sub_category| %>
     <p class="py-2 py-md-3 mb-0 border-bottom"><%= link_to sub_category.name, sub_category_path(sub_category), class: "pl-md-3 text-body" %></p>
