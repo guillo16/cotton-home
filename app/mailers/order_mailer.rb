@@ -16,4 +16,10 @@ class OrderMailer < ApplicationMailer
     user = @order.user.email
     mail(to: user, subject: "Compra realizada con pago pendiente")
   end
+
+  def wire_transfer_payment
+    @order = params[:order]
+    user = @order.user.email
+    mail(to: user, subject: "Compra realizada por transferencia bancaria")
+  end
 end
