@@ -1,0 +1,23 @@
+<p>Gracias <%= @order.user.email %> por comprar en Cotton Home</p>
+
+
+Detalle de la orden<br>
+--------------------------
+<p><strong>Subtotal:</strong> $<%= @order.amount %></p>
+<p><strong>Envio:</strong> $<%= @order.total.to_i - @order.amount.to_i %></p>
+<p><strong>Total:</strong> $<%= @order.total %></p>
+<br>
+<% @order.cart.line_items.each do |line_item| %>
+
+<p><strong>Producto: </strong><%= line_item.product.name %></p>
+<p><strong>Cantidad: </strong><%= line_item.quantity %></p>
+--------------------------
+<% end %>
+<p>Datos para realizar la transferencia:</p>
+
+<p><strong>CUIT:</strong> 20340678428</p>
+<p><strong>CBU:</strong> 0170223340000031083591</p>
+<p><strong>Alias:</strong> RETO.PINCEL.LEON</p>
+
+<p>Una ves realizada la tranferencia mandar un mail con el comprobante a esta misma dirección de mail: <strong>cottonhome.sn@gmail.com</strong></p>
+<p>Muchas Gracias.</p>
