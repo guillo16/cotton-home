@@ -31,7 +31,12 @@
         <p>Estado:<strong> <span class="text-warning">Pendiente</span></p></strong>
         <p style="font-size: 12px; margin-bottom: 6px;"><strong>*nos comunicaremos con vos cuando el pago este aprobado</strong></p>
       <% end %>
-      <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
+      <% if @order.payment.payment_status == 'wire_transfer' %>
+        <p class="text-center text-md-left">Subtotal: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
+        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount.to_i - (@order.amount.to_i * 0.10)) %> <span class="text-danger font-weight-normal" style="font-size: 12px;">10% off</span></strong></p>
+      <% else %>
+        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
+      <% end %>
     </div>
     <div class="order-show-button pb-3">
       <%= link_to 'Perfil', user_path(current_user), class: 'btn btn-primary btn-lg btn-block'  %>

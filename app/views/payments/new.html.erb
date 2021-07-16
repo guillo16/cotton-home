@@ -59,7 +59,7 @@
       <form action="/efectivo" method="POST" class="mt-3">
         <%= hidden_field_tag :authenticity_token %>
         <input type="hidden" name='order_id' value=<%= @order.id %>>
-        <button type="submit" class="btn btn-dark btn-sm btn-block py-2" data-transaction-amount="<%= @order.total.to_i %>" onclick="if(confirm('Estas seguro que quieres pagar mediante transferencia bancaria?')){}else{return false;};">Transferencia Bancaria</button>
+        <button type="submit" class="btn btn-dark btn-sm btn-block py-2" data-transaction-amount="<%= @order.total.to_i %>" onclick="if(confirm('Estas seguro que quieres pagar mediante transferencia bancaria?')){}else{return false;};">Transferencia Bancaria 10% off</button>
         </form>
       <% end %>
   </div>
