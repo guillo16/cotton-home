@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/terminos-y-condiciones', to: 'pages#terms'
 
-
   resources :categories
   resources :sub_categories
   resources :products do
