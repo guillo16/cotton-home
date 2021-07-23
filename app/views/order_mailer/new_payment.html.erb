@@ -1,6 +1,5 @@
 <p>Gracias <%= @order.user.email %> por comprar en Cotton Home</p>
 
-
 Detalle de la orden<br>
 --------------------------
 <p><strong>Subtotal:</strong> $<%= @order.amount %></p>
@@ -11,6 +10,5 @@ Detalle de la orden<br>
 
 <p><strong>Producto: </strong><%= line_item.product.name %></p>
 <p><strong>Cantidad: </strong><%= line_item.quantity %></p>
-
 
 <% end %>
