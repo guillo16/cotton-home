@@ -3,9 +3,15 @@
 
 Detalle de la orden<br>
 --------------------------
+<% if @order.payment.payment_status == 'wire_transfer' %>
+<p><strong>Subtotal:</strong> $<%= @order.amount %></p>
+<p><strong>Envio:</strong> $<%= @order.total.to_i - @order.amount.to_i %></p>
+<p>Total: $<strong><%= @order.total.to_i - (@order.total.to_i * 0.10) %> <small>(10% off)</small></strong></p>
+<% else %>
 <p><strong>Subtotal:</strong> $<%= @order.amount %></p>
 <p><strong>Envio:</strong> $<%= @order.total.to_i - @order.amount.to_i %></p>
 <p><strong>Total:</strong> $<%= @order.total %></p>
+<% end %>
 <br>
 <% @order.cart.line_items.each do |line_item| %>
 

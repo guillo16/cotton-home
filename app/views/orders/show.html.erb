@@ -33,9 +33,10 @@
       <% end %>
       <% if @order.payment.payment_status == 'wire_transfer' %>
         <p class="text-center text-md-left">Subtotal: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
-        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount.to_i - (@order.amount.to_i * 0.10)) %> <span class="text-danger font-weight-normal" style="font-size: 12px;">10% off</span></strong></p>
+        <p class="text-center text-md-left">Envio: <strong><%= humanized_money_with_symbol(@order.total.to_i - @order.amount.to_i) %></strong></p>
+        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.total.to_i - (@order.total.to_i * 0.10)) %> <span class="text-danger font-weight-normal" style="font-size: 12px;">10% off</span></strong></p>
       <% else %>
-        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.amount) %></strong></p>
+        <p class="text-center text-md-left">Total: <strong><%= humanized_money_with_symbol(@order.total) %></strong></p>
       <% end %>
     </div>
     <div class="order-show-button pb-3">
